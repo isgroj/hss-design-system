@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HSS Data — Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══ Primitives ═══ */
+    :root {
+      --color-blue-50: #e2f4fe;
+      --color-blue-100: #88d2f8;
+      --color-blue-200: #4097cd;
+      --color-blue-500: #0074bc;
+      --color-blue-600: #004d7d;
+      --color-blue-700: #00273f;
+      --color-blue-800: #264583;
+      --color-blue-550: #005a91;
+      --color-blue-900: #192e57;
+      --color-navy-800: #30233b;
+      --color-navy-900: #0d172c;
+      --neutral-white: #ffffff;
+      --neutral-slate-50: #ecf1f4;
+      --neutral-slate-100: #eaebec;
+      --neutral-slate-200: #e1e2e4;
+      --neutral-slate-300: #c4c5c8;
+      --neutral-slate-400: #a6a8ad;
+      --neutral-slate-500: #6b6d76;
+      --neutral-slate-700: #3e515a;
+      --neutral-slate-900: #192328;
+      --gold-300: #ffdf63; --gold-400: #e8c747; --gold-500: #d1a135; --gold-600: #a4850a;
+      --green-100: #f0f8e8; --green-500: #72b431; --green-600: #498c1d;
+      --red-100: #fee5e5; --red-500: #bc0000; --red-600: #bc0000;
+      --amber-100: #fff6d0; --amber-500: #d08007; --amber-600: #dcbf27;
+      --alert-red: #bc0000; --alert-green: #216a08; --alert-blue: #0075dd;
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+      --space-5: 20px; --space-6: 24px; --space-8: 32px;
+      --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-full: 9999px;
+    }
+
+    /* ═══ Semantic — Light ═══ */
+    [data-theme="light"] {
+      --bg-base: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-elevated: #ffffff;
+      --bg-overlay: rgba(15,23,42,0.5);
+      --bg-brand: #0074BC;
+      --bg-brand-subtle: #eff6ff;
+      --bg-invert: #0f172a;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --text-inverse: #ffffff;
+      --text-brand: #0d172c;
+      --text-accent: #1d4ed8;
+      --text-disabled: #cbd5e1;
+      --border-default: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-brand: #0074BC;
+      --border-focus: #0d172c;
+      --action-primary: #0074BC;
+      --action-primary-hover: #005a91;
+      --action-primary-text: #ffffff;
+      --action-secondary-text: #272725;
+      --action-secondary-border: #0074BC;
+      --action-secondary: #f1f5f9;
+      --action-ghost-hover: #eff6ff;
+      --tab-active: #0D172C;
+      --tab-active-text: #ffffff;
+      --success-bg: #dcfce7; --success-text: #16a34a;
+      --error-bg: #fee2e2; --error-text: #dc2626;
+      --warning-bg: #e2f4fe; --warning-text: #004d7d;
+      --info-bg: #eff6ff; --info-text: #2563eb;
+      --powered-by-bg: #f8fafc; --powered-by-text: #64748b;
+      --urgency-red: #dc2626; --urgency-blue: #2563eb; --urgency-green: #16a34a;
+      --row-hover: #f1f5f9;
+      --header-bg: #0D172C;
+      --header-text: #ffffff;
+      --score-bar-bg: #e2e8f0;
+    }
+
+    /* ═══ Semantic — Dark ═══ */
+    [data-theme="dark"] {
+      --bg-base: #010309;
+      --bg-surface: #020617;
+      --bg-elevated: #0f172a;
+      --bg-overlay: rgba(2,6,23,0.8);
+      --bg-brand: #3b82f6;
+      --bg-brand-subtle: #1e3a8a;
+      --bg-invert: #ffffff;
+      --text-primary: #ffffff;
+      --text-secondary: #cbd5e1;
+      --text-tertiary: #64748b;
+      --text-inverse: #010309;
+      --text-brand: #60a5fa;
+      --text-accent: #93c5fd;
+      --text-disabled: #475569;
+      --border-default: #0f172a;
+      --border-strong: #1e293b;
+      --border-brand: #60a5fa;
+      --border-focus: #60a5fa;
+      --action-primary: #ffffff;
+      --action-primary-hover: #e2e8f0;
+      --action-primary-text: #0D172C;
+      --action-secondary-text: #ffffff;
+      --action-secondary-border: #ffffff;
+      --action-secondary: #0f172a;
+      --action-ghost-hover: #0f172a;
+      --tab-active: #ffffff;
+      --tab-active-text: #0D172C;
+      --success-bg: #16a34a; --success-text: #dcfce7;
+      --error-bg: #dc2626; --error-text: #fee2e2;
+      --warning-bg: #264583; --warning-text: #e2f4fe;
+      --info-bg: #192e57; --info-text: #dbeafe;
+      --powered-by-bg: #020617; --powered-by-text: #94a3b8;
+      --urgency-red: #ef4444; --urgency-blue: #60a5fa; --urgency-green: #4ade80;
+      --row-hover: #0f172a;
+      --header-bg: #020617;
+      --header-text: #ffffff;
+      --score-bar-bg: #1e293b;
+    }
+
+    /* ═══ Reset ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      transition: background 0.25s, color 0.25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    table { border-collapse: collapse; width: 100%; }
+
+    /* ═══ App Shell ═══ */
+    .app-header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 56px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .app-header-left { display: flex; align-items: center; gap: 32px; }
+    .app-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .app-logo img { width: 32px; height: 32px; min-width: 32px; min-height: 32px; flex-shrink: 0; object-fit: contain; overflow: visible; }
+    .app-nav { display: flex; gap: 4px; }
+    .app-nav-item {
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      transition: background 0.15s, color 0.15s;
+    }
+    .app-nav-item:hover, .app-nav-item.active { color: #ffffff; background: rgba(255,255,255,0.1); }
+    .app-header-right { display: flex; align-items: center; gap: 16px; }
+    .theme-btn {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7);
+      transition: background 0.15s, color 0.15s;
+    }
+    .theme-btn:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+    .avatar {
+      width: 32px; height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--action-primary);
+      color: var(--action-primary-text);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600;
+    }
+
+    .app-footer {
+      background: var(--powered-by-bg);
+      border-top: 1px solid var(--border-default);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--powered-by-text);
+    }
+
+    .footer-powered-by { display: flex; align-items: center; gap: 10px; }
+    .app-main { min-height: calc(100vh - 56px - 45px); padding: 24px; }
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ═══ Page Header ═══ */
+    .page-header { margin-bottom: 24px; }
+    .page-title { font-size: 24px; font-weight: 700; letter-spacing: -0.36px; }
+    .page-subtitle { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+
+    /* ═══ Card ═══ */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .card-title { font-size: 16px; font-weight: 600; }
+
+    /* ═══ Metric Cards ═══ */
+    .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .metric-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+    .metric-value { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+    .metric-sub { font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+
+    /* ═══ Table ═══ */
+    .data-table { width: 100%; }
+    .data-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-default);
+      white-space: nowrap;
+    }
+    .data-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    .data-table tbody tr { transition: background 0.1s; }
+    .data-table tbody tr:hover { background: var(--row-hover); }
+    .data-table .clickable { cursor: pointer; color: var(--text-accent); font-weight: 500; }
+    .data-table .clickable:hover { text-decoration: underline; }
+
+    /* ═══ Urgency Dot ═══ */
+    .urgency-dot { width: 10px; height: 10px; border-radius: var(--radius-full); display: inline-block; }
+    .urgency-dot.red { background: var(--urgency-red); }
+    .urgency-dot.blue { background: var(--urgency-blue); }
+    .urgency-dot.green { background: var(--urgency-green); }
+
+    /* ═══ Badge / Flag ═══ */
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 11px; font-weight: 500;
+      white-space: nowrap;
+    }
+    .badge-default { background: var(--action-secondary); color: var(--text-secondary); }
+    .badge-info { background: var(--info-bg); color: var(--info-text); }
+    .badge-success { background: var(--success-bg); color: var(--success-text); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning-text); }
+    .badge-error { background: var(--error-bg); color: var(--error-text); }
+    .badge-brand { background: var(--bg-brand); color: var(--text-inverse); }
+    .flag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    /* ═══ Status Badge ═══ */
+    .status-badge { padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500; }
+    .status-in-review { background: var(--warning-bg); color: var(--warning-text); }
+    .status-assigned { background: var(--info-bg); color: var(--info-text); }
+    .status-new { background: var(--success-bg); color: var(--success-text); }
+    .status-contacted { background: var(--action-secondary); color: var(--text-secondary); }
+    .status-cultivation { background: #f0e6f0; color: #7b3c84; }
+    [data-theme="dark"] .status-cultivation { background: #2d1f33; color: #c084fc; }
+
+    /* ═══ Donor Detail ═══ */
+    .donor-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 16px;
+    }
+    .donor-name-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .donor-name { font-size: 24px; font-weight: 700; letter-spacing: -0.36px; }
+    .donor-score {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 12px; border-radius: var(--radius-full);
+      background: var(--bg-brand); color: var(--text-inverse);
+      font-size: 14px; font-weight: 600;
+    }
+    .donor-id { font-size: 13px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; }
+    .donor-meta { display: flex; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+    .donor-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-secondary); }
+    .donor-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: var(--radius-xl);
+      font-size: 13px; font-weight: 600;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-primary { background: var(--action-primary); color: var(--action-primary-text); }
+    .btn-primary:hover { background: var(--action-primary-hover); }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--action-secondary-border);
+      color: var(--action-secondary-text);
+    }
+    .btn-secondary:hover { background: var(--action-primary); color: var(--text-inverse); }
+
+    /* ═══ Tabs ═══ */
+    .tab-bar {
+      display: flex; gap: 2px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      padding: 4px;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+    .tab-item {
+      padding: 8px 20px;
+      border-radius: var(--radius-lg);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: background 0.15s, color 0.15s;
+    }
+    .tab-item:hover { color: var(--text-primary); background: var(--action-ghost-hover); }
+    .tab-item.active { background: var(--tab-active); color: var(--tab-active-text); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ═══ Score Breakdown ═══ */
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .score-item { display: flex; flex-direction: column; gap: 6px; }
+    .score-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+    .score-bar-track { height: 8px; border-radius: 4px; background: var(--score-bar-bg); overflow: hidden; }
+    .score-bar-fill { height: 100%; border-radius: 4px; background: var(--action-primary); transition: width 0.4s ease; }
+    .score-value { font-size: 12px; font-weight: 600; color: var(--text-primary); text-align: right; }
+    .score-row { display: flex; align-items: center; gap: 8px; }
+    .score-row .score-label { flex: 0 0 120px; }
+    .score-row .score-bar-track { flex: 1; }
+    .score-row .score-value { flex: 0 0 32px; }
+
+    /* ═══ Visit Timeline ═══ */
+    .timeline { position: relative; }
+    .timeline-item {
+      display: flex; gap: 16px; padding: 12px 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date { flex: 0 0 80px; font-size: 13px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; }
+    .timeline-content { flex: 1; }
+    .timeline-title { font-size: 14px; font-weight: 500; }
+    .timeline-sub { font-size: 13px; color: var(--text-secondary); }
+
+    /* ═══ Wealth Grid ═══ */
+    .wealth-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .wealth-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px; border-radius: var(--radius-md);
+      background: var(--bg-elevated); border: 1px solid var(--border-default);
+    }
+    .wealth-icon { width: 32px; height: 32px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .wealth-label { font-size: 12px; color: var(--text-secondary); }
+    .wealth-value { font-size: 14px; font-weight: 600; }
+
+    /* ═══ Generosity Window ═══ */
+    .generosity-card {
+      background: var(--warning-bg);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .generosity-days { font-size: 32px; font-weight: 700; color: var(--warning-text); }
+    .generosity-label { font-size: 13px; color: var(--warning-text); }
+
+    /* ═══ Alert Banner ═══ */
+    .alert {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 16px; border-radius: var(--radius-md);
+      margin-bottom: 8px;
+    }
+    .alert-warning { background: var(--warning-bg); color: var(--warning-text); }
+    .alert-info { background: var(--info-bg); color: var(--info-text); }
+    .alert-icon { flex-shrink: 0; margin-top: 1px; }
+    .alert-text { font-size: 13px; line-height: 1.5; }
+
+    /* ═══ Officer Table ═══ */
+    .officer-progress { width: 80px; height: 6px; border-radius: 3px; background: var(--score-bar-bg); overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 8px; }
+    .officer-progress-fill { height: 100%; border-radius: 3px; }
+
+    /* ═══ Notes ═══ */
+    .note-item { padding: 16px; border-bottom: 1px solid var(--border-default); }
+    .note-item:last-child { border-bottom: none; }
+    .note-author { font-size: 13px; font-weight: 600; }
+    .note-date { font-size: 12px; color: var(--text-tertiary); }
+    .note-body { font-size: 14px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6; }
+
+    /* ═══ Two Column Layout ═══ */
+    .two-col { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    .two-col-main { min-width: 0; }
+    .two-col-side { min-width: 0; }
+
+    /* ═══ Mobile ═══ */
+    @media (max-width: 768px) {
+      .app-nav { display: none; }
+      .app-main { padding: 16px; }
+      .two-col { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .score-grid { grid-template-columns: 1fr; }
+      .wealth-grid { grid-template-columns: 1fr; }
+      .tab-bar { width: 100%; overflow-x: auto; }
+      .tab-item { white-space: nowrap; font-size: 13px; padding: 8px 14px; }
+      .donor-header { flex-direction: column; }
+      .data-table { font-size: 13px; }
+      .data-table th, .data-table td { padding: 8px; }
+      .mobile-hide { display: none; }
+      .mobile-menu-btn { display: flex; }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Header ═══ -->
+  <header class="app-header">
+    <div class="app-header-left">
+      <a href="#" class="app-logo" onclick="navigate('queue'); return false;">
+        <img width="32" height="32" style="border-radius:6px; display:block;" alt="HSS" src="hss-logo.png" />
+        HSS Data
+      </a>
+      <nav class="app-nav" id="mainNav">
+        <button class="app-nav-item active" data-screen="queue" onclick="navigate('queue')">Queue</button>
+        <button class="app-nav-item" data-screen="detail" onclick="navigate('detail')">Donor Detail</button>
+        <button class="app-nav-item" data-screen="dashboard" onclick="navigate('dashboard')">Dashboard</button>
+      </nav>
+      <button class="mobile-menu-btn theme-btn" onclick="toggleMobileNav()">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="app-header-right">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode" id="themeToggleBtn">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" id="themeIcon">
+          <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="theme-btn" title="Notifications">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a5 5 0 00-5 5v3l-1.5 2.5h13L15 10V7a5 5 0 00-5-5zM8 16.5a2 2 0 004 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="avatar">DS</div>
+    </div>
+  </header>
+
+  <!-- ═══ Main Content ═══ -->
+  <main class="app-main">
+
+    <!-- ═══════════ DONOR QUEUE ═══════════ -->
+    <div class="screen active" id="screen-queue">
+      <div class="page-header">
+        <h1 class="page-title">Donor Queue</h1>
+        <p class="page-subtitle">7 donors requiring action</p>
+      </div>
+      <div class="card" style="padding:0; overflow-x:auto;">
+        <table class="data-table" id="queueTable">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Segment</th>
+              <th>Status</th>
+              <th>Days</th>
+              <th class="mobile-hide">Service Line</th>
+              <th class="mobile-hide">Gift Officer</th>
+              <th class="mobile-hide">Net Worth</th>
+              <th class="mobile-hide">Flags</th>
+            </tr>
+          </thead>
+          <tbody id="queueBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════ DONOR DETAIL ═══════════ -->
+    <div class="screen" id="screen-detail">
+      <div style="margin-bottom:16px;">
+        <button class="btn btn-secondary" style="font-size:12px; padding:6px 12px;" onclick="navigate('queue')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Queue
+        </button>
+      </div>
+      <div class="donor-header">
+        <div>
+          <div class="donor-name-row">
+            <h1 class="donor-name" id="detailName"></h1>
+            <span class="donor-score" id="detailScore"></span>
+            <span class="donor-id" id="detailId"></span>
+          </div>
+          <div class="donor-meta" id="detailMeta"></div>
+        </div>
+        <div class="donor-actions">
+          <button class="btn btn-primary">Contact Donor</button>
+          <button class="btn btn-secondary">Add Note</button>
+        </div>
+      </div>
+
+      <div class="tab-bar" id="detailTabs">
+        <button class="tab-item active" onclick="switchTab('clinical')">Clinical Context</button>
+        <button class="tab-item" onclick="switchTab('engagement')">Engagement</button>
+        <button class="tab-item" onclick="switchTab('wealth')">Wealth & Philanthropy</button>
+        <button class="tab-item" onclick="switchTab('notes')">Notes</button>
+      </div>
+
+      <!-- Clinical Context Tab -->
+      <div class="tab-panel active" id="tab-clinical">
+        <div class="two-col">
+          <div class="two-col-main">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Visit Timeline</h3></div>
+              <div class="timeline" id="visitTimeline"></div>
+            </div>
+          </div>
+          <div class="two-col-side">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Score Breakdown</h3></div>
+              <div id="scoreBreakdown"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Engagement Tab -->
+      <div class="tab-panel" id="tab-engagement">
+        <div class="two-col">
+          <div class="two-col-main">
+            <div class="card">
+              <div class="card-header"><h3 class="card-title">Contact & Engagement</h3></div>
+              <div id="engagementContent"></div>
+            </div>
+          </div>
+          <div class="two-col-side">
+            <div class="card" id="generosityCard"></div>
+            <div class="card" style="margin-top:16px;">
+              <div class="card-header"><h3 class="card-title">Flags</h3></div>
+              <div class="flag-list" id="detailFlags"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wealth Tab -->
+      <div class="tab-panel" id="tab-wealth">
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Wealth & Philanthropy Profile</h3></div>
+          <div class="wealth-grid" id="wealthGrid"></div>
+        </div>
+      </div>
+
+      <!-- Notes Tab -->
+      <div class="tab-panel" id="tab-notes">
+        <div class="card" style="padding:0;">
+          <div style="padding:16px 24px; border-bottom:1px solid var(--border-default); display:flex; justify-content:space-between; align-items:center;">
+            <h3 class="card-title">Notes</h3>
+            <button class="btn btn-primary" style="font-size:12px; padding:6px 14px;">+ Add Note</button>
+          </div>
+          <div id="notesContent">
+            <div class="note-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span class="note-author">John Doe</span>
+                <span class="note-date">Mar 28, 2026</span>
+              </div>
+              <p class="note-body">Initial outreach call completed. Patient expressed interest in supporting orthopedic research. Scheduled follow-up lunch for April 15.</p>
+            </div>
+            <div class="note-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span class="note-author">Jane Smith</span>
+                <span class="note-date">Mar 20, 2026</span>
+              </div>
+              <p class="note-body">Wealth screening completed — high capacity confirmed. Foundation board member with history of healthcare philanthropy. Recommend major gift track.</p>
+            </div>
+            <div class="note-item">
+              <div style="display:flex; justify-content:space-between;">
+                <span class="note-author">System</span>
+                <span class="note-date">Mar 15, 2026</span>
+              </div>
+              <p class="note-body">Auto-flagged: visit frequency increase detected (3 visits in 2 months). Score recalculated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ DASHBOARD ═══════════ -->
+    <div class="screen" id="screen-dashboard">
+      <div class="page-header">
+        <h1 class="page-title">Gift Officer Performance</h1>
+        <p class="page-subtitle">Team overview and pipeline metrics</p>
+      </div>
+
+      <div class="metrics-grid" id="dashMetrics"></div>
+
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="card" id="dashAlerts" style="padding:16px 20px;"></div>
+
+        <div class="card" style="padding:0; overflow-x:auto;">
+          <div style="padding:16px 24px; border-bottom:1px solid var(--border-default);">
+            <h3 class="card-title">Officer Performance</h3>
+          </div>
+          <table class="data-table" id="officerTable">
+            <thead>
+              <tr>
+                <th>Officer</th>
+                <th>Portfolio Size</th>
+                <th>Avg Response</th>
+                <th>Conversion Rate</th>
+                <th>Pipeline Value</th>
+              </tr>
+            </thead>
+            <tbody id="officerBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="app-footer">
+    <div class="footer-powered-by">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path opacity="0.3" d="M7 9C8.105 9 9 8.105 9 7C9 5.895 8.105 5 7 5C5.895 5 5 5.895 5 7C5 8.105 5.895 9 7 9Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M14 9C15.105 9 16 8.105 16 7C16 5.895 15.105 5 14 5C12.895 5 12 5.895 12 7C12 8.105 12.895 9 14 9Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M21 9C22.105 9 23 8.105 23 7C23 5.895 22.105 5 21 5C19.895 5 19 5.895 19 7C19 8.105 19.895 9 21 9Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M7 16C8.105 16 9 15.105 9 14C9 12.895 8.105 12 7 12C5.895 12 5 12.895 5 14C5 15.105 5.895 16 7 16Z" fill="var(--powered-by-text)"/>
+        <path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.25" d="M14 20C17.314 20 20 17.314 20 14C20 10.686 17.314 8 14 8C10.686 8 8 10.686 8 14C8 17.314 10.686 20 14 20Z" fill="var(--powered-by-text)" stroke="var(--border-brand)" stroke-width="2.54"/>
+        <path opacity="0.3" d="M21 16C22.105 16 23 15.105 23 14C23 12.895 22.105 12 21 12C19.895 12 19 12.895 19 14C19 15.105 19.895 16 21 16Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M7 23C8.105 23 9 22.105 9 21C9 19.895 8.105 19 7 19C5.895 19 5 19.895 5 21C5 22.105 5.895 23 7 23Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M14 23C15.105 23 16 22.105 16 21C16 19.895 15.105 19 14 19C12.895 19 12 19.895 12 21C12 22.105 12.895 23 14 23Z" fill="var(--powered-by-text)"/>
+        <path opacity="0.3" d="M21 23C22.105 23 23 22.105 23 21C23 19.895 22.105 19 21 19C19.895 19 19 19.895 19 21C19 22.105 19.895 23 21 23Z" fill="var(--powered-by-text)"/>
+      </svg>
+      <span style="font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--powered-by-text);">Powered by</span>
+      <span style="font-size:14px; font-weight:600; color:var(--text-primary);">HSS Data</span>
+    </div>
+    <span>&copy; 2026 HSS</span>
+  </footer>
+
+  <script>
+    // ═══ DATA (from Databricks synthetic notebook) ═══
+    const DATA = {
+      donors: [
+        {
+          id: "P-001", name: "Sarah Thompson", first: "Sarah", last: "Thompson",
+          score: { composite: 91, wealth_capacity: 95, visit_recency: 88, visit_frequency: 82, prior_giving: 93, household_activity: 87 },
+          segment: "High Net Worth", status: "In Review", urgency: "red", days_in_queue: 3,
+          generosity_window: { days_remaining: 18, close_date: "Apr 18, 2026" },
+          household: { name: "Thompson", size: 3 }, confidence: "94%", blackout_dates: "Apr 2\u20136",
+          gift_officer: "John Doe", service_line: "Hip & Knee",
+          wealth: { net_worth: "$5M\u2013$10M", investable_assets: "$2.5M\u2013$5M", philanthropic_giver: true, top_philanthropic_donor: false, foundation_association: true, foundation_officer_trustee: true, nonprofit_board_member: true, political_donor: false, boat_owner: false, luxury_car_owner: true, plane_owner: false, match_confidence: "High", money_in_motion: false, windfall_trigger: null },
+          flags: ["Foundation Board", "Philanthropic Giver", "AMB"],
+          visits: [
+            { date: "Mar 15", year: "2026", service_line: "Hip & Knee", provider: "Dr. Rebecca Martinez", type: "Follow-up visit" },
+            { date: "Jan 22", year: "2026", service_line: "Sports Medicine", provider: "Dr. James Liu", type: "Pre-surgical consultation" },
+            { date: "Oct 08", year: "2025", service_line: "Hip & Knee", provider: "Dr. Rebecca Martinez", type: "Initial evaluation" },
+            { date: "Jun 14", year: "2025", service_line: "Rheumatology", provider: "Dr. Sarah Chen", type: "Annual check-up" },
+          ],
+          ambassador_services: true,
+        },
+        {
+          id: "P-002", name: "Emily Davis", first: "Emily", last: "Davis",
+          score: { composite: 87, wealth_capacity: 92, visit_recency: 85, visit_frequency: 78, prior_giving: 88, household_activity: 90 },
+          segment: "Major Donor", status: "Assigned", urgency: "red", days_in_queue: 5,
+          generosity_window: { days_remaining: 12, close_date: "Apr 12, 2026" },
+          household: { name: "Davis", size: 2 }, confidence: "91%", blackout_dates: null,
+          gift_officer: "Jane Smith", service_line: "Sports Medicine",
+          wealth: { net_worth: "$10M\u2013$25M", investable_assets: "$5M\u2013$10M", philanthropic_giver: true, top_philanthropic_donor: true, foundation_association: false, foundation_officer_trustee: false, nonprofit_board_member: true, political_donor: true, boat_owner: true, luxury_car_owner: true, plane_owner: false, match_confidence: "High", money_in_motion: true, windfall_trigger: "Recent Mortgage" },
+          flags: ["Top Donor", "Money in Motion"],
+          visits: [
+            { date: "Mar 10", year: "2026", service_line: "Sports Medicine", provider: "Dr. James Liu", type: "Follow-up visit" },
+            { date: "Dec 15", year: "2025", service_line: "Sports Medicine", provider: "Dr. James Liu", type: "Initial evaluation" },
+          ],
+          ambassador_services: false,
+        },
+        {
+          id: "P-003", name: "Margaret Chen", first: "Margaret", last: "Chen",
+          score: { composite: 93, wealth_capacity: 98, visit_recency: 90, visit_frequency: 88, prior_giving: 95, household_activity: 92 },
+          segment: "Planned Giving", status: "New Prospect", urgency: "blue", days_in_queue: 7,
+          generosity_window: { days_remaining: 25, close_date: "Apr 25, 2026" },
+          household: { name: "Chen-Williams", size: 4 }, confidence: "97%", blackout_dates: "Apr 3\u20138",
+          gift_officer: "Tom Nguyen", service_line: "Spine",
+          wealth: { net_worth: "$25M\u2013$50M", investable_assets: "$10M\u2013$25M", philanthropic_giver: true, top_philanthropic_donor: true, foundation_association: true, foundation_officer_trustee: true, nonprofit_board_member: true, political_donor: true, boat_owner: true, luxury_car_owner: true, plane_owner: true, match_confidence: "High", money_in_motion: false, windfall_trigger: null },
+          flags: ["Foundation Board", "Top Donor", "Board Member"],
+          visits: [
+            { date: "Mar 01", year: "2026", service_line: "Spine", provider: "Dr. Andrew Park", type: "Follow-up visit" },
+            { date: "Nov 20", year: "2025", service_line: "Spine", provider: "Dr. Andrew Park", type: "Pre-surgical consultation" },
+            { date: "Aug 05", year: "2025", service_line: "Rheumatology", provider: "Dr. Sarah Chen", type: "Initial evaluation" },
+          ],
+          ambassador_services: true,
+        },
+        {
+          id: "P-004", name: "Robert Anderson", first: "Robert", last: "Anderson",
+          score: { composite: 85, wealth_capacity: 88, visit_recency: 80, visit_frequency: 75, prior_giving: 90, household_activity: 85 },
+          segment: "Annual Fund", status: "Contacted", urgency: "blue", days_in_queue: 2,
+          generosity_window: { days_remaining: 20, close_date: "Apr 20, 2026" },
+          household: { name: "Anderson", size: 2 }, confidence: "88%", blackout_dates: null,
+          gift_officer: "Lisa Park", service_line: "Hand & Upper Extremity",
+          wealth: { net_worth: "$2.5M\u2013$5M", investable_assets: "$1M\u2013$2.5M", philanthropic_giver: true, top_philanthropic_donor: false, foundation_association: false, foundation_officer_trustee: false, nonprofit_board_member: false, political_donor: false, boat_owner: false, luxury_car_owner: false, plane_owner: false, match_confidence: "Medium", money_in_motion: false, windfall_trigger: null },
+          flags: ["Grateful Patient"],
+          visits: [
+            { date: "Feb 28", year: "2026", service_line: "Hand & Upper Extremity", provider: "Dr. Michael Torres", type: "Post-operative follow-up" },
+            { date: "Jan 05", year: "2026", service_line: "Hand & Upper Extremity", provider: "Dr. Michael Torres", type: "Pre-surgical consultation" },
+          ],
+          ambassador_services: false,
+        },
+        {
+          id: "P-005", name: "James Wilson", first: "James", last: "Wilson",
+          score: { composite: 82, wealth_capacity: 86, visit_recency: 92, visit_frequency: 70, prior_giving: 78, household_activity: 80 },
+          segment: "Grateful Patient", status: "Cultivation", urgency: "green", days_in_queue: 10,
+          generosity_window: { days_remaining: 8, close_date: "Apr 08, 2026" },
+          household: { name: "Wilson", size: 3 }, confidence: "86%", blackout_dates: null,
+          gift_officer: "John Doe", service_line: "Rheumatology",
+          wealth: { net_worth: "$1M\u2013$2.5M", investable_assets: "$1M\u2013$2.5M", philanthropic_giver: false, top_philanthropic_donor: false, foundation_association: false, foundation_officer_trustee: false, nonprofit_board_member: false, political_donor: false, boat_owner: false, luxury_car_owner: false, plane_owner: false, match_confidence: "Medium", money_in_motion: true, windfall_trigger: "Recent Mover" },
+          flags: ["Grateful Patient", "Money in Motion"],
+          visits: [
+            { date: "Mar 25", year: "2026", service_line: "Rheumatology", provider: "Dr. Sarah Chen", type: "Follow-up visit" },
+            { date: "Feb 10", year: "2026", service_line: "Rheumatology", provider: "Dr. Sarah Chen", type: "Initial evaluation" },
+          ],
+          ambassador_services: false,
+        },
+        {
+          id: "P-006", name: "Patricia Martinez", first: "Patricia", last: "Martinez",
+          score: { composite: 89, wealth_capacity: 90, visit_recency: 86, visit_frequency: 88, prior_giving: 92, household_activity: 88 },
+          segment: "High Net Worth", status: "In Review", urgency: "green", days_in_queue: 4,
+          generosity_window: { days_remaining: 22, close_date: "Apr 22, 2026" },
+          household: { name: "Martinez-Lopez", size: 5 }, confidence: "92%", blackout_dates: "Apr 1\u20134",
+          gift_officer: "Jane Smith", service_line: "Hip & Knee",
+          wealth: { net_worth: "$10M\u2013$25M", investable_assets: "$5M\u2013$10M", philanthropic_giver: true, top_philanthropic_donor: true, foundation_association: true, foundation_officer_trustee: false, nonprofit_board_member: true, political_donor: false, boat_owner: false, luxury_car_owner: true, plane_owner: false, match_confidence: "High", money_in_motion: false, windfall_trigger: null },
+          flags: ["Foundation Board", "Philanthropic Giver", "Board Member"],
+          visits: [
+            { date: "Mar 18", year: "2026", service_line: "Hip & Knee", provider: "Dr. Rebecca Martinez", type: "Follow-up visit" },
+            { date: "Jan 30", year: "2026", service_line: "Hip & Knee", provider: "Dr. Rebecca Martinez", type: "Pre-surgical consultation" },
+            { date: "Sep 12", year: "2025", service_line: "Pain Management", provider: "Dr. Andrew Park", type: "Initial evaluation" },
+          ],
+          ambassador_services: true,
+        },
+        {
+          id: "P-007", name: "David Kim", first: "David", last: "Kim",
+          score: { composite: 80, wealth_capacity: 82, visit_recency: 78, visit_frequency: 76, prior_giving: 80, household_activity: 84 },
+          segment: "Major Donor", status: "Assigned", urgency: "green", days_in_queue: 1,
+          generosity_window: { days_remaining: 15, close_date: "Apr 15, 2026" },
+          household: { name: "Kim", size: 2 }, confidence: "85%", blackout_dates: null,
+          gift_officer: "Tom Nguyen", service_line: "Foot & Ankle",
+          wealth: { net_worth: "$2.5M\u2013$5M", investable_assets: "$1M\u2013$2.5M", philanthropic_giver: true, top_philanthropic_donor: false, foundation_association: false, foundation_officer_trustee: false, nonprofit_board_member: false, political_donor: true, boat_owner: false, luxury_car_owner: false, plane_owner: false, match_confidence: "High", money_in_motion: false, windfall_trigger: null },
+          flags: ["Philanthropic Giver"],
+          visits: [
+            { date: "Feb 20", year: "2026", service_line: "Foot & Ankle", provider: "Dr. Michael Torres", type: "Follow-up visit" },
+            { date: "Nov 10", year: "2025", service_line: "Foot & Ankle", provider: "Dr. Michael Torres", type: "Initial evaluation" },
+          ],
+          ambassador_services: false,
+        },
+      ],
+      officers: [
+        { name: "John Doe", portfolio_size: 22, response_days: 1.8, conversion: 0.42, pipeline: 450000 },
+        { name: "Jane Smith", portfolio_size: 18, response_days: 2.1, conversion: 0.38, pipeline: 320000 },
+        { name: "Tom Nguyen", portfolio_size: 12, response_days: 3.2, conversion: 0.28, pipeline: 180000 },
+        { name: "Lisa Park", portfolio_size: 20, response_days: 2.0, conversion: 0.35, pipeline: 290000 },
+      ],
+      dashboard: {
+        metrics: {
+          active_officers: 4,
+          avg_portfolio_size: 18,
+          avg_response_time: "2.3 days",
+          team_conversion_rate: "36%",
+          total_pipeline_value: "$1.2M",
+        },
+        alerts: [
+          "2 unassigned prospects in queue >5 days \u2014 Tom Nguyen has available capacity",
+          "Margaret Chen score increased +8 this week (wealth re-screening complete)",
+        ],
+      },
+    };
+
+    // Sort queue by urgency
+    const urgencyOrder = { red: 0, blue: 1, green: 2 };
+    const queue = [...DATA.donors].sort((a, b) => urgencyOrder[a.urgency] - urgencyOrder[b.urgency]);
+
+    let currentDonor = DATA.donors[0];
+
+    // ═══ NAVIGATION ═══
+    function navigate(screen, donorIdx) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-' + screen).classList.add('active');
+      document.querySelectorAll('.app-nav-item').forEach(n => {
+        n.classList.toggle('active', n.dataset.screen === screen);
+      });
+      if (screen === 'detail' && donorIdx !== undefined) {
+        currentDonor = DATA.donors[donorIdx];
+        renderDonorDetail();
+      }
+      window.scrollTo(0, 0);
+    }
+
+    // ═══ THEME ═══
+    function toggleTheme() {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('hss-theme', next);
+      updateThemeIcon(next);
+    }
+    function updateThemeIcon(theme) {
+      const icon = document.getElementById('themeIcon');
+      if (theme === 'dark') {
+        icon.innerHTML = '<path d="M10 2a8 8 0 107.4 11A6 6 0 019 5.6 8.1 8.1 0 0110 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>';
+      } else {
+        icon.innerHTML = '<circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+      }
+    }
+
+    // ═══ TABS ═══
+    function switchTab(tabName) {
+      document.querySelectorAll('#detailTabs .tab-item').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    // ═══ MOBILE NAV ═══
+    function toggleMobileNav() {
+      const nav = document.getElementById('mainNav');
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      nav.style.position = 'absolute';
+      nav.style.top = '56px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = 'var(--header-bg)';
+      nav.style.flexDirection = 'column';
+      nav.style.padding = '8px';
+      nav.style.zIndex = '99';
+    }
+
+    // ═══ RENDER: Queue ═══
+    function renderQueue() {
+      const tbody = document.getElementById('queueBody');
+      tbody.innerHTML = queue.map((d, i) => {
+        const origIdx = DATA.donors.indexOf(d);
+        const statusClass = d.status.toLowerCase().replace(/\s+/g, '-');
+        return `<tr>
+          <td><span class="urgency-dot ${d.urgency}"></span></td>
+          <td><span class="clickable" onclick="navigate('detail', ${origIdx})">${d.name}</span></td>
+          <td>${d.segment}</td>
+          <td><span class="status-badge status-${statusClass}">${d.status}</span></td>
+          <td>${d.days_in_queue}d</td>
+          <td class="mobile-hide">${d.service_line}</td>
+          <td class="mobile-hide">${d.gift_officer}</td>
+          <td class="mobile-hide">${d.wealth.net_worth}</td>
+          <td class="mobile-hide"><div class="flag-list">${d.flags.map(f => `<span class="badge badge-info">${f}</span>`).join('')}</div></td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ═══ RENDER: Donor Detail ═══
+    function renderDonorDetail() {
+      const d = currentDonor;
+      document.getElementById('detailName').textContent = d.name;
+      document.getElementById('detailScore').textContent = 'Score: ' + d.score.composite;
+      document.getElementById('detailId').textContent = d.id;
+
+      const statusClass = d.status.toLowerCase().replace(/\s+/g, '-');
+      document.getElementById('detailMeta').innerHTML = `
+        <span class="donor-meta-item"><span class="status-badge status-${statusClass}">${d.status}</span></span>
+        <span class="donor-meta-item">${d.segment}</span>
+        <span class="donor-meta-item">Household: ${d.household.name} (${d.household.size})</span>
+        <span class="donor-meta-item">Confidence: ${d.confidence}</span>
+        <span class="donor-meta-item">Officer: ${d.gift_officer}</span>
+        ${d.blackout_dates ? `<span class="donor-meta-item" style="color:var(--error-text);">Blackout: ${d.blackout_dates}</span>` : ''}
+      `;
+
+      // Visit Timeline
+      document.getElementById('visitTimeline').innerHTML = d.visits.map(v => `
+        <div class="timeline-item">
+          <div class="timeline-date">${v.date}<br><span style="font-size:11px;color:var(--text-tertiary);">${v.year}</span></div>
+          <div class="timeline-content">
+            <div class="timeline-title">${v.type}</div>
+            <div class="timeline-sub">${v.service_line} &middot; ${v.provider}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Score Breakdown
+      const scoreKeys = [
+        ['wealth_capacity', 'Wealth Capacity'],
+        ['visit_recency', 'Visit Recency'],
+        ['visit_frequency', 'Visit Frequency'],
+        ['prior_giving', 'Prior Giving'],
+        ['household_activity', 'Household Activity'],
+      ];
+      document.getElementById('scoreBreakdown').innerHTML = scoreKeys.map(([key, label]) => `
+        <div class="score-row" style="margin-bottom:12px;">
+          <span class="score-label">${label}</span>
+          <div class="score-bar-track"><div class="score-bar-fill" style="width:${d.score[key]}%"></div></div>
+          <span class="score-value">${d.score[key]}</span>
+        </div>
+      `).join('');
+
+      // Engagement: Generosity Window
+      document.getElementById('generosityCard').innerHTML = `
+        <div class="card-header"><h3 class="card-title">Generosity Window</h3></div>
+        <div class="generosity-card">
+          <div class="generosity-days">${d.generosity_window.days_remaining}</div>
+          <div>
+            <div class="generosity-label">days remaining</div>
+            <div style="font-size:12px;color:var(--warning-text);margin-top:2px;">Closes ${d.generosity_window.close_date}</div>
+          </div>
+        </div>
+      `;
+
+      // Engagement content
+      document.getElementById('engagementContent').innerHTML = `
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div>
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">Gift Officer</div>
+            <div style="font-weight:500;">${d.gift_officer}</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">Service Line</div>
+            <div style="font-weight:500;">${d.service_line}</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">Days in Queue</div>
+            <div style="font-weight:500;">${d.days_in_queue} days</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">Ambassador Services</div>
+            <div style="font-weight:500;">${d.ambassador_services ? 'Yes' : 'No'}</div>
+          </div>
+        </div>
+      `;
+
+      // Flags
+      document.getElementById('detailFlags').innerHTML = d.flags.map(f => `<span class="badge badge-info">${f}</span>`).join('');
+
+      // Wealth Grid
+      const w = d.wealth;
+      const wealthItems = [
+        ['Net Worth', w.net_worth, '💰'],
+        ['Investable Assets', w.investable_assets, '📊'],
+        ['Match Confidence', w.match_confidence, '🎯'],
+        ['Philanthropic Giver', w.philanthropic_giver ? 'Yes' : 'No', '🤝'],
+        ['Top Philanthropic Donor', w.top_philanthropic_donor ? 'Yes' : 'No', '⭐'],
+        ['Foundation Association', w.foundation_association ? 'Yes' : 'No', '🏛️'],
+        ['Foundation Officer/Trustee', w.foundation_officer_trustee ? 'Yes' : 'No', '👤'],
+        ['Nonprofit Board Member', w.nonprofit_board_member ? 'Yes' : 'No', '📋'],
+        ['Political Donor', w.political_donor ? 'Yes' : 'No', '🗳️'],
+        ['Boat Owner', w.boat_owner ? 'Yes' : 'No', '⛵'],
+        ['Luxury Car Owner', w.luxury_car_owner ? 'Yes' : 'No', '🚗'],
+        ['Plane Owner', w.plane_owner ? 'Yes' : 'No', '✈️'],
+        ['Money in Motion', w.money_in_motion ? 'Yes' : 'No', '💸'],
+      ];
+      if (w.windfall_trigger) wealthItems.push(['Windfall Trigger', w.windfall_trigger, '📈']);
+      document.getElementById('wealthGrid').innerHTML = wealthItems.map(([label, value, icon]) => `
+        <div class="wealth-item">
+          <div class="wealth-icon">${icon}</div>
+          <div>
+            <div class="wealth-label">${label}</div>
+            <div class="wealth-value" style="color:${value === 'Yes' ? 'var(--success-text)' : value === 'No' ? 'var(--text-tertiary)' : 'var(--text-primary)'}">${value}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Reset tabs to Clinical Context
+      document.querySelectorAll('#detailTabs .tab-item').forEach((t, i) => t.classList.toggle('active', i === 0));
+      document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === 0));
+    }
+
+    // ═══ RENDER: Dashboard ═══
+    function renderDashboard() {
+      const m = DATA.dashboard.metrics;
+      const metricsData = [
+        { label: 'Active Officers', value: m.active_officers },
+        { label: 'Avg Portfolio Size', value: m.avg_portfolio_size },
+        { label: 'Avg Response Time', value: m.avg_response_time },
+        { label: 'Conversion Rate', value: m.team_conversion_rate },
+        { label: 'Total Pipeline', value: m.total_pipeline_value },
+      ];
+      document.getElementById('dashMetrics').innerHTML = metricsData.map(d => `
+        <div class="metric-card">
+          <div class="metric-label">${d.label}</div>
+          <div class="metric-value">${d.value}</div>
+        </div>
+      `).join('');
+
+      // Alerts
+      document.getElementById('dashAlerts').innerHTML = DATA.dashboard.alerts.map(a => `
+        <div class="alert alert-warning" style="margin-bottom:8px;">
+          <span class="alert-icon">⚠️</span>
+          <span class="alert-text">${a}</span>
+        </div>
+      `).join('');
+
+      // Officer table
+      document.getElementById('officerBody').innerHTML = DATA.officers.map(o => {
+        const convPct = Math.round(o.conversion * 100);
+        const barColor = convPct >= 40 ? 'var(--success-text)' : convPct >= 30 ? 'var(--warning-text)' : 'var(--error-text)';
+        return `<tr>
+          <td style="font-weight:500;">${o.name}</td>
+          <td>${o.portfolio_size}</td>
+          <td>${o.response_days} days</td>
+          <td>
+            <span class="officer-progress"><span class="officer-progress-fill" style="width:${convPct}%;background:${barColor};"></span></span>
+            ${convPct}%
+          </td>
+          <td>$${(o.pipeline / 1000).toFixed(0)}K</td>
+        </tr>`;
+      }).join('');
+    }
+
+    // ═══ INIT ═══
+    (function init() {
+      const saved = localStorage.getItem('hss-theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        updateThemeIcon(saved);
+      }
+      renderQueue();
+      renderDonorDetail();
+      renderDashboard();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full, 9999px);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  user-select: none;
+  border: 1.5px solid var(--border-brand);
+  background: var(--bg-surface);
+  color: var(--action-primary);
+}
+.chip:hover {
+  background: var(--action-ghost-hover);
+  border-color: var(--action-accent);
+}
+
+.selected {
+  background: var(--action-accent);
+  color: #ffffff;
+  border-color: var(--action-accent);
+}
+.selected:hover {
+  background: var(--action-accent-hover);
+  color: #ffffff;
+  border-color: var(--action-accent-hover);
+}
+
+.disabled {
+  border-color: var(--border-default);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+.disabled:hover {
+  background: var(--bg-surface);
+}
+
+.remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 10px;
+  color: inherit;
+  opacity: 0.6;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+.remove:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.1);
+}

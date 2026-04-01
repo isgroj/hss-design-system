@@ -1,0 +1,108 @@
+:root {
+  /* === Blue === */
+  --color-blue-50: #e2f4fe;
+  --color-blue-100: #88d2f8;
+  --color-blue-200: #4097cd;
+  --color-blue-500: #0074bc;
+  --color-blue-600: #004d7d;
+  --color-blue-700: #00273f;
+  --color-blue-800: #264583;
+  --color-blue-900: #192e57;
+
+  /* === Navy === */
+  --color-navy-800: #30233b;
+  --color-navy-900: #0d172c;
+
+  /* === Neutral === */
+  --neutral-white: #ffffff;
+  --neutral-slate-50: #ecf1f4;
+  --neutral-slate-100: #eaebec;
+  --neutral-slate-200: #e1e2e4;
+  --neutral-slate-300: #c4c5c8;
+  --neutral-slate-400: #a6a8ad;
+  --neutral-slate-500: #6b6d76;
+  --neutral-slate-700: #3e515a;
+  --neutral-slate-900: #192328;
+
+  /* === Gold === */
+  --gold-300: #ffdf63;
+  --gold-400: #e8c747;
+  --gold-500: #d1a135;
+  --gold-600: #a4850a;
+
+  /* === Green === */
+  --green-100: #f0f8e8;
+  --green-500: #72b431;
+  --green-600: #498c1d;
+
+  /* === Red === */
+  --red-100: #fee5e5;
+  --red-500: #bc0000;
+  --red-600: #bc0000;
+
+  /* === Amber === */
+  --amber-100: #fff6d0;
+  --amber-500: #d08007;
+  --amber-600: #dcbf27;
+
+  /* === Purple === */
+  --purple-100: #f0e6f0;
+  --purple-500: #7b3c84;
+  --purple-600: #5d3070;
+
+  /* === Teal === */
+  --teal-05: #e0f7f8;
+  --teal-20: #81dfe3;
+  --teal-40: #29c8d2;
+  --teal-60: #00aeba;
+  --teal-80: #068489;
+  --teal-100: #054a49;
+
+  /* === Cyan === */
+  --cyan-05: #bfebf9;
+  --cyan-20: #80d6f3;
+  --cyan-40: #40c2ec;
+  --cyan-60: #00ade6;
+  --cyan-80: #007399;
+  --cyan-100: #003a4d;
+
+  /* === Alert === */
+  --alert-red: #bc0000;
+  --alert-orange: #d08007;
+  --alert-yellow: #dcbf27;
+  --alert-green: #216a08;
+  --alert-blue: #0075dd;
+
+  /* === Data Viz === */
+  --dataviz-1: #1E3A5F;
+  --dataviz-2: #98579B;
+  --dataviz-3: #00AEBA;
+  --dataviz-4: #5C7986;
+  --dataviz-5: #D4B640;
+  --dataviz-6: #0074BC;
+  --dataviz-7: #72B431;
+
+  /* === Spacing === */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* === Radius === */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}

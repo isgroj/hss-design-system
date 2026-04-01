@@ -1,0 +1,50 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  border-radius: var(--radius-full, 9999px);
+  white-space: nowrap;
+}
+
+.sm {
+  padding: 2px 8px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+.md {
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.default {
+  background: var(--action-secondary);
+  color: var(--text-secondary);
+}
+.brand {
+  background: var(--bg-brand);
+  color: var(--text-inverse);
+}
+.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+.warning {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+.info {
+  background: var(--info-bg);
+  color: var(--info-text);
+}
+.outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
