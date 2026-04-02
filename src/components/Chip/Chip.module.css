@@ -20,6 +20,17 @@
   border-color: var(--action-accent);
 }
 
+.active {
+  background: #14334d;
+  color: #ffffff;
+  border-color: #14334d;
+}
+.active:hover {
+  background: #0f2a40;
+  color: #ffffff;
+  border-color: #0f2a40;
+}
+
 .selected {
   background: var(--action-accent);
   color: #ffffff;

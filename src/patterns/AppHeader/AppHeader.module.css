@@ -58,3 +58,32 @@
   align-items: center;
   gap: 8px;
 }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--text-secondary);
+}
+.hamburger svg {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+    height: 52px;
+  }
+  .hamburger {
+    display: flex;
+    align-items: center;
+  }
+  .nav {
+    display: none;
+  }
+  .title {
+    font-size: 14px;
+  }
+}
