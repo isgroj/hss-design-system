@@ -47,8 +47,9 @@
   --error-text: #fee2e2;
   --warning-bg: #d97706;
   --warning-text: #fef3c7;
-  --info-bg: #1e40af;
-  --info-text: #dbeafe;
+  --info-bg: #15304b;
+  --info-text: #a8c8e8;
+  --info-border: #0074bc;
 
   /* Branding */
   --powered-by-bg: #1e293b;
