@@ -456,3 +456,4 @@ Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7
 - **Semantic:** `--{category}-{role}` where category = bg, text, border, action, success, error, warning, info
 - Never reference primitives directly in components — always use semantic tokens
 - Token flow: Primitive value → Semantic alias → Component usage
+
