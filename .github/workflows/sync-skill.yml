@@ -1,0 +1,77 @@
+name: Sync Design System Skill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - claudedesign.md
+
+jobs:
+  sync-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout design system
+        uses: actions/checkout@v4
+
+      - name: Build SKILL.md
+        run: |
+          cat > /tmp/SKILL.md << 'FRONTMATTER'
+          ---
+          name: hss-design-system
+          description: "Use when building any frontend UI, web components, pages, dashboards, or applications for HSS Data — enforces HSS brand tokens, typography, components, and design patterns. Triggers on: 'build UI', 'create component', 'add page', 'frontend', 'dashboard layout', 'design', 'style', 'CSS', 'React component', 'data visualization'."
+          ---
+          FRONTMATTER
+
+          # Strip leading blank line from heredoc, append content
+          sed -i '1{/^$/d}' /tmp/SKILL.md
+          cat claudedesign.md >> /tmp/SKILL.md
+
+      - name: Checkout claude-labs
+        uses: actions/checkout@v4
+        with:
+          repository: hsshealth/hssdata-claude-labs
+          token: ${{ secrets.CLAUDE_LABS_PAT }}
+          path: claude-labs
+
+      - name: Check for changes
+        id: diff
+        run: |
+          cp /tmp/SKILL.md claude-labs/skills/hss-design-system/SKILL.md
+          cd claude-labs
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create PR
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          cd claude-labs
+          BRANCH="auto/sync-design-system-$(date +%Y%m%d-%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add skills/hss-design-system/SKILL.md
+          COMMIT_SHA="${{ github.sha }}"
+          git commit -m "Update hss-design-system skill from design repo
+
+          Source commit: hsshealth/hss-design-system@${COMMIT_SHA:0:7}"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --repo hsshealth/hssdata-claude-labs \
+            --title "Update hss-design-system skill" \
+            --body "$(cat <<'EOF'
+          ## Automated sync from design system repo
+
+          This PR updates the `hss-design-system` skill with the latest `claudedesign.md` from [hsshealth/hss-design-system](https://github.com/hsshealth/hss-design-system).
+
+          **Source commit:** hsshealth/hss-design-system@${{ github.sha }}
+          **Triggered by:** push to `main` by @${{ github.actor }}
+
+          Review the diff below, then merge to update all users (they just need to `git pull`).
+          EOF
+          )"
+        env:
+          GH_TOKEN: ${{ secrets.CLAUDE_LABS_PAT }}
