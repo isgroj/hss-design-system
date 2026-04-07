@@ -16,26 +16,26 @@ Use this file as the authoritative design system reference when building UI for 
 
 | Token | Size | Weight | Line Height | Letter Spacing | Usage |
 |-------|------|--------|-------------|----------------|-------|
-| `display-2xl` | 48px | 800 | 56px | -0.03em | Hero headlines |
-| `display-xl` | 36px | 800 | 44px | -0.02em | Page titles |
-| `display-lg` | 30px | 800 | 36px | -0.02em | Section heroes |
-| `heading-2xl` | 36px | 700 | 44px | -0.72px | Large headings |
-| `heading-xl` | 30px | 700 | 36px | -0.6px | Section headings |
-| `heading-lg` | 24px | 700 | 30px | -0.36px | Card titles |
-| `heading-md` | 20px | 700 | 26px | -0.2px | Subsection headings |
+| `display-2xl` | 48px | 800 | 52.8px | -0.03em | Hero headlines |
+| `display-xl` | 36px | 700 | 39.6px | -0.02em | Page titles |
+| `display-lg` | 30px | 700 | 36px | -0.02em | Section heroes |
+| `heading-2xl` | 28px | 700 | 36.4px | -0.01em | Large headings |
+| `heading-xl` | 24px | 600 | 31.2px | -0.01em | Section headings |
+| `heading-lg` | 20px | 600 | 28px | — | Card titles |
+| `heading-md` | 18px | 600 | 25.2px | — | Subsection headings |
 | `heading-sm` | 16px | 600 | 24px | — | Small headings |
-| `body-xl` | 18px | 400 | 28px | — | Large body text |
-| `body-lg` | 16px | 400 | 24px | — | Default body |
-| `body-base` | 16px | 400 | 24px | — | Standard body |
-| `body-sm` | 14px | 400 | 21px | — | Secondary text |
-| `body-xs` | 12px | 400 | 18px | — | Captions, timestamps |
-| `label-lg` | 16px | 500 | 16px | 0.16px | Large labels |
-| `label-md` | 14px | 500 | 14px | 0.14px | Default labels |
-| `label-sm` | 12px | 500 | 12px | 0.12px | Small labels |
-| `label-xs` | 11px | 500 | 11px | 0.44px | Uppercase micro labels |
-| `code-base` | 14px | 400 | 21px | — | Inline code |
+| `body-xl` | 18px | 400 | 28.8px | — | Large body text |
+| `body-lg` | 16px | 400 | 25.6px | — | Default body |
+| `body-base` | 14px | 400 | 21px | — | Standard body |
+| `body-sm` | 12px | 400 | 18px | — | Secondary text |
+| `body-xs` | 10px | 400 | 15px | — | Captions, timestamps |
+| `label-lg` | 16px | 600 | 24px | — | Large labels |
+| `label-md` | 14px | 600 | 21px | — | Default labels |
+| `label-sm` | 12px | 600 | 18px | — | Small labels |
+| `label-xs` | 10px | 600 | 14px | 0.06em | Uppercase micro labels |
+| `code-base` | 13px | 400 | 19.5px | — | Inline code |
 | `code-sm` | 12px | 400 | 18px | — | Small code |
-| `code-label` | 11px | 500 | 16px | — | Code labels |
+| `code-label` | 11px | 500 | 15.4px | — | Code labels |
 
 ---
 
@@ -72,10 +72,10 @@ Use this file as the authoritative design system reference when building UI for 
 ### Accent Colors
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `gold-300` | #FFDF63 | Highlight |
-| `gold-400` | #E8C747 | Gold mid |
-| `gold-500` | #D1A135 | Gold |
-| `gold-600` | #A4850A | Dark gold |
+| `gold-300` | #C6DCF2 | Highlight |
+| `gold-400` | #8AB4D9 | Gold mid |
+| `gold-500` | #3D6F94 | Gold |
+| `gold-600` | #2C5470 | Dark gold |
 | `green-100` | #F0F8E8 | Light green |
 | `green-500` | #72B431 | Green |
 | `green-600` | #498C1D | Dark green |
@@ -431,10 +431,10 @@ Canonical section order (top to bottom):
 Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7986, #D4B640, #0074BC, #72B431
 
 ### Chart Typography
-- Chart titles: heading-md (20px/700)
-- Axis labels: body-xs (12px/400)
-- Data labels: label-sm (12px/500)
-- Tooltips: body-sm (14px) on elevated surface
+- Chart titles: heading-md (18px/600)
+- Axis labels: body-xs (10px/400)
+- Data labels: label-sm (12px/400)
+- Tooltips: body-sm (12px) on elevated surface
 
 ### Best Practices
 - Always include chart title and axis labels

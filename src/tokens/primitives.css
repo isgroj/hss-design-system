@@ -25,10 +25,10 @@
   --neutral-slate-900: #192328;
 
   /* === Gold === */
-  --gold-300: #ffdf63;
-  --gold-400: #e8c747;
-  --gold-500: #d1a135;
-  --gold-600: #a4850a;
+  --gold-300: #c6dcf2;
+  --gold-400: #8ab4d9;
+  --gold-500: #3d6f94;
+  --gold-600: #2c5470;
 
   /* === Green === */
   --green-100: #f0f8e8;
@@ -74,13 +74,13 @@
   --alert-blue: #0075dd;
 
   /* === Data Viz === */
-  --dataviz-1: #1E3A5F;
-  --dataviz-2: #98579B;
-  --dataviz-3: #00AEBA;
-  --dataviz-4: #5C7986;
-  --dataviz-5: #D4B640;
-  --dataviz-6: #0074BC;
-  --dataviz-7: #72B431;
+  --dataviz-1: #1e3a5f;
+  --dataviz-2: #98579b;
+  --dataviz-3: #00aeba;
+  --dataviz-4: #5c7986;
+  --dataviz-5: #d4b640;
+  --dataviz-6: #0074bc;
+  --dataviz-7: #72b431;
 
   /* === Spacing === */
   --space-0: 0px;
