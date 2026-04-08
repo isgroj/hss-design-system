@@ -56,7 +56,7 @@
       --bg-surface: #f8fafc;
       --bg-elevated: #ffffff;
       --bg-overlay: #0f172a;
-      --bg-brand: #0074BC;
+      --bg-brand: #2563eb;
       --bg-brand-subtle: #eff6ff;
       --bg-invert: #0f172a;
       --text-primary: #0f172a;
@@ -89,8 +89,8 @@
       --success-text: #16a34a;
       --error-bg: #fee2e2;
       --error-text: #dc2626;
-      --warning-bg: #e2f4fe;
-      --warning-text: #004d7d;
+      --warning-bg: #fef3c7;
+      --warning-text: #d97706;
       --info-bg: #eff6ff;
       --info-text: #2563eb;
       --powered-by-bg: #f8fafc;
@@ -111,22 +111,22 @@
 
     /* ═══ Semantic — Dark ═══ */
     [data-theme="dark"] {
-      --bg-base: #010309;
-      --bg-surface: #020617;
-      --bg-elevated: #0f172a;
-      --bg-overlay: #020617;
+      --bg-base: #020617;
+      --bg-surface: #0f172a;
+      --bg-elevated: #1e293b;
+      --bg-overlay: #0f172a;
       --bg-brand: #3b82f6;
       --bg-brand-subtle: #1e3a8a;
       --bg-invert: #ffffff;
       --text-primary: #ffffff;
       --text-secondary: #cbd5e1;
       --text-tertiary: #64748b;
-      --text-inverse: #010309;
+      --text-inverse: #0f172a;
       --text-brand: #60a5fa;
       --text-accent: #93c5fd;
       --text-disabled: #475569;
-      --border-default: #0f172a;
-      --border-strong: #1e293b;
+      --border-default: #1e293b;
+      --border-strong: #475569;
       --border-brand: #60a5fa;
       --border-focus: #60a5fa;
       --action-primary: #ffffff;
@@ -135,32 +135,33 @@
       --action-primary-text: #0D172C;
       --action-secondary-text: #ffffff;
       --action-secondary-border: #ffffff;
-      --action-secondary: #0f172a;
-      --action-ghost: #020617;
-      --action-ghost-hover: #0f172a;
+      --action-secondary: #1e293b;
+      --action-ghost: #0f172a;
+      --action-ghost-hover: #1e293b;
       --tab-active: #ffffff;
       --tab-active-text: #0D172C;
       --action-accent: #0074BC;
       --action-accent-hover: #005a91;
-      --action-disabled: #334155;
+      --action-disabled: #475569;
       --action-destructive: #ef4444;
-      --success-bg: #052e16;
-      --success-text: #86efac;
-      --error-bg: #450a0a;
-      --error-text: #fca5a5;
-      --warning-bg: #1e293b;
-      --warning-text: #93c5fd;
-      --info-bg: #172554;
-      --info-text: #bfdbfe;
-      --powered-by-bg: #020617;
+      --success-bg: #16a34a;
+      --success-text: #dcfce7;
+      --error-bg: #dc2626;
+      --error-text: #fee2e2;
+      --warning-bg: #d97706;
+      --warning-text: #fef3c7;
+      --info-bg: #15304b;
+      --info-text: #a8c8e8;
+      --info-border: #0074bc;
+      --powered-by-bg: #0f172a;
       --powered-by-text: #94a3b8;
-      --header-bg: #1e293b;
+      --header-bg: var(--bg-surface);
       --header-nav-active: #ffffff;
-      --header-nav-inactive: #475569;
+      --header-nav-inactive: var(--text-tertiary);
       --header-icon: #94a3b8;
       --header-avatar: #64748b;
-      --footer-bg: #1e293b;
-      --footer-border: #334155;
+      --footer-bg: var(--bg-surface);
+      --footer-border: var(--border-default);
       --footer-icon-fill: white;
       --footer-powered-by: rgba(255,255,255,0.7);
       --footer-brand-text: #ffffff;
@@ -1582,6 +1583,377 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </section>
+
+  <!-- ═══ Definition Patterns — Mobile ═══ -->
+  <section class="section" id="def-patterns-mobile">
+    <h2 class="section-title">Definition Patterns — Mobile</h2>
+    <p class="section-desc">Mobile-first page compositions showing how components assemble into complete views at 375px width. Each pattern demonstrates header, content area, and footer in a realistic mobile context.</p>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Mobile Dashboard — Light Mode</h3>
+      <p class="comp-desc">KPI metric cards stacked vertically with trend badges. Mobile header uses hamburger menu, notification bell, and avatar. Footer shows Powered By branding centered.</p>
+      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Mobile Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
+            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+          </div>
+        </div>
+        <!-- Content -->
+        <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+          <h3 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0;">Dashboard</h3>
+          <!-- KPI 1 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:var(--text-secondary);">Total Cases</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">1,247</div></div>
+            <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 12%</span>
+          </div>
+          <!-- KPI 2 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:var(--text-secondary);">Avg. Wait Time</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">23 min</div></div>
+            <span style="font-size:11px;font-weight:700;color:#dc2626;">↓ 3%</span>
+          </div>
+          <!-- KPI 3 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:var(--text-secondary);">Satisfaction</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">4.6 / 5.0</div></div>
+            <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 0.2</span>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Mobile Filters — Light Mode</h3>
+      <p class="comp-desc">Full-width filter layout with active filter chips, dropdown selects, and a primary Apply button. Optimized for touch targets on mobile.</p>
+      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Mobile Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
+            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+          </div>
+        </div>
+        <!-- Filter Content -->
+        <div style="padding:16px;display:flex;flex-direction:column;gap:16px;">
+          <h4 style="font-size:14px;font-weight:700;color:var(--text-primary);margin:0;">Active Filters</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">Orthopedics ✕</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">Q1 2025 ✕</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">All Regions</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">All Providers</span>
+          </div>
+          <div>
+            <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Department</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Orthopedics <span style="color:var(--text-tertiary);">▾</span></div>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Orthopedics <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Date Range</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Q1 2025 <span style="color:var(--text-tertiary);">▾</span></div>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Q1 2025 <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Region</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Regions <span style="color:var(--text-tertiary);">▾</span></div>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Regions <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+          </div>
+          <div>
+            <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Provider</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Providers <span style="color:var(--text-tertiary);">▾</span></div>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Providers <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+          </div>
+          <button style="width:100%;padding:14px;background:var(--action-primary);color:var(--action-primary-text);border:none;border-radius:24px;font-size:16px;font-weight:700;cursor:pointer;">Apply Filters</button>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Mobile Data Table — Light Mode</h3>
+      <p class="comp-desc">Patient list as stacked cards with search, status badges (Active/Pending/Discharged), and pagination. Optimized for mobile readability.</p>
+      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Mobile Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
+            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+          </div>
+        </div>
+        <!-- Search + Cards -->
+        <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-tertiary);">🔍  Search patients...</div>
+          <!-- Patient Card 1 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:12px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:15px;font-weight:700;color:var(--text-primary);">Sarah Johnson</span><span style="font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 8px;border-radius:10px;">Active</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">MRN: 10042 &nbsp;|&nbsp; DOB: 03/15/1985 &nbsp;|&nbsp; Ortho</div>
+          </div>
+          <!-- Patient Card 2 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:12px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:15px;font-weight:700;color:var(--text-primary);">Michael Chen</span><span style="font-size:11px;font-weight:700;color:#d97706;background:#fef3c7;padding:3px 8px;border-radius:10px;">Pending</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">MRN: 10087 &nbsp;|&nbsp; DOB: 11/22/1972 &nbsp;|&nbsp; Cardio</div>
+          </div>
+          <!-- Patient Card 3 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:12px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:15px;font-weight:700;color:var(--text-primary);">Emily Rodriguez</span><span style="font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 8px;border-radius:10px;">Active</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">MRN: 10156 &nbsp;|&nbsp; DOB: 07/08/1990 &nbsp;|&nbsp; Neuro</div>
+          </div>
+          <!-- Patient Card 4 -->
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:12px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:15px;font-weight:700;color:var(--text-primary);">James Williams</span><span style="font-size:11px;font-weight:700;color:var(--text-secondary);background:var(--bg-surface);padding:3px 8px;border-radius:10px;border:1px solid var(--border-default);">Discharged</span></div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-top:4px;">MRN: 10203 &nbsp;|&nbsp; DOB: 01/30/1968 &nbsp;|&nbsp; Ortho</div>
+          </div>
+          <!-- Pagination -->
+          <div style="text-align:center;font-size:14px;font-weight:700;color:var(--text-primary);padding:8px 0;">‹ &nbsp;1 &nbsp;2 &nbsp;3 &nbsp;›</div>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Definition Patterns — Desktop ═══ -->
+  <section class="section" id="def-patterns-desktop">
+    <h2 class="section-title">Definition Patterns — Desktop</h2>
+    <p class="section-desc">Desktop page compositions at 1080px+ width. These patterns demonstrate full-width header navigation, horizontal metric card rows, inline filter grids, and tabular data layouts.</p>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Desktop Dashboard — Light Mode</h3>
+      <p class="comp-desc">Three KPI metric cards in a horizontal row with trend indicators. Desktop header with logo, navigation tabs, notification bell, avatar, and user name.</p>
+      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Desktop Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
+            <nav style="display:flex;gap:4px;">
+              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+            </nav>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+          </div>
+        </div>
+        <!-- Content -->
+        <div style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <h3 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0;">Dashboard</h3>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div style="border:1px solid var(--border-default);border-radius:8px;padding:20px;display:flex;justify-content:space-between;align-items:flex-end;">
+              <div><div style="font-size:12px;color:var(--text-secondary);">Total Cases</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">1,247</div></div>
+              <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 12%</span>
+            </div>
+            <div style="border:1px solid var(--border-default);border-radius:8px;padding:20px;display:flex;justify-content:space-between;align-items:flex-end;">
+              <div><div style="font-size:12px;color:var(--text-secondary);">Avg. Wait Time</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">23 min</div></div>
+              <span style="font-size:11px;font-weight:700;color:#dc2626;">↓ 3%</span>
+            </div>
+            <div style="border:1px solid var(--border-default);border-radius:8px;padding:20px;display:flex;justify-content:space-between;align-items:flex-end;">
+              <div><div style="font-size:12px;color:var(--text-secondary);">Satisfaction</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">4.6 / 5.0</div></div>
+              <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 0.2</span>
+            </div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Desktop Filters — Light Mode</h3>
+      <p class="comp-desc">Horizontal filter bar with active chips, four dropdown selects in a grid, and an Apply Filters button. Designed for efficient desktop workflows.</p>
+      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Desktop Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
+            <nav style="display:flex;gap:4px;">
+              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+            </nav>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+          </div>
+        </div>
+        <!-- Filter Content -->
+        <div style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <h3 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0;">Filters</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">Orthopedics ✕</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">Q1 2025 ✕</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">All Regions</span>
+            <span style="display:inline-flex;align-items:center;padding:6px 12px;background:#0D172C;color:#fff;border-radius:16px;font-size:13px;font-weight:700;">All Providers</span>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-end;">
+            <div style="flex:1;">
+              <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Department</label>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Orthopedics <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Date Range</label>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">Q1 2025 <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Region</label>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Regions <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:14px;font-weight:700;color:var(--text-primary);display:block;margin-bottom:8px;">Provider</label>
+              <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-primary);display:flex;justify-content:space-between;">All Providers <span style="color:var(--text-tertiary);">▾</span></div>
+            </div>
+            <button style="padding:10px 24px;background:var(--action-primary);color:var(--action-primary-text);border:none;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;">Apply Filters</button>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <h3 class="comp-name">Desktop Data Table — Light Mode</h3>
+      <p class="comp-desc">Full-width patient data table with column headers, search bar, status badges, and structured rows. Uses standard table layout for sortable, scannable data.</p>
+      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
+        <!-- Desktop Header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
+            <nav style="display:flex;gap:4px;">
+              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
+              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+            </nav>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+          </div>
+        </div>
+        <!-- Table Content -->
+        <div style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+          <div style="border:1px solid var(--border-default);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--text-tertiary);">🔍  Search patients...</div>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-default);">
+                <th style="text-align:left;padding:10px 12px;font-weight:600;color:var(--text-secondary);font-size:12px;">Patient Name</th>
+                <th style="text-align:left;padding:10px 12px;font-weight:600;color:var(--text-secondary);font-size:12px;">MRN</th>
+                <th style="text-align:left;padding:10px 12px;font-weight:600;color:var(--text-secondary);font-size:12px;">DOB</th>
+                <th style="text-align:left;padding:10px 12px;font-weight:600;color:var(--text-secondary);font-size:12px;">Department</th>
+                <th style="text-align:left;padding:10px 12px;font-weight:600;color:var(--text-secondary);font-size:12px;">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border-default);">
+                <td style="padding:12px;font-weight:600;color:var(--text-primary);">James Williams</td>
+                <td style="padding:12px;color:var(--text-primary);">10203</td>
+                <td style="padding:12px;color:var(--text-primary);">01/30/1968</td>
+                <td style="padding:12px;color:var(--text-primary);">Orthopedics</td>
+                <td style="padding:12px;"><span style="font-size:11px;font-weight:700;color:var(--text-secondary);background:var(--bg-surface);padding:3px 8px;border-radius:10px;border:1px solid var(--border-default);">Discharged</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-default);">
+                <td style="padding:12px;font-weight:600;color:var(--text-primary);">Sarah Johnson</td>
+                <td style="padding:12px;color:var(--text-primary);">10042</td>
+                <td style="padding:12px;color:var(--text-primary);">03/15/1985</td>
+                <td style="padding:12px;color:var(--text-primary);">Orthopedics</td>
+                <td style="padding:12px;"><span style="font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 8px;border-radius:10px;">Active</span></td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border-default);">
+                <td style="padding:12px;font-weight:600;color:var(--text-primary);">Michael Chen</td>
+                <td style="padding:12px;color:var(--text-primary);">10087</td>
+                <td style="padding:12px;color:var(--text-primary);">11/22/1972</td>
+                <td style="padding:12px;color:var(--text-primary);">Cardiology</td>
+                <td style="padding:12px;"><span style="font-size:11px;font-weight:700;color:#d97706;background:#fef3c7;padding:3px 8px;border-radius:10px;">Pending</span></td>
+              </tr>
+              <tr>
+                <td style="padding:12px;font-weight:600;color:var(--text-primary);">Emily Rodriguez</td>
+                <td style="padding:12px;color:var(--text-primary);">10156</td>
+                <td style="padding:12px;color:var(--text-primary);">07/08/1990</td>
+                <td style="padding:12px;color:var(--text-primary);">Neurology</td>
+                <td style="padding:12px;"><span style="font-size:11px;font-weight:700;color:#16a34a;background:#dcfce7;padding:3px 8px;border-radius:10px;">Active</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Footer -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
+            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
+            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+          </div>
+          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+        </div>
+      </div>
     </div>
   </section>
 
