@@ -117,11 +117,11 @@ Use this file as the authoritative design system reference when building UI for 
 ### Backgrounds
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `--bg-base` | #FFFFFF | #010309 | Page background |
-| `--bg-surface` | #F8FAFC | #020617 | Card/panel surfaces |
-| `--bg-elevated` | #FFFFFF | #0F172A | Dropdowns, popovers |
-| `--bg-overlay` | #0F172A | #020617 | Modal overlays |
-| `--bg-brand` | #0074BC | #3B82F6 | Brand backgrounds |
+| `--bg-base` | #FFFFFF | #020617 | Page background |
+| `--bg-surface` | #F8FAFC | #0F172A | Card/panel surfaces |
+| `--bg-elevated` | #FFFFFF | #1E293B | Dropdowns, popovers |
+| `--bg-overlay` | #0F172A | #0F172A | Modal overlays |
+| `--bg-brand` | #2563EB | #3B82F6 | Brand backgrounds |
 | `--bg-brand-subtle` | #EFF6FF | #1E3A8A | Subtle brand tint |
 | `--bg-invert` | #0F172A | #FFFFFF | Inverted backgrounds |
 
@@ -131,7 +131,7 @@ Use this file as the authoritative design system reference when building UI for 
 | `--text-primary` | #0F172A | #FFFFFF | Headings, body text |
 | `--text-secondary` | #475569 | #CBD5E1 | Descriptions, secondary info |
 | `--text-tertiary` | #94A3B8 | #64748B | Hints, timestamps, captions |
-| `--text-inverse` | #FFFFFF | #010309 | Text on inverted backgrounds |
+| `--text-inverse` | #FFFFFF | #0F172A | Text on inverted backgrounds |
 | `--text-brand` | #0D172C | #60A5FA | Brand text |
 | `--text-accent` | #1D4ED8 | #93C5FD | Accent/link text |
 | `--text-disabled` | #CBD5E1 | #475569 | Disabled text |
@@ -139,8 +139,8 @@ Use this file as the authoritative design system reference when building UI for 
 ### Borders
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `--border-default` | #E2E8F0 | #0F172A | Card borders, dividers |
-| `--border-strong` | #CBD5E1 | #1E293B | Emphasized borders |
+| `--border-default` | #E2E8F0 | #1E293B | Card borders, dividers |
+| `--border-strong` | #CBD5E1 | #475569 | Emphasized borders |
 | `--border-brand` | #0074BC | #60A5FA | Brand-colored borders |
 | `--border-focus` | #0D172C | #60A5FA | Focus ring outline |
 
@@ -151,26 +151,36 @@ Use this file as the authoritative design system reference when building UI for 
 | `--action-primary-hover` | #005A91 | #E2E8F0 | Primary hover |
 | `--action-primary-active` | #004D7D | #CBD5E1 | Primary pressed |
 | `--action-primary-text` | #FFFFFF | #0D172C | Text on primary buttons |
-| `--action-secondary` | #F1F5F9 | #0F172A | Secondary button bg |
+| `--action-secondary` | #F1F5F9 | #1E293B | Secondary button bg |
 | `--action-secondary-text` | #272725 | #FFFFFF | Secondary button text |
 | `--action-secondary-border` | #0074BC | #FFFFFF | Secondary button border |
-| `--action-ghost` | #FFFFFF | #020617 | Ghost button bg |
-| `--action-ghost-hover` | #EFF6FF | #0F172A | Ghost hover |
+| `--action-ghost` | #FFFFFF | #0F172A | Ghost button bg |
+| `--action-ghost-hover` | #EFF6FF | #1E293B | Ghost hover |
+| `--tab-active` | #0D172C | #FFFFFF | Active tab background |
+| `--tab-active-text` | #FFFFFF | #0D172C | Active tab text |
 | `--action-accent` | #0074BC | #0074BC | Links, inline actions |
-| `--action-disabled` | #E2E8F0 | #334155 | Disabled state |
+| `--action-accent-hover` | #005A91 | #005A91 | Link/action hover |
+| `--action-disabled` | #E2E8F0 | #475569 | Disabled state |
 | `--action-destructive` | #DC2626 | #EF4444 | Destructive actions |
 
 ### Feedback
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `--success-bg` | #DCFCE7 | #052E16 | Success banner bg |
-| `--success-text` | #16A34A | #86EFAC | Success text |
-| `--error-bg` | #FEE2E2 | #450A0A | Error banner bg |
-| `--error-text` | #DC2626 | #FCA5A5 | Error text |
-| `--warning-bg` | #E2F4FE | #1E293B | Warning banner bg |
-| `--warning-text` | #004D7D | #93C5FD | Warning text |
-| `--info-bg` | #EFF6FF | #172554 | Info banner bg |
-| `--info-text` | #2563EB | #BFDBFE | Info text |
+| `--success-bg` | #DCFCE7 | #16A34A | Success banner bg |
+| `--success-text` | #16A34A | #DCFCE7 | Success text |
+| `--error-bg` | #FEE2E2 | #DC2626 | Error banner bg |
+| `--error-text` | #DC2626 | #FEE2E2 | Error text |
+| `--warning-bg` | #FEF3C7 | #D97706 | Warning banner bg |
+| `--warning-text` | #D97706 | #FEF3C7 | Warning text |
+| `--info-bg` | #EFF6FF | #15304B | Info banner bg |
+| `--info-text` | #2563EB | #A8C8E8 | Info text |
+| `--info-border` | #BFDBFE | #0074BC | Info banner border |
+
+### Branding
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `--powered-by-bg` | #F8FAFC | #0F172A | Powered-by section bg |
+| `--powered-by-text` | #64748B | #94A3B8 | Powered-by label text |
 
 ### Header & Footer
 | Token | Light | Dark | Usage |
