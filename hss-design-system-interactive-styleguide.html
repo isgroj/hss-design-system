@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HSS Design Tokens — Styleguide</title>
+  <title>HSS Design System — Interactive Styleguide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -95,18 +95,18 @@
       --info-text: #2563eb;
       --powered-by-bg: #f8fafc;
       --powered-by-text: #64748b;
-      --header-bg: var(--bg-surface);
-      --header-nav-active: var(--text-brand);
-      --header-nav-inactive: var(--text-secondary);
-      --header-icon: currentColor;
-      --header-avatar: var(--action-primary);
-      --footer-bg: var(--bg-surface);
-      --footer-border: var(--border-default);
+      --header-bg: #FFFFFF;
+      --header-nav-active: #0D172C;
+      --header-nav-inactive: #64748B;
+      --header-icon: #64748B;
+      --header-avatar: #0074BC;
+      --footer-bg: #FFFFFF;
+      --footer-border: #E2E8F0;
       --footer-icon-fill: #0074BC;
       --footer-powered-by: #0074BC;
-      --footer-brand-text: #0d172c;
-      --footer-btn-border: #14334d;
-      --footer-btn-text: #14334d;
+      --footer-brand-text: #0D172C;
+      --footer-btn-border: #14334D;
+      --footer-btn-text: #14334D;
     }
 
     /* ═══ Semantic — Dark ═══ */
@@ -155,18 +155,18 @@
       --info-border: #0074bc;
       --powered-by-bg: #0f172a;
       --powered-by-text: #94a3b8;
-      --header-bg: var(--bg-surface);
-      --header-nav-active: #ffffff;
-      --header-nav-inactive: var(--text-tertiary);
-      --header-icon: #94a3b8;
-      --header-avatar: #64748b;
-      --footer-bg: var(--bg-surface);
-      --footer-border: var(--border-default);
-      --footer-icon-fill: white;
+      --header-bg: #0F172A;
+      --header-nav-active: #FFFFFF;
+      --header-nav-inactive: #64748B;
+      --header-icon: #94A3B8;
+      --header-avatar: #64748B;
+      --footer-bg: #0F172A;
+      --footer-border: #1E293B;
+      --footer-icon-fill: #FFFFFF;
       --footer-powered-by: rgba(255,255,255,0.7);
-      --footer-brand-text: #ffffff;
-      --footer-btn-border: #ffffff;
-      --footer-btn-text: #ffffff;
+      --footer-brand-text: #FFFFFF;
+      --footer-btn-border: #FFFFFF;
+      --footer-btn-text: #FFFFFF;
     }
 
     /* ═══ Typography Utility Classes ═══ */
@@ -200,7 +200,47 @@
       font-family: 'Inter', sans-serif;
       transition: background 0.2s, color 0.2s;
     }
-    .page { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
+    .page { max-width: 1280px; margin: 0 auto; padding: 32px 24px; padding-top: 72px; }
+
+    /* ═══ Section Navigation ═══ */
+    .section-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--bg-surface); border-bottom: 1px solid var(--border-default);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .section-nav-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; gap: 0; height: 44px;
+      overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .section-nav-inner::-webkit-scrollbar { display: none; }
+    .section-nav-group {
+      display: flex; align-items: center; gap: 0; height: 100%;
+    }
+    .section-nav-divider {
+      width: 1px; height: 20px; background: var(--border-strong); margin: 0 8px; flex-shrink: 0;
+    }
+    .section-nav-label {
+      font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--text-tertiary); padding: 0 8px; white-space: nowrap; flex-shrink: 0;
+    }
+    .section-nav a {
+      display: flex; align-items: center; height: 100%;
+      padding: 0 10px; font-size: 12px; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none;
+      white-space: nowrap; border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
+    }
+    .section-nav a:hover { color: var(--text-primary); }
+    .section-nav a.active { color: var(--action-primary); border-bottom-color: var(--action-primary); font-weight: 600; }
+    .section-nav a.nav-marketing {
+      color: #0074BC; font-weight: 600;
+    }
+    .section-nav a.nav-marketing:hover { color: #005A91; }
+    .section-nav a.nav-marketing.active {
+      color: #0074BC; border-bottom-color: #0074BC;
+      background: linear-gradient(to top, rgba(0,116,188,0.08), transparent);
+    }
 
     /* ═══ Header ═══ */
     .header {
@@ -817,13 +857,40 @@
   </style>
 </head>
 <body>
+<!-- ═══ Section Navigation ═══ -->
+<nav class="section-nav" id="sectionNav">
+  <div class="section-nav-inner">
+    <div class="section-nav-group">
+      <span class="section-nav-label">Design System</span>
+      <a href="#primitives">Colors</a>
+      <a href="#semantics">Semantic</a>
+      <a href="#typography">Type</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#radius">Radius</a>
+      <a href="#token-architecture">Tokens</a>
+      <a href="#components">Components</a>
+      <a href="#iconography">Icons</a>
+      <a href="#navigation">Nav</a>
+      <a href="#dashboard-layout">Dashboard</a>
+      <a href="#accessibility">A11y</a>
+      <a href="#dark-mode">Dark</a>
+      <a href="#dataviz">DataViz</a>
+      <a href="#interactive-colors">Interactive</a>
+    </div>
+    <div class="section-nav-divider"></div>
+    <div class="section-nav-group">
+      <a href="#marketing-brand" class="nav-marketing">Marketing Brand System</a>
+    </div>
+  </div>
+</nav>
+
 <div class="page">
 
   <!-- Header -->
   <header class="header">
     <div>
-      <h1 class="title">HSS Design Tokens</h1>
-      <p class="subtitle">Visual reference for the HSS Data Design Library</p>
+      <h1 class="title">HSS Design System</h1>
+      <p class="subtitle">Interactive styleguide — Design tokens, components, and marketing brand system</p>
     </div>
     <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
   </header>
@@ -1252,116 +1319,220 @@
     <h2 class="section-title">Navigation Patterns</h2>
     <p class="section-desc">Standard navigation structures for HSS Data applications. All patterns respond to light/dark themes and scale across breakpoints.</p>
 
+    <!-- ═══ App Header — Desktop ═══ -->
     <div class="comp-card">
       <h3 class="comp-name">App Header — Desktop (1440px)</h3>
-      <p class="comp-desc">Top-level navigation bar with HSS logo, product title, and essential navigation. Background: <code>header-bg</code>, height: 56px, padding: 24px horizontal. Adapts to dark mode via tokens.</p>
-      <div class="app-header-demo" style="margin-top:12px;">
-        <div class="app-header" style="background:var(--header-bg);height:56px;padding:0 24px;border-radius:var(--radius-md);">
+      <p class="comp-desc">Top-level navigation bar. Height: 56px, padding: 24px horizontal. Adapts to light/dark mode via semantic tokens.</p>
+
+      <!-- Light Mode -->
+      <div class="comp-row-label" style="margin-top:12px;">Light Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/desktop-light/header.png" alt="Desktop header — light mode" style="width:100%;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="margin-top:12px;border:1px solid #e2e8f0;border-radius:var(--radius-md);overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#ffffff;height:56px;padding:0 24px;border-bottom:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:24px;">
-            <div style="width:32px;height:32px;border-radius:var(--radius-sm);overflow:hidden;background:var(--action-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="color:var(--action-primary-text);font-size:12px;font-weight:700;">HSS</span>
+            <div style="width:32px;height:32px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:#fff;font-size:11px;font-weight:800;font-family:Inter,sans-serif;letter-spacing:0.3px;">HSS</span>
             </div>
-            <nav style="display:flex;gap:24px;font-size:14px;">
-              <a href="#" style="color:var(--header-nav-active);font-weight:600;text-decoration:none;">Dashboard</a>
-              <a href="#" style="color:var(--header-nav-inactive);text-decoration:none;">Reports</a>
-              <a href="#" style="color:var(--header-nav-inactive);text-decoration:none;">Settings</a>
+            <nav style="display:flex;gap:24px;font-size:14px;font-family:Inter,sans-serif;">
+              <span style="color:#0d172c;font-weight:600;cursor:pointer;">Dashboard</span>
+              <span style="color:#64748b;cursor:pointer;">Reports</span>
+              <span style="color:#64748b;cursor:pointer;">Settings</span>
             </nav>
           </div>
-          <div style="display:flex;align-items:center;gap:16px;color:var(--header-icon);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--header-avatar);flex-shrink:0;"></div>
-            <span style="font-size:14px;color:var(--header-nav-inactive);">Dr. Smith</span>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
+            <span style="font-size:14px;color:#475569;font-family:Inter,sans-serif;">Dr. Smith</span>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.6;">
-        <strong style="color:var(--text-primary);">Anatomy:</strong> Left Nav (HSS logo 32×32 + nav links 14px) — Right Nav (bell icon 20×20 + avatar 32×32 circle + username 14px). <strong>Dark mode:</strong> bg <code>#1e293b</code>, active nav white, inactive <code>#475569</code>, avatar <code>#64748b</code>.
+
+      <!-- Dark Mode -->
+      <div class="comp-row-label" style="margin-top:20px;">Dark Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/desktop-dark/header.png" alt="Desktop header — dark mode" style="width:100%;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="margin-top:12px;border:1px solid #334155;border-radius:var(--radius-md);overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#0f172a;height:56px;padding:0 24px;border-bottom:1px solid #1e293b;">
+          <div style="display:flex;align-items:center;gap:24px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:#fff;font-size:11px;font-weight:800;font-family:Inter,sans-serif;letter-spacing:0.3px;">HSS</span>
+            </div>
+            <nav style="display:flex;gap:24px;font-size:14px;font-family:Inter,sans-serif;">
+              <span style="color:#ffffff;font-weight:600;cursor:pointer;">Dashboard</span>
+              <span style="color:#64748b;cursor:pointer;">Reports</span>
+              <span style="color:#64748b;cursor:pointer;">Settings</span>
+            </nav>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <!-- Theme toggle -->
+            <div style="display:flex;align-items:center;gap:6px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:#64748b;"></div>
+              <div style="width:10px;height:10px;border-radius:50%;background:#94a3b8;"></div>
+            </div>
+            <div style="width:32px;height:32px;border-radius:50%;background:#64748b;flex-shrink:0;"></div>
+            <span style="font-size:14px;color:#64748b;font-family:Inter,sans-serif;">Dr. Smith</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong style="color:var(--text-primary);">Anatomy:</strong> Left (HSS logo 32&times;32 rounded square + nav links 14px) &mdash; Right (bell icon 20&times;20 + theme toggle + avatar 32&times;32 circle + username 14px).<br>
+        <strong>Light:</strong> bg <code>#FFFFFF</code>, active nav <code>#0d172c</code> bold, inactive <code>#64748b</code>, avatar <code>#0074BC</code>.<br>
+        <strong>Dark:</strong> bg <code>#0f172a</code>, active nav <code>#FFFFFF</code>, inactive <code>#64748b</code>, avatar <code>#64748b</code>, icons <code>#94a3b8</code>.
       </div>
     </div>
 
+    <!-- ═══ App Header — Mobile ═══ -->
     <div class="comp-card">
       <h3 class="comp-name">App Header — Mobile (375px)</h3>
-      <p class="comp-desc">Compact mobile header. Hamburger menu replaces inline nav links. Height: 52px, padding: 16px horizontal. Adapts to dark mode via tokens.</p>
+      <p class="comp-desc">Compact mobile header. Hamburger menu replaces inline nav. Height: 52px, padding: 16px horizontal.</p>
+
+      <!-- Mobile Dark Mode (reference provided) -->
+      <div class="comp-row-label" style="margin-top:12px;">Dark Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/mobile-dark/header.png" alt="Mobile header — dark mode" style="max-width:375px;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
       <div class="app-mobile-frame" style="margin-top:12px;">
-        <div class="app-header app-header-mobile" style="background:var(--header-bg);height:52px;padding:0 16px;border-radius:var(--radius-md);">
-          <div style="display:flex;align-items:center;gap:12px;color:var(--header-icon);">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            <div style="width:28px;height:28px;border-radius:var(--radius-sm);overflow:hidden;background:var(--action-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <span style="color:var(--action-primary-text);font-size:10px;font-weight:700;">HSS</span>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#0f172a;height:52px;padding:0 16px;border-bottom:1px solid #1e293b;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div style="width:28px;height:28px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:#fff;font-size:9px;font-weight:800;font-family:Inter,sans-serif;">HSS</span>
             </div>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;color:var(--header-icon);">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:28px;height:28px;border-radius:50%;background:var(--header-avatar);flex-shrink:0;"></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:28px;height:28px;border-radius:50%;background:#64748b;flex-shrink:0;"></div>
+            <!-- Theme toggle -->
+            <div style="display:flex;align-items:center;gap:4px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:#64748b;"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#94a3b8;"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.6;">
-        <strong style="color:var(--text-primary);">Anatomy:</strong> Left Nav (hamburger 24×24 + HSS logo 28×28) — Right Nav (bell icon 20×20 + avatar 28×28 circle). No username on mobile. <strong>Dark mode:</strong> same <code>#1e293b</code> bg, icons <code>#94a3b8</code>.
+
+      <!-- Mobile Light Mode -->
+      <div class="comp-row-label" style="margin-top:20px;">Light Mode</div>
+      <div class="app-mobile-frame" style="margin-top:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#ffffff;height:52px;padding:0 16px;border-bottom:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div style="width:28px;height:28px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="color:#fff;font-size:9px;font-weight:800;font-family:Inter,sans-serif;">HSS</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:28px;height:28px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong style="color:var(--text-primary);">Anatomy:</strong> Left (hamburger 24&times;24 + HSS logo 28&times;28) &mdash; Right (bell 20&times;20 + avatar 28&times;28 + theme toggle). No username on mobile.<br>
+        <strong>Dark:</strong> bg <code>#0f172a</code>, icons <code>#94a3b8</code>, avatar <code>#64748b</code>.<br>
+        <strong>Light:</strong> bg <code>#FFFFFF</code>, icons <code>#475569</code>, avatar <code>#0074BC</code>.
       </div>
     </div>
 
+    <!-- ═══ App Footer — Desktop ═══ -->
     <div class="comp-card">
       <h3 class="comp-name">App Footer — Desktop (1440px)</h3>
-      <p class="comp-desc">Persistent footer with Powered By HSS Data branding and Support &amp; Feedback link. Height: 64px, padding: 24px horizontal. Adapts to dark mode via tokens.</p>
-      <div class="app-header-demo" style="margin-top:12px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;background:var(--footer-bg);height:64px;padding:0 24px;border-radius:var(--radius-md);border:1px solid var(--footer-border);">
-          <div style="display:flex;align-items:center;gap:10px;color:var(--footer-icon-fill);">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="currentColor"/>
-              <path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="currentColor"/>
-              <path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="currentColor" stroke-width="2.54"/>
-              <path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="currentColor"/>
-              <path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="currentColor"/>
-              <path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="currentColor"/>
-              <path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="currentColor"/>
-            </svg>
-            <span style="font-size:13.5px;font-weight:500;color:var(--footer-powered-by);">POWERED BY</span>
-            <span style="font-size:20px;font-weight:700;color:var(--footer-brand-text);letter-spacing:-0.02em;">HSS Data</span>
+      <p class="comp-desc">Persistent footer with Powered By HSS Data branding and Support &amp; Feedback link. Height: 56px, padding: 24px horizontal.</p>
+
+      <!-- Light Mode -->
+      <div class="comp-row-label" style="margin-top:12px;">Light Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/desktop-light/footer.png" alt="Desktop footer — light mode" style="width:100%;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="margin-top:12px;border:1px solid #e2e8f0;border-radius:var(--radius-md);overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#ffffff;height:56px;padding:0 24px;border-top:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <span style="font-size:12px;color:var(--text-tertiary);">&copy; 2026 HSS</span>
-          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:16px;border:1.5px solid var(--footer-btn-border);cursor:pointer;">
-            <span style="font-size:14px;font-weight:600;color:var(--footer-btn-text);">Support &amp; Feedback</span>
+          <span style="font-size:12px;color:#94a3b8;font-family:Inter,sans-serif;">&copy; 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
           </div>
         </div>
       </div>
-      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.6;">
-        <strong style="color:var(--text-primary);">Anatomy:</strong> Left (Pulse Grid icon 28×28 + "POWERED BY" 13.5px + "HSS Data" 20px bold) — Center ("© 2026 HSS" 12px) — Right (Support &amp; Feedback pill, radius 16px). <strong>Dark mode:</strong> bg <code>#1e293b</code>, border <code>#334155</code>, icon/text/button all white.
+
+      <!-- Dark Mode -->
+      <div class="comp-row-label" style="margin-top:20px;">Dark Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/desktop-dark/footer.png" alt="Desktop footer — dark mode" style="width:100%;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="margin-top:12px;border:1px solid #334155;border-radius:var(--radius-md);overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;background:#0f172a;height:56px;padding:0 24px;border-top:1px solid #1e293b;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="white"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="white"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="white"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="white"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="white"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="white" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="white"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="white"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="white"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="white"/></svg>
+            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#ffffff;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
+          </div>
+          <span style="font-size:12px;color:#64748b;font-family:Inter,sans-serif;">&copy; 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:20px;border:1.5px solid #ffffff;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#ffffff;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong style="color:var(--text-primary);">Anatomy:</strong> Left (Pulse Grid icon 28&times;28 + "POWERED BY" 13px + "HSS Data" 20px bold) &mdash; Center ("&copy; 2026 HSS" 12px) &mdash; Right (Support &amp; Feedback pill, radius 20px).<br>
+        <strong>Light:</strong> bg <code>#FFFFFF</code>, icon/powered-by <code>#0074BC</code>, brand text <code>#0d172c</code>, button border <code>#14334d</code>.<br>
+        <strong>Dark:</strong> bg <code>#0f172a</code>, icon/text/button all white, powered-by <code>rgba(255,255,255,0.7)</code>.
       </div>
     </div>
 
+    <!-- ═══ App Footer — Mobile ═══ -->
     <div class="comp-card">
       <h3 class="comp-name">App Footer — Mobile (375px)</h3>
-      <p class="comp-desc">Mobile footer stacks content vertically and centers all elements. Padding: 16px, gap: 12px. Adapts to dark mode via tokens.</p>
+      <p class="comp-desc">Mobile footer stacks content vertically and centers all elements. Padding: 16px, gap: 12px.</p>
+
+      <!-- Mobile Dark Mode (reference provided) -->
+      <div class="comp-row-label" style="margin-top:12px;">Dark Mode</div>
+      <div style="margin-top:8px;">
+        <img src="images/navigation/mobile-dark/footer.png" alt="Mobile footer — dark mode" style="max-width:375px;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
       <div class="app-mobile-frame" style="margin-top:12px;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--footer-bg);border:1px solid var(--footer-border);border-radius:var(--radius-md);">
-          <div style="display:flex;align-items:center;gap:8px;color:var(--footer-icon-fill);">
-            <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-              <path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="currentColor"/>
-              <path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="currentColor"/>
-              <path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="currentColor"/>
-              <path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="currentColor" stroke-width="2.54"/>
-              <path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="currentColor"/>
-              <path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="currentColor"/>
-              <path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="currentColor"/>
-              <path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="currentColor"/>
-            </svg>
-            <span style="font-size:13.5px;font-weight:500;color:var(--footer-powered-by);">POWERED BY</span>
-            <span style="font-size:20px;font-weight:700;color:var(--footer-brand-text);letter-spacing:-0.02em;">HSS Data</span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;background:#0f172a;border:1px solid #1e293b;border-radius:var(--radius-md);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="white"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="white"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="white"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="white"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="white"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="white" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="white"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="white"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="white"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="white"/></svg>
+            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#ffffff;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:16px;border:1.5px solid var(--footer-btn-border);cursor:pointer;">
-            <span style="font-size:14px;font-weight:600;color:var(--footer-btn-text);">Support &amp; Feedback</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 24px;border-radius:20px;border:1.5px solid #ffffff;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#ffffff;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
           </div>
-          <span style="font-size:11px;color:var(--text-tertiary);">&copy; 2026 HSS</span>
+          <span style="font-size:11px;color:#64748b;font-family:Inter,sans-serif;">&copy; 2026 HSS</span>
         </div>
       </div>
-      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.6;">
-        <strong style="color:var(--text-primary);">Anatomy:</strong> Stacked center-aligned — Powered By row (icon 22×22 + "POWERED BY" 13.5px + "HSS Data" 20px bold, gap 8px) → Support &amp; Feedback pill → "© 2026 HSS" 11px. <strong>Dark mode:</strong> same token swap as desktop.
+
+      <!-- Mobile Light Mode -->
+      <div class="comp-row-label" style="margin-top:20px;">Light Mode</div>
+      <div class="app-mobile-frame" style="margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;background:#ffffff;border:1px solid #e2e8f0;border-radius:var(--radius-md);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;padding:8px 24px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
+          <span style="font-size:11px;color:#94a3b8;font-family:Inter,sans-serif;">&copy; 2026 HSS</span>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;padding:12px 16px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong style="color:var(--text-primary);">Anatomy:</strong> Stacked center-aligned &mdash; Powered By row (icon 22&times;22 + text) &rarr; Support &amp; Feedback pill (radius 20px) &rarr; "&copy; 2026 HSS" 11px.<br>
+        <strong>Dark:</strong> bg <code>#0f172a</code>, all white. <strong>Light:</strong> bg <code>#FFFFFF</code>, icon/powered-by <code>#0074BC</code>.
       </div>
     </div>
 
@@ -1594,46 +1765,48 @@
     <div class="comp-card">
       <h3 class="comp-name">Mobile Dashboard — Light Mode</h3>
       <p class="comp-desc">KPI metric cards stacked vertically with trend badges. Mobile header uses hamburger menu, notification bell, and avatar. Footer shows Powered By branding centered.</p>
-      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Mobile Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+      <div style="max-width:375px;border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Mobile Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
-            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div style="width:28px;height:28px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:9px;font-weight:800;font-family:Inter,sans-serif;">HSS</span></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:28px;height:28px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
           </div>
         </div>
         <!-- Content -->
         <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
-          <h3 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0;">Dashboard</h3>
+          <h3 style="font-size:20px;font-weight:700;color:#0f172a;margin:0;">Dashboard</h3>
           <!-- KPI 1 -->
-          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
-            <div><div style="font-size:12px;color:var(--text-secondary);">Total Cases</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">1,247</div></div>
+          <div style="border:1px solid #e2e8f0;border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:#64748b;">Total Cases</div><div style="font-size:24px;font-weight:700;color:#0f172a;">1,247</div></div>
             <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 12%</span>
           </div>
           <!-- KPI 2 -->
-          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
-            <div><div style="font-size:12px;color:var(--text-secondary);">Avg. Wait Time</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">23 min</div></div>
+          <div style="border:1px solid #e2e8f0;border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:#64748b;">Avg. Wait Time</div><div style="font-size:24px;font-weight:700;color:#0f172a;">23 min</div></div>
             <span style="font-size:11px;font-weight:700;color:#dc2626;">↓ 3%</span>
           </div>
           <!-- KPI 3 -->
-          <div style="border:1px solid var(--border-default);border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
-            <div><div style="font-size:12px;color:var(--text-secondary);">Satisfaction</div><div style="font-size:24px;font-weight:700;color:var(--text-primary);">4.6 / 5.0</div></div>
+          <div style="border:1px solid #e2e8f0;border-radius:8px;padding:16px;display:flex;justify-content:space-between;align-items:flex-end;">
+            <div><div style="font-size:12px;color:#64748b;">Satisfaction</div><div style="font-size:24px;font-weight:700;color:#0f172a;">4.6 / 5.0</div></div>
             <span style="font-size:11px;font-weight:700;color:#16a34a;">↑ 0.2</span>
           </div>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+        <!-- Footer — Light -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;background:#ffffff;border-top:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 24px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
+          <span style="font-size:11px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
         </div>
       </div>
     </div>
@@ -1641,16 +1814,16 @@
     <div class="comp-card">
       <h3 class="comp-name">Mobile Filters — Light Mode</h3>
       <p class="comp-desc">Full-width filter layout with active filter chips, dropdown selects, and a primary Apply button. Optimized for touch targets on mobile.</p>
-      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Mobile Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+      <div style="max-width:375px;border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Mobile Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
-            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div style="width:28px;height:28px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:9px;font-weight:800;font-family:Inter,sans-serif;">HSS</span></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:28px;height:28px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
           </div>
         </div>
         <!-- Filter Content -->
@@ -1692,15 +1865,17 @@
           </div>
           <button style="width:100%;padding:14px;background:var(--action-primary);color:var(--action-primary-text);border:none;border-radius:24px;font-size:16px;font-weight:700;cursor:pointer;">Apply Filters</button>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+        <!-- Footer — Light -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;background:#ffffff;border-top:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 24px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
+          <span style="font-size:11px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
         </div>
       </div>
     </div>
@@ -1708,16 +1883,16 @@
     <div class="comp-card">
       <h3 class="comp-name">Mobile Data Table — Light Mode</h3>
       <p class="comp-desc">Patient list as stacked cards with search, status badges (Active/Pending/Discharged), and pagination. Optimized for mobile readability.</p>
-      <div style="max-width:375px;border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Mobile Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
+      <div style="max-width:375px;border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Mobile Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:52px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="11" width="18" height="2" rx="1" fill="currentColor"/><rect x="3" y="17" width="18" height="2" rx="1" fill="currentColor"/></svg>
-            <div style="width:32px;height:32px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;">HSS</div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div style="width:28px;height:28px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:9px;font-weight:800;font-family:Inter,sans-serif;">HSS</span></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:28px;height:28px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
           </div>
         </div>
         <!-- Search + Cards -->
@@ -1746,15 +1921,17 @@
           <!-- Pagination -->
           <div style="text-align:center;font-size:14px;font-weight:700;color:var(--text-primary);padding:8px 0;">‹ &nbsp;1 &nbsp;2 &nbsp;3 &nbsp;›</div>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
+        <!-- Footer — Light -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;padding:20px 16px;background:#ffffff;border-top:1px solid #e2e8f0;">
           <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);letter-spacing:0;">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+            <svg width="22" height="22" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;background:var(--bg-base);">Support &amp; Feedback</a>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 24px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
+          <span style="font-size:11px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
         </div>
       </div>
     </div>
@@ -1768,21 +1945,21 @@
     <div class="comp-card">
       <h3 class="comp-name">Desktop Dashboard — Light Mode</h3>
       <p class="comp-desc">Three KPI metric cards in a horizontal row with trend indicators. Desktop header with logo, navigation tabs, notification bell, avatar, and user name.</p>
-      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Desktop Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
-            <nav style="display:flex;gap:4px;">
-              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+      <div style="border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Desktop Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:24px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:11px;font-weight:800;font-family:Inter,sans-serif;letter-spacing:0.3px;">HSS</span></div>
+            <nav style="display:flex;gap:24px;font-size:14px;font-family:Inter,sans-serif;">
+              <span style="color:#0d172c;font-weight:600;cursor:pointer;">Dashboard</span>
+              <span style="color:#64748b;cursor:pointer;">Reports</span>
+              <span style="color:#64748b;cursor:pointer;">Settings</span>
             </nav>
           </div>
           <div style="display:flex;align-items:center;gap:16px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
-            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
+            <span style="font-size:14px;color:#475569;font-family:Inter,sans-serif;">Dr. Smith</span>
           </div>
         </div>
         <!-- Content -->
@@ -1803,15 +1980,17 @@
             </div>
           </div>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+        <!-- Footer — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-top:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+          <span style="font-size:12px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1819,21 +1998,21 @@
     <div class="comp-card">
       <h3 class="comp-name">Desktop Filters — Light Mode</h3>
       <p class="comp-desc">Horizontal filter bar with active chips, four dropdown selects in a grid, and an Apply Filters button. Designed for efficient desktop workflows.</p>
-      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Desktop Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
-            <nav style="display:flex;gap:4px;">
-              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+      <div style="border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Desktop Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:24px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:11px;font-weight:800;font-family:Inter,sans-serif;letter-spacing:0.3px;">HSS</span></div>
+            <nav style="display:flex;gap:24px;font-size:14px;font-family:Inter,sans-serif;">
+              <span style="color:#0d172c;font-weight:600;cursor:pointer;">Dashboard</span>
+              <span style="color:#64748b;cursor:pointer;">Reports</span>
+              <span style="color:#64748b;cursor:pointer;">Settings</span>
             </nav>
           </div>
           <div style="display:flex;align-items:center;gap:16px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
-            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
+            <span style="font-size:14px;color:#475569;font-family:Inter,sans-serif;">Dr. Smith</span>
           </div>
         </div>
         <!-- Filter Content -->
@@ -1865,15 +2044,17 @@
             <button style="padding:10px 24px;background:var(--action-primary);color:var(--action-primary-text);border:none;border-radius:24px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;">Apply Filters</button>
           </div>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+        <!-- Footer — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-top:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+          <span style="font-size:12px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1881,21 +2062,21 @@
     <div class="comp-card">
       <h3 class="comp-name">Desktop Data Table — Light Mode</h3>
       <p class="comp-desc">Full-width patient data table with column headers, search bar, status badges, and structured rows. Uses standard table layout for sortable, scannable data.</p>
-      <div style="border:1px solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-base);">
-        <!-- Desktop Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--bg-surface);border-bottom:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:16px;">
-            <div style="width:40px;height:40px;background:var(--action-primary);border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;">HSS</div>
-            <nav style="display:flex;gap:4px;">
-              <span style="padding:6px 12px;font-size:14px;font-weight:600;color:var(--tab-active-text);background:var(--tab-active);border-radius:6px;">Dashboard</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Reports</span>
-              <span style="padding:6px 12px;font-size:14px;font-weight:500;color:var(--text-secondary);">Settings</span>
+      <div style="border:1px solid #e2e8f0;border-radius:var(--radius-lg);overflow:hidden;background:#ffffff;">
+        <!-- Desktop Header — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-bottom:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:24px;">
+            <div style="width:32px;height:32px;border-radius:6px;background:#0074BC;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="color:#fff;font-size:11px;font-weight:800;font-family:Inter,sans-serif;letter-spacing:0.3px;">HSS</span></div>
+            <nav style="display:flex;gap:24px;font-size:14px;font-family:Inter,sans-serif;">
+              <span style="color:#0d172c;font-weight:600;cursor:pointer;">Dashboard</span>
+              <span style="color:#64748b;cursor:pointer;">Reports</span>
+              <span style="color:#64748b;cursor:pointer;">Settings</span>
             </nav>
           </div>
           <div style="display:flex;align-items:center;gap:16px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <div style="width:32px;height:32px;border-radius:50%;background:var(--action-primary);"></div>
-            <span style="font-size:13px;color:var(--text-secondary);">Dr. Smith</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="width:32px;height:32px;border-radius:50%;background:#0074BC;flex-shrink:0;"></div>
+            <span style="font-size:14px;color:#475569;font-family:Inter,sans-serif;">Dr. Smith</span>
           </div>
         </div>
         <!-- Table Content -->
@@ -1943,15 +2124,17 @@
             </tbody>
           </table>
         </div>
-        <!-- Footer -->
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:64px;background:var(--bg-surface);border-top:1px solid var(--border-default);">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="0" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="8" width="6" height="6" rx="1" fill="#0074BC"/><rect x="0" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="8" y="16" width="6" height="6" rx="1" fill="#0074BC"/><rect x="16" y="16" width="6" height="6" rx="1" fill="#0074BC"/></svg>
-            <span style="font-size:10px;font-weight:500;color:var(--action-primary);">POWERED BY</span>
-            <span style="font-size:16px;font-weight:700;color:var(--text-brand);">HSS Data</span>
+        <!-- Footer — Light -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:#ffffff;border-top:1px solid #e2e8f0;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path opacity="0.3" d="M7 9C8.10457 9 9 8.10457 9 7C9 5.89543 8.10457 5 7 5C5.89543 5 5 5.89543 5 7C5 8.10457 5.89543 9 7 9Z" fill="#0074BC"/><path opacity="0.3" d="M14 9C15.1046 9 16 8.10457 16 7C16 5.89543 15.1046 5 14 5C12.8954 5 12 5.89543 12 7C12 8.10457 12.8954 9 14 9Z" fill="#0074BC"/><path opacity="0.3" d="M21 9C22.1046 9 23 8.10457 23 7C23 5.89543 22.1046 5 21 5C19.8954 5 19 5.89543 19 7C19 8.10457 19.8954 9 21 9Z" fill="#0074BC"/><path opacity="0.3" d="M7 16C8.10457 16 9 15.1046 9 14C9 12.8954 8.10457 12 7 12C5.89543 12 5 12.8954 5 14C5 15.1046 5.89543 16 7 16Z" fill="#0074BC"/><path d="M14 17.5C15.933 17.5 17.5 15.933 17.5 14C17.5 12.067 15.933 10.5 14 10.5C12.067 10.5 10.5 12.067 10.5 14C10.5 15.933 12.067 17.5 14 17.5Z" fill="#0074BC"/><path opacity="0.25" d="M14 20C17.3137 20 20 17.3137 20 14C20 10.6863 17.3137 8 14 8C10.6863 8 8 10.6863 8 14C8 17.3137 10.6863 20 14 20Z" stroke="#0074BC" stroke-width="2.54"/><path opacity="0.3" d="M21 16C22.1046 16 23 15.1046 23 14C23 12.8954 22.1046 12 21 12C19.8954 12 19 12.8954 19 14C19 15.1046 19.8954 16 21 16Z" fill="#0074BC"/><path opacity="0.3" d="M7 23C8.10457 23 9 22.1046 9 21C9 19.8954 8.10457 19 7 19C5.89543 19 5 19.8954 5 21C5 22.1046 5.89543 23 7 23Z" fill="#0074BC"/><path opacity="0.3" d="M14 23C15.1046 23 16 22.1046 16 21C16 19.8954 15.1046 19 14 19C12.8954 19 12 19.8954 12 21C12 22.1046 12.8954 23 14 23Z" fill="#0074BC"/><path opacity="0.3" d="M21 23C22.1046 23 23 22.1046 23 21C23 19.8954 22.1046 19 21 19C19.8954 19 19 19.8954 19 21C19 22.1046 19.8954 23 21 23Z" fill="#0074BC"/></svg>
+            <span style="font-size:13px;font-weight:500;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.04em;">POWERED BY</span>
+            <span style="font-size:20px;font-weight:700;color:#0d172c;font-family:Inter,sans-serif;letter-spacing:-0.02em;">HSS Data</span>
           </div>
-          <span style="font-size:11px;color:var(--text-tertiary);">© 2026 HSS</span>
-          <a href="#" style="display:inline-flex;padding:8px 20px;border:1.5px solid #14334d;border-radius:16px;font-size:14px;font-weight:700;color:#14334d;text-decoration:none;">Support &amp; Feedback</a>
+          <span style="font-size:12px;color:#94a3b8;font-family:Inter,sans-serif;">© 2026 HSS</span>
+          <div style="display:inline-flex;align-items:center;padding:8px 20px;border-radius:20px;border:1.5px solid #14334d;cursor:pointer;">
+            <span style="font-size:14px;font-weight:600;color:#14334d;font-family:Inter,sans-serif;">Support &amp; Feedback</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2512,6 +2695,659 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ═══ Marketing Brand System ═══ -->
+  <section class="section" id="marketing-brand">
+    <h2 class="section-title">Marketing Brand System</h2>
+    <p class="section-desc">HSS marketing and brand identity guidelines for collateral, print, advertising, and consumer/patient-facing communications. Sourced from the HSS Brand Identity Guidelines (January 2026).</p>
+
+    <!-- Brand Foundation -->
+    <div class="comp-card">
+      <h3 class="comp-name">Brand Foundation</h3>
+      <p class="comp-desc">Core brand identity pillars that inform all HSS communications.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:14px;color:var(--text-brand);margin-bottom:8px;">Purpose</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">To help people get back to what they need and love to do better than any other place in the world.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:14px;color:var(--text-brand);margin-bottom:8px;">Brand Essence</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.6;">Better possibilities for quality of life through better quality of movement.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:14px;color:var(--text-brand);margin-bottom:8px;">Tagline</div>
+          <div style="font-size:18px;font-weight:700;color:#0074BC;letter-spacing:0.05em;margin-top:4px;">CHOOSE BETTER. MOVE BETTER.</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:6px;">Always ALL CAPS, HSS Blue. Locked up with logo is one of few allowed lockups.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:14px;color:var(--text-brand);margin-bottom:8px;">Values</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Diversity</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Excellence</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Gratitude</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Innovation</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Integrity</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Passion</span>
+            <span style="padding:4px 10px;border-radius:var(--radius-full);background:var(--bg-brand-subtle);color:var(--action-primary);font-size:12px;font-weight:500;">Teamwork</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tone of Voice -->
+    <div class="comp-card">
+      <h3 class="comp-name">Tone of Voice</h3>
+      <p class="comp-desc">HSS communications are knowledgeable, personable, direct, approachable, and confident &mdash; never boastful, playful, verbose, clinical, or alarming.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:var(--success-bg);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--success-text);margin-bottom:10px;">WE ARE</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--text-primary);line-height:2;">
+            <li>Knowledgeable</li><li>Personable</li><li>Direct</li><li>Approachable</li><li>Confident</li>
+          </ul>
+        </div>
+        <div style="background:var(--error-bg);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--error-text);margin-bottom:10px;">WE ARE NOT</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--text-primary);line-height:2;">
+            <li>Boastful</li><li>Playful</li><li>Verbose</li><li>Clinical</li><li>Alarming</li>
+          </ul>
+        </div>
+      </div>
+      <div class="comp-row-label" style="margin-top:20px;">Guardrails</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:6px;">01 &mdash; Confidence</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Our expertise is assumed. Speak with reserved self-assurance backed by factual knowledge and industry leadership.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:6px;">02 &mdash; Simplicity</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Bridge the gap between medical specialists and the everyday person. Avoid jargon and technical words.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:6px;">03 &mdash; Positivity</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.5;">Promote orthopedic health positively. Never intentionally make people anxious. Be proactive in communication.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo Rules -->
+    <div class="comp-card">
+      <h3 class="comp-name">Logo Usage</h3>
+      <p class="comp-desc">The HSS monogram is always presented in HSS Blue. It represents the entire HSS ecosystem.</p>
+
+      <!-- Preferred Background -->
+      <div class="comp-row-label">Preferred Background</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:140px;height:110px;background:#F0F5F7;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+            <div style="width:56px;height:56px;background:#0074BC;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:18px;font-weight:900;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;">HSS</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;">HSS Cool Neutral #F0F5F7<br><strong>Preferred</strong></div>
+        </div>
+      </div>
+
+      <!-- Alternative Backgrounds -->
+      <div class="comp-row-label" style="margin-top:20px;">Alternative Backgrounds</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:140px;height:110px;background:linear-gradient(135deg,#c8dce8,#a0c4d8);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+            <div style="width:56px;height:56px;background:#0074BC;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:18px;font-weight:900;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;">HSS</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;">Light Photograph<br>Must not distract from logo</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:140px;height:110px;background:#FFFFFF;border:1px solid var(--border-default);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+            <div style="width:56px;height:56px;background:#0074BC;border-radius:6px;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:18px;font-weight:900;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;">HSS</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;">White #FFFFFF<br>Logo in HSS Blue</div>
+        </div>
+      </div>
+
+      <!-- Logo and Taglines -->
+      <div class="comp-row-label" style="margin-top:20px;">Logo and Taglines — Approved Lockups</div>
+      <div class="comp-row" style="gap:20px;margin-top:8px;flex-wrap:wrap;">
+        <!-- Positive: #1 IN ORTHOPEDICS -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:180px;height:80px;background:#F0F5F7;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;">
+            <div style="width:40px;height:40px;background:#0074BC;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:13px;font-weight:900;color:#fff;font-family:Inter,sans-serif;">HSS</span>
+            </div>
+            <div style="background:#0074BC;border-radius:3px;padding:6px 10px;display:flex;align-items:center;">
+              <span style="font-size:9px;font-weight:800;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;white-space:nowrap;">#1 IN ORTHOPEDICS</span>
+            </div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;"><strong>Ranking Lockup</strong><br>Positive (preferred)</div>
+        </div>
+        <!-- Positive: CHOOSE BETTER MOVE BETTER -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:180px;height:80px;background:#F0F5F7;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 12px;">
+            <div style="width:40px;height:40px;background:#0074BC;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:13px;font-weight:900;color:#fff;font-family:Inter,sans-serif;">HSS</span>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#0074BC;font-family:Inter,sans-serif;letter-spacing:0.5px;line-height:1.3;text-align:left;">CHOOSE BETTER<br>MOVE BETTER</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;"><strong>Tagline Lockup</strong><br>Positive (preferred)</div>
+        </div>
+      </div>
+      <div class="comp-row" style="gap:20px;margin-top:12px;flex-wrap:wrap;">
+        <!-- Reverse: #1 IN ORTHOPEDICS -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:180px;height:80px;background:#0074BC;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;">
+            <div style="width:40px;height:40px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:13px;font-weight:900;color:#0074BC;font-family:Inter,sans-serif;">HSS</span>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;white-space:nowrap;">#1 IN ORTHOPEDICS</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;"><strong>Ranking Lockup</strong><br>Reverse (dark bg only)</div>
+        </div>
+        <!-- Reverse: CHOOSE BETTER MOVE BETTER -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:180px;height:80px;background:#0074BC;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 12px;">
+            <div style="width:40px;height:40px;background:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <span style="font-size:13px;font-weight:900;color:#0074BC;font-family:Inter,sans-serif;">HSS</span>
+            </div>
+            <div style="font-size:9px;font-weight:800;color:#fff;font-family:Inter,sans-serif;letter-spacing:0.5px;line-height:1.3;text-align:left;">CHOOSE BETTER<br>MOVE BETTER</div>
+          </div>
+          <div style="font-size:11px;color:var(--text-secondary);text-align:center;"><strong>Tagline Lockup</strong><br>Reverse (dark bg only)</div>
+        </div>
+      </div>
+
+      <!-- Rules -->
+      <div class="comp-row-label" style="margin-top:20px;">Rules</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:12px 16px;font-size:12px;color:var(--text-secondary);">
+          <strong style="color:var(--text-primary);">Clear Space:</strong> X = 1/4 logo height, on all sides
+        </div>
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:12px 16px;font-size:12px;color:var(--text-secondary);">
+          <strong style="color:var(--text-primary);">Minimum Size:</strong> 0.5" / 36px in height
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:var(--error-bg);border-radius:var(--radius-md);font-size:12px;color:var(--error-text);line-height:1.8;">
+        <strong>Never:</strong> use old versions &bull; change the color &bull; add text or graphic elements &bull; distort the logo &bull; use the outline logo over a photograph &bull; use in black when color is possible
+      </div>
+    </div>
+
+    <!-- Marketing Color Palette -->
+    <div class="comp-card">
+      <h3 class="comp-name">Marketing Color Palette</h3>
+      <p class="comp-desc">Official HSS brand colors with SPOT (Pantone), CMYK, and digital HTML values. The overall color impression for HSS should be <strong>blue</strong>.</p>
+      <div class="comp-row-label">Primary Colors</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#0081C8;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Blue</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 3005<br>#0081C8 (print)<br>#0074BC (digital)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#F0F5F7;border:1px solid var(--border-default);border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Cool Neutral</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">10% PMS 5435<br>#F0F5F7</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#FFFFFF;border:1px solid var(--border-default);border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">White</div>
+          <div style="font-size:10px;color:var(--text-tertiary);">#FFFFFF</div>
+        </div>
+      </div>
+      <div class="comp-row-label" style="margin-top:16px;">Secondary Colors</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#00ADE6;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Cyan</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 2995<br>#00ADE6</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#264583;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Dark Blue</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 7687<br>#264583</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#000000;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Black</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">Process Black<br>#000000</div>
+        </div>
+      </div>
+      <div class="comp-row-label" style="margin-top:16px;">Tertiary Colors</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#D4B640;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Gold</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 7752<br>#D4B640</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#5F849C;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Dark Gray</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 5415<br>#5F849C</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#68A42D;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Green</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 369<br>#68A42D (ADA)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#00A4AF;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Teal</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 7710<br>#00A4AF (ADA)</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#A2BACA;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Light Gray</div>
+          <div style="font-size:10px;color:var(--text-tertiary);text-align:center;">PMS 5435<br>#A2BACA</div>
+        </div>
+      </div>
+      <div class="comp-row-label" style="margin-top:16px;">Digital-Only Colors</div>
+      <div class="comp-row" style="gap:16px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#30333E;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Footer Gray</div>
+          <div style="font-size:10px;color:var(--text-tertiary);">#30333E</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#F5F5F5;border:1px solid var(--border-default);border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">Warm Neutral</div>
+          <div style="font-size:10px;color:var(--text-tertiary);">#F5F5F5</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:80px;height:60px;background:#0077C8;border-radius:var(--radius-md);"></div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-primary);">HSS Blue (graphics)</div>
+          <div style="font-size:10px;color:var(--text-tertiary);">#0077C8</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing Typography -->
+    <div class="comp-card">
+      <h3 class="comp-name">Marketing Typography</h3>
+      <p class="comp-desc">Print typographic hierarchy and digital ADA compliance rules for marketing materials.</p>
+      <div class="comp-row-label">Print Hierarchy</div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:16px;">
+        <div style="border-left:3px solid #0074BC;padding-left:16px;">
+          <div style="font-family:Inter,sans-serif;font-weight:700;font-size:28px;color:#0074BC;text-transform:uppercase;letter-spacing:0.02em;">PRIMARY HEADLINE</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">Inter Bold &middot; HSS Blue &middot; ALL CAPS for advertising</div>
+        </div>
+        <div style="border-left:3px solid #264583;padding-left:16px;">
+          <div style="font-family:Inter,sans-serif;font-weight:500;font-size:20px;color:#264583;">Secondary Headline / Intro Paragraph</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">Inter Medium</div>
+        </div>
+        <div style="border-left:3px solid var(--border-strong);padding-left:16px;">
+          <div style="font-family:Inter,sans-serif;font-weight:600;font-size:16px;color:var(--text-primary);">Subhead / Text Highlight</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">Inter Medium or Bold</div>
+        </div>
+        <div style="border-left:3px solid var(--border-default);padding-left:16px;">
+          <div style="font-family:Inter,sans-serif;font-weight:400;font-size:14px;color:var(--text-primary);line-height:1.6;">Body copy uses Inter Regular. Bridge the gap between our medical specialists and the everyday person. Speak in simple and easy to understand terms.</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">Inter Regular</div>
+        </div>
+        <div style="border-left:3px solid var(--border-default);padding-left:16px;">
+          <div style="font-family:'Sofia Sans Condensed',Inter,sans-serif;font-style:italic;font-size:11px;color:var(--text-tertiary);line-height:1.5;">Boilerplate and legal copy. Hospital for Special Surgery, HSS and the HSS logo are trademarks or registered trademarks of Hospital for Special Surgery.</div>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px;">Sofia Sans Condensed Italic</div>
+        </div>
+      </div>
+      <div class="comp-row-label" style="margin-top:20px;">Digital ADA Compliance</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:8px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border-default);">
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Color</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Swatch</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Min on White</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Min Reversed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS ADA Blue</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#0074BC;border-radius:3px;vertical-align:middle;"></span> <code>#0074BC</code></td>
+            <td style="padding:8px 12px;color:var(--success-text);">12pt regular</td>
+            <td style="padding:8px 12px;color:var(--success-text);">12pt regular</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Dark Blue</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#264583;border-radius:3px;vertical-align:middle;"></span> <code>#264583</code></td>
+            <td style="padding:8px 12px;color:var(--success-text);">12pt regular</td>
+            <td style="padding:8px 12px;color:var(--success-text);">12pt regular</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Blue (graphics)</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#0077C8;border-radius:3px;vertical-align:middle;"></span> <code>#0077C8</code></td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS ADA Green</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#68A42D;border-radius:3px;vertical-align:middle;"></span> <code>#68A42D</code></td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS ADA Teal</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#00A4AF;border-radius:3px;vertical-align:middle;"></span> <code>#00A4AF</code></td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+            <td style="padding:8px 12px;color:var(--warning-text);">18pt bold</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 12px;">HSS Gold</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:16px;height:16px;background:#D4B640;border-radius:3px;vertical-align:middle;"></span> <code>#D4B640</code></td>
+            <td style="padding:8px 12px;color:var(--error-text);">Non-compliant</td>
+            <td style="padding:8px 12px;color:var(--warning-text);">12pt bold</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;padding:10px 16px;background:var(--warning-bg);border-radius:var(--radius-md);font-size:12px;color:var(--warning-text);">
+        <strong>Non-compliant for text:</strong> HSS Cyan (#00ADE6), HSS Teal brand (#00AEBA), HSS Cool Neutral (#F0F5F7), HSS Green print (#72B431), HSS Light Gray (#A2BACA), HSS Warm Neutral (#F5F5F5) &mdash; use for graphics/icons only.
+      </div>
+    </div>
+
+    <!-- Business Descriptors -->
+    <div class="comp-card">
+      <h3 class="comp-name">Business Descriptors</h3>
+      <p class="comp-desc">How HSS business areas are identified in marketing materials. Descriptors are <strong>never locked up with the HSS logo</strong> (signage exception).</p>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-top:16px;">
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:16px 20px;">
+          <span style="font-family:Inter,sans-serif;font-weight:900;font-size:18px;color:#0074BC;">HSS</span>
+          <span style="font-family:Inter,sans-serif;font-weight:500;font-size:18px;color:#0074BC;"> Education Institute</span>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:6px;">Inter Black + Inter Medium &middot; Always HSS Blue</div>
+        </div>
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:16px 20px;">
+          <span style="font-family:Inter,sans-serif;font-weight:900;font-size:18px;color:#0074BC;">HSS</span>
+          <span style="font-family:Inter,sans-serif;font-weight:500;font-size:18px;color:#0074BC;"> | </span>
+          <span style="font-family:Inter,sans-serif;font-weight:500;font-size:18px;color:#0074BC;">Hospital for Special Surgery</span>
+          <div style="font-size:11px;color:var(--text-tertiary);margin-top:6px;">Vertical line separator always required for this descriptor</div>
+        </div>
+        <div style="background:#0074BC;border-radius:var(--radius-md);padding:16px 20px;">
+          <span style="font-family:Inter,sans-serif;font-weight:900;font-size:18px;color:#FFFFFF;">HSS</span>
+          <span style="font-family:Inter,sans-serif;font-weight:500;font-size:18px;color:#FFFFFF;"> Research Institute</span>
+          <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:6px;">Reversed to white on dark backgrounds</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Co-Branding -->
+    <div class="comp-card">
+      <h3 class="comp-name">Co-Branding</h3>
+      <p class="comp-desc">Rules for representing HSS alongside third-party collaborators. Subject to prior approval by HSS Legal and Brand Management.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border-default);">
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Type</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Language</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;font-weight:500;">Collaboration</td>
+            <td style="padding:8px 12px;">"in collaboration with" or "with"</td>
+            <td style="padding:8px 12px;color:var(--text-secondary);">HSS Orthopedics in collaboration with Stamford Health</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;font-weight:500;">At-location</td>
+            <td style="padding:8px 12px;">"at"</td>
+            <td style="padding:8px 12px;color:var(--text-secondary);">HSS at NCH</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;font-weight:500;">Powered by</td>
+            <td style="padding:8px 12px;">"Powered by HSS"</td>
+            <td style="padding:8px 12px;color:var(--text-secondary);">RightMove, CarePathways</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;padding:10px 16px;background:var(--error-bg);border-radius:var(--radius-md);font-size:12px;color:var(--error-text);">
+        <strong>Never use "partnership"</strong> &mdash; does not meet legal definition and has risk/liability implications.
+      </div>
+      <div style="margin-top:12px;padding:10px 16px;background:var(--info-bg);border-radius:var(--radius-md);font-size:12px;color:var(--info-text);">
+        <strong>Logo size parity:</strong> Approximate area (h &times; w) of HSS monogram = approximate area of co-brand logo. Separated by a vertical line equal to monogram height.
+      </div>
+    </div>
+
+    <!-- ERG Branding -->
+    <div class="comp-card">
+      <h3 class="comp-name">Employee Resource Groups (ERGs)</h3>
+      <p class="comp-desc">Each ERG has a unique logo locked up with the HSS monogram. Primarily for <strong>internal use</strong> only.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--text-primary);">BEST</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">Black Employees Standing Together</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--text-primary);">HOLA</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">Hispanic Organization for Leadership &amp; Advancement</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--text-primary);">WISE</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">Women Inspiring Success &amp; Excellence</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--text-primary);">HAPI</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">HSS Asian &amp; Pacific Islanders</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:16px;text-align:center;">
+          <div style="font-weight:700;font-size:14px;color:var(--text-primary);">LGBTQ+</div>
+          <div style="font-size:11px;color:var(--text-secondary);margin-top:4px;">LGBTQ+ Standing Together</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong>Rules:</strong> Internal only (exception: community events) &bull; Preferred backgrounds: white, black &bull; Never modify colors &bull; Never rearrange elements &bull; Never add graphics &bull; Never use in email signatures
+      </div>
+    </div>
+
+    <!-- Collateral Patterns -->
+    <div class="comp-card">
+      <h3 class="comp-name">Collateral Patterns</h3>
+      <p class="comp-desc">Standard patterns for HSS marketing materials. Always use approved templates where available.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Flyers</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">HSS Blue color focus. Logo prominent. Bold Inter headlines. Relatable photography.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Brochures</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">1, 2, or 3 panels. Standard brand typography. HSS boilerplate on back.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Postcards</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">Mailed or handouts. Multiple purposes, all with brand elements.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Business Cards</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">Approved templates only. Standard, 3-line, 5-line, and QR code variants.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Presentations</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">Templafy templates. Widescreen and letter. Arial fallback for MS apps.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Advertising</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">ALL CAPS headlines. Market designation required (NY&bull;NJ&bull;CT&bull;FL).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photography -->
+    <div class="comp-card">
+      <h3 class="comp-name">Photography</h3>
+      <p class="comp-desc">Photography guidelines for all HSS marketing and brand communications.</p>
+
+      <!-- People on the Move -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;margin-top:16px;">
+        <div style="font-weight:700;font-size:14px;color:var(--text-brand);margin-bottom:10px;">People on the Move</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Photography is used to represent people enjoying their lives and the freedom of movement that we provide to them. Always use color imagery, in clear focus and crop appropriately to display the subject in a flattering way.</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Images should always be <strong>aspirational</strong>.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <img src="images/photography/people-on-the-move/woman-running-arches.png" alt="Woman running through arches" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/people-on-the-move/man-moving-city.png" alt="Man moving joyfully in city" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/people-on-the-move/girl-kicking-soccer.png" alt="Girl kicking soccer ball" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+        </div>
+      </div>
+
+      <!-- Families and Community -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;margin-top:12px;">
+        <div style="font-weight:700;font-size:14px;color:var(--text-brand);margin-bottom:10px;">Families and Community</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Images can include people enjoying their everyday lives. Lives that we've enhanced by helping them be their best selves.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <img src="images/photography/families-and-community/mother-child-surfing.png" alt="Mother and child surfing" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/families-and-community/group-tai-chi-park.png" alt="Group doing tai chi in park" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/families-and-community/women-walking-city.png" alt="Two women walking in city" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+        </div>
+      </div>
+
+      <!-- HSS in Action -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;margin-top:12px;">
+        <div style="font-weight:700;font-size:14px;color:var(--text-brand);margin-bottom:10px;">HSS in Action</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Another area of imagery we use shows our professionals in action, doing what they do best. Avoid overly posed images, and focus on capturing a moment in the lives of our dedicated staff. Ensure that all logos that may appear on clothing or equipment are <strong>blurred</strong>.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <img src="images/photography/hss-in-action/surgical-team-procedure.png" alt="Surgical team performing procedure" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/hss-in-action/surgeons-vr-headsets.png" alt="Surgeons using VR headsets" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/hss-in-action/medical-team-discussion.png" alt="Medical team in discussion" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+        </div>
+      </div>
+
+      <!-- HSS Employee Community -->
+      <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-lg);padding:20px;margin-top:12px;">
+        <div style="font-weight:700;font-size:14px;color:var(--text-brand);margin-bottom:10px;">HSS Employee Community</div>
+        <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Our HSS family represents who we are as an organization unlike anything else. Showing employees enjoying different aspects of their lives is very important.</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <img src="images/photography/employee-community/employee-marathon-medal.png" alt="Employee with NYC Half Marathon medal" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/employee-community/employees-baseball-game.png" alt="Employees at baseball game" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+          <img src="images/photography/employee-community/employees-event-booth.png" alt="Employees at event booth" style="width:200px;height:130px;object-fit:cover;border-radius:var(--radius-md);">
+        </div>
+      </div>
+
+      <div style="margin-top:16px;font-size:12px;color:var(--text-secondary);line-height:1.8;">
+        <strong>Rules:</strong> Always use licensed or approved imagery &bull; Never take images from the internet without confirming licensing &bull; Stock photography can be licensed for diverse community representation
+      </div>
+    </div>
+
+    <!-- Infographics and Icons -->
+    <div class="comp-card">
+      <h3 class="comp-name">Infographics and Icons</h3>
+      <p class="comp-desc">A variety of stock icons and illustrations can be utilized to emphasize meaning and add interest.</p>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-top:8px;">Two-color icons in <strong style="color:#0074BC;">HSS Blue</strong> and <strong style="color:#264583;">HSS Dark Blue</strong> are available for use. Other icons can be created as long as the style remains consistent.</div>
+      <div style="margin-top:16px;">
+        <img src="images/icons/hss-icon-grid.png" alt="HSS two-color icon grid — healthcare, orthopedic, wellness, and anatomy icons in HSS Blue and Dark Blue" style="width:100%;max-width:700px;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="font-size:11px;color:var(--text-tertiary);margin-top:12px;line-height:1.6;">
+        Icon subjects: heart/vitals, user profiles, medical devices, pills/medication, clipboard/records, laptop/digital health, nutrition, megaphone/communications, fitness, ambulance, yoga/wellness, anatomy (knee, shoulder, spine, foot, hand, elbow), and general healthcare themes.
+      </div>
+    </div>
+
+    <!-- Illustration — Patient Facing -->
+    <div class="comp-card">
+      <h3 class="comp-name">Illustration — Patient Facing</h3>
+      <p class="comp-desc">Illustration is a good way to communicate with patients in a friendly and supportive way.</p>
+      <div style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-top:8px;">These examples show illustrations that have been developed specifically for patient videos and brochures.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;">
+        <img src="images/illustrations/orthopedic-cycle-diagram.png" alt="Orthopedic cycle diagram — bone, joint, muscle, and treatment icons in HSS Blue" style="width:280px;height:180px;object-fit:cover;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+        <img src="images/illustrations/patient-knee-anatomy.png" alt="Patient-facing knee anatomy illustration in HSS Blue" style="width:280px;height:180px;object-fit:cover;border-radius:var(--radius-md);border:1px solid var(--border-default);">
+      </div>
+      <div style="margin-top:14px;padding:12px 16px;background:var(--warning-bg);border-radius:var(--radius-md);font-size:12px;color:var(--warning-text);line-height:1.6;">
+        <strong>Note:</strong> These illustrations would <strong>not</strong> be appropriate for clinical or educational materials for our professional audiences.
+      </div>
+    </div>
+
+    <!-- Advertising -->
+    <div class="comp-card">
+      <h3 class="comp-name">Advertising</h3>
+      <p class="comp-desc">Rules for all HSS advertising materials. Bold, confident messaging with required market designation.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:20px;">
+          <div style="font-weight:700;font-size:20px;color:#0074BC;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:8px;">ALL CAPS HEADLINES</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">All advertising headlines must be in ALL CAPS. Bold, confident messaging that speaks with reserved self-assurance.</div>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-default);border-radius:var(--radius-md);padding:20px;">
+          <div style="font-weight:600;font-size:13px;color:var(--text-brand);margin-bottom:8px;">Market Designation</div>
+          <div style="font-size:16px;font-weight:600;color:#264583;margin-bottom:8px;">NY &bull; NJ &bull; CT &bull; FL</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6;">Required on all advertising. State abbreviations separated by bullets. Must appear near the HSS logo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physician Website Rules -->
+    <div class="comp-card">
+      <h3 class="comp-name">Physician Website Rules</h3>
+      <p class="comp-desc">Guidelines for physician websites using the HSS name and brand identity.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:var(--success-bg);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--success-text);margin-bottom:10px;">DO</div>
+          <div style="font-size:13px;color:var(--text-primary);line-height:1.8;">Ensure all uses of HSS name and brand identity are consistent with brand guidelines.</div>
+        </div>
+        <div style="background:var(--error-bg);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;font-size:13px;color:var(--error-text);margin-bottom:10px;">DON'T</div>
+          <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--text-primary);line-height:2;">
+            <li>Use patient stories from &ldquo;Back in the Game&rdquo;</li>
+            <li>Use the US News &amp; World Report badge</li>
+            <li>Use the Olympic rings</li>
+            <li>Use old versions of an HSS logo</li>
+            <li>Use HSS logo on non-affiliated ventures</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Mapping -->
+    <div class="comp-card">
+      <h3 class="comp-name">Marketing &harr; Data System Color Mapping</h3>
+      <p class="comp-desc">Cross-reference between marketing brand colors and the HSS Data design system tokens.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border-default);">
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Marketing Name</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Marketing Hex</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Data Token</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--text-secondary);font-weight:600;">Data Hex</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Blue (print)</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#0081C8;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#0081C8</td>
+            <td style="padding:8px 12px;"><code>blue-500</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#0074BC;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#0074BC</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Dark Blue</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#264583;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#264583</td>
+            <td style="padding:8px 12px;"><code>blue-800</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#264583;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#264583</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Cyan</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#00ADE6;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#00ADE6</td>
+            <td style="padding:8px 12px;"><code>cyan-60</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#00ADE6;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#00ADE6</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Cool Neutral</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#F0F5F7;border:1px solid #e2e8f0;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#F0F5F7</td>
+            <td style="padding:8px 12px;"><code>slate-50</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#ECF1F4;border:1px solid #e2e8f0;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#ECF1F4</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Gold</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#D4B640;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#D4B640</td>
+            <td style="padding:8px 12px;"><code>dataviz-5</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#D4B640;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#D4B640</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border-default);">
+            <td style="padding:8px 12px;">HSS Green (ADA)</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#68A42D;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#68A42D</td>
+            <td style="padding:8px 12px;"><code>green-500</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#72B431;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#72B431</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 12px;">HSS Teal (ADA)</td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#00A4AF;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#00A4AF</td>
+            <td style="padding:8px 12px;"><code>teal-60</code></td>
+            <td style="padding:8px 12px;"><span style="display:inline-block;width:12px;height:12px;background:#00AEBA;border-radius:2px;vertical-align:middle;margin-right:4px;"></span>#00AEBA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </section>
 
 </div>
@@ -3711,6 +4547,44 @@ document.querySelectorAll('.tab-list').forEach(function(tabList) {
       '<td><div style="display:flex;align-items:center;gap:6px;"><span style="width:14px;height:14px;border-radius:3px;background:' + t.dark + ';border:1px solid #0f172a;display:inline-block;"></span>' + t.dark + '</div></td>' +
       '<td style="color:var(--text-secondary);">' + t.note + '</td>';
     body.appendChild(tr);
+  });
+})();
+
+/* ─── Section Nav Scroll Spy ─── */
+(function() {
+  const nav = document.getElementById('sectionNav');
+  if (!nav) return;
+  const links = nav.querySelectorAll('a[href^="#"]');
+  const sections = [];
+  links.forEach(function(link) {
+    const id = link.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  function onScroll() {
+    const scrollY = window.scrollY + 80;
+    let current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop <= scrollY) current = sections[i];
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Smooth scroll on click
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = this.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 56, behavior: 'smooth' });
+      }
+    });
   });
 })();
 </script>

@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSS | Hospital for Special Surgery — World-Class Orthopedic Care</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sofia+Sans+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       HSS Marketing Landing Page
+       Brand: HSS Brand Identity Guidelines (January 2026)
+       Colors: Digital palette — HSS ADA Blue #0074BC primary
+       Typography: Inter (primary), Sofia Sans Condensed (legal)
+       ADA: WCAG 2.1 AA compliant text/background combos
+       ========================================================= */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Primary Colors (Digital) */
+      --hss-blue: #0074BC;
+      --hss-cool-neutral: #F0F5F7;
+      --white: #FFFFFF;
+
+      /* Secondary Colors */
+      --hss-cyan: #00ADE6;
+      --hss-dark-blue: #264583;
+      --black: #000000;
+
+      /* Tertiary Colors */
+      --hss-gold: #D4B640;
+      --hss-dark-gray: #5F849C;
+      --hss-green: #68A42D;
+      --hss-teal: #00A4AF;
+      --hss-light-gray: #A2BACA;
+
+      /* Digital-Only */
+      --hss-footer-gray: #30333E;
+      --hss-warm-neutral: #F5F5F5;
+      --hss-blue-graphics: #0077C8;
+
+      /* Spacing */
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 40px;
+      --space-xl: 64px;
+      --space-2xl: 96px;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ---- Header ---- */
+    .site-header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Utility bar (top tier) */
+    .utility-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 8px 24px;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .utility-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .utility-links a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .utility-links a:hover {
+      color: var(--hss-blue);
+    }
+
+    .utility-links .separator {
+      color: #ccc;
+      font-weight: 300;
+    }
+
+    .utility-signin {
+      margin-left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .utility-signin:hover {
+      color: var(--hss-blue);
+    }
+
+    .utility-signin .signin-icon {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #999;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .utility-signin .signin-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Main nav bar (bottom tier) */
+    .main-nav-bar {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #ddd;
+      position: relative;
+      overflow: visible;
+    }
+
+    .main-nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      overflow: visible;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+      align-self: stretch;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      padding: 12px;
+      background: var(--hss-blue);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 19px;
+      letter-spacing: 1.5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .header-search:hover {
+      color: var(--hss-blue);
+    }
+
+    .header-search svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .header-nav a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-nav a:hover {
+      color: var(--hss-blue);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .header-phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .header-phone:hover {
+      color: var(--hss-blue);
+    }
+
+    .header-phone svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .header-cta {
+      background: var(--hss-blue);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover {
+      background: #005A91;
+      color: var(--white);
+    }
+
+    /* Mobile hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: #333;
+      stroke-width: 2;
+    }
+
+    /* ---- Hero Section ---- */
+    .hero {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-2xl) 0;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+      /* Brand: headlines in HSS Blue, bold Inter */
+    }
+
+    .hero-content .subhead {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--hss-dark-blue);
+      line-height: 1.5;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-content .body-text {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--hss-blue);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--hss-dark-blue);
+    }
+
+    .hero-image {
+      border-radius: 8px;
+      overflow: hidden;
+      /* Placeholder for aspirational photography — "People on the Move" */
+      background: linear-gradient(135deg, var(--hss-blue) 0%, var(--hss-dark-blue) 100%);
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-image span {
+      opacity: 0.8;
+    }
+
+    /* ---- #1 Statement ---- */
+    .ranking-banner {
+      background: var(--hss-blue);
+      padding: var(--space-lg) 0;
+      text-align: center;
+    }
+
+    .ranking-banner h2 {
+      /* #1 statement: always HSS Blue or white, always ALL CAPS */
+      color: var(--white);
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .ranking-banner .ranking-sub {
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: var(--space-xs);
+      opacity: 0.9;
+    }
+
+    /* ---- Services Section ---- */
+    .services {
+      padding: var(--space-2xl) 0;
+      background: var(--white);
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-heading h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-heading p {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--hss-dark-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .service-card {
+      background: var(--hss-cool-neutral);
+      border-radius: 8px;
+      padding: var(--space-lg);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 116, 188, 0.12);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto var(--space-sm);
+      /* Two-color icons in HSS Blue and HSS Dark Blue */
+      background: var(--hss-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: var(--white);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-xs);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ---- Stats Section ---- */
+    .stats {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-2xl) 0;
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-md);
+      text-align: center;
+    }
+
+    .stat-item .stat-number {
+      /* Bold typography + large numbers = distinctive design element */
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-item .stat-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--hss-dark-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ---- Testimonial / Quote Section ---- */
+    .testimonial {
+      padding: var(--space-2xl) 0;
+      background: var(--white);
+    }
+
+    .testimonial-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    /* Large quotation marks: distinctive design element */
+    .quote-mark {
+      font-size: 96px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      line-height: 0.5;
+      margin-bottom: var(--space-sm);
+    }
+
+    .testimonial blockquote {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--hss-blue);
+      line-height: 1.5;
+      margin-bottom: var(--space-md);
+      font-style: normal;
+    }
+
+    .testimonial cite {
+      font-style: normal;
+      display: block;
+    }
+
+    .testimonial cite .name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--hss-blue);
+    }
+
+    .testimonial cite .title {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--hss-dark-gray);
+    }
+
+    /* ---- Locations Section ---- */
+    .locations {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-2xl) 0;
+    }
+
+    .locations-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .location-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: var(--space-lg);
+      border: 1px solid #E2E8F0;
+    }
+
+    .location-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-xs);
+    }
+
+    /* Business descriptor style: HSS in Inter Black + location in Inter Medium */
+    .location-card .descriptor {
+      font-size: 14px;
+      color: var(--hss-blue);
+      margin-bottom: var(--space-sm);
+    }
+
+    .location-card .descriptor strong {
+      font-weight: 900;
+    }
+
+    .location-card p {
+      font-size: 14px;
+      color: var(--hss-dark-gray);
+      line-height: 1.6;
+    }
+
+    .location-card .location-link {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--hss-blue);
+      text-decoration: none;
+    }
+
+    .location-card .location-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- CTA Banner ---- */
+    .cta-banner {
+      background: var(--hss-blue);
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+
+    .cta-banner-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .cta-banner h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .cta-banner p {
+      font-size: 16px;
+      color: var(--white);
+      opacity: 0.9;
+      margin-bottom: var(--space-lg);
+    }
+
+    .cta-banner .cta-btn-light {
+      display: inline-block;
+      background: var(--white);
+      color: var(--hss-blue);
+      padding: 14px 40px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta-banner .cta-btn-light:hover {
+      background: var(--hss-cool-neutral);
+    }
+
+    /* ---- Advertising & Collateral Section ---- */
+    .advertising-section {
+      background: var(--white);
+      padding: var(--space-2xl) 0;
+    }
+
+    .advertising-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .advertising-section .section-heading {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .advertising-section .section-heading h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-xs);
+    }
+
+    .advertising-section .section-heading p {
+      font-size: 18px;
+      color: var(--hss-dark-gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .advertising-intro {
+      max-width: 800px;
+      margin: 0 auto var(--space-xl);
+      text-align: center;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .collateral-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    .collateral-card {
+      background: var(--hss-cool-neutral);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .collateral-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .collateral-card-preview {
+      aspect-ratio: 4/3;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      border-bottom: 1px solid #e4e8ec;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .collateral-card-preview .preview-mock {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Flyer mock */
+    .mock-flyer {
+      width: 70%;
+      height: 90%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mock-flyer .mock-logo {
+      width: 28px;
+      height: 28px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .mock-flyer .mock-headline {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--hss-blue);
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .mock-flyer .mock-photo {
+      flex: 1;
+      background: linear-gradient(135deg, #b3d9f2 0%, #e0eef8 100%);
+      border-radius: 2px;
+      margin-bottom: 6px;
+    }
+
+    .mock-flyer .mock-body-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .mock-flyer .mock-line {
+      height: 3px;
+      background: #ddd;
+      border-radius: 1px;
+    }
+
+    .mock-flyer .mock-line:nth-child(2) { width: 85%; }
+    .mock-flyer .mock-line:nth-child(3) { width: 60%; }
+
+    /* Brochure mock */
+    .mock-brochure {
+      width: 85%;
+      height: 85%;
+      display: flex;
+      gap: 2px;
+    }
+
+    .mock-brochure .mock-panel {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .mock-brochure .mock-panel .mock-logo {
+      width: 22px;
+      height: 22px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 6px;
+      font-weight: 900;
+    }
+
+    .mock-brochure .mock-panel .mock-title {
+      font-size: 7px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .mock-brochure .mock-panel .mock-img {
+      flex: 1;
+      background: linear-gradient(135deg, #b3d9f2 0%, #cee5f5 100%);
+      border-radius: 2px;
+    }
+
+    /* Postcard mock */
+    .mock-postcard {
+      width: 80%;
+      height: 65%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      display: flex;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .mock-postcard .mock-left {
+      flex: 1;
+      background: linear-gradient(135deg, #b3d9f2 0%, #cee5f5 100%);
+    }
+
+    .mock-postcard .mock-right {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mock-postcard .mock-right .mock-logo {
+      width: 22px;
+      height: 22px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 6px;
+      font-weight: 900;
+    }
+
+    .mock-postcard .mock-right .mock-text {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      line-height: 1.3;
+    }
+
+    /* Business card mock */
+    .mock-bizcard {
+      width: 75%;
+      height: 50%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mock-bizcard .mock-logo {
+      width: 32px;
+      height: 32px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .mock-bizcard .mock-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .mock-bizcard .mock-name {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--hss-blue);
+    }
+
+    .mock-bizcard .mock-detail {
+      height: 3px;
+      background: #ccc;
+      border-radius: 1px;
+      width: 80px;
+    }
+
+    .mock-bizcard .mock-detail:last-child {
+      width: 60px;
+    }
+
+    /* Stationery mock */
+    .mock-stationery {
+      width: 60%;
+      height: 85%;
+      position: relative;
+    }
+
+    .mock-stationery .mock-letterhead {
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mock-stationery .mock-letterhead .mock-logo {
+      width: 26px;
+      height: 26px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 7px;
+      font-weight: 900;
+    }
+
+    .mock-stationery .mock-letterhead .mock-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .mock-stationery .mock-letterhead .mock-line {
+      height: 3px;
+      background: #e8e8e8;
+      border-radius: 1px;
+    }
+
+    .mock-stationery .mock-letterhead .mock-line:nth-child(2) { width: 90%; }
+    .mock-stationery .mock-letterhead .mock-line:nth-child(3) { width: 75%; }
+    .mock-stationery .mock-letterhead .mock-line:nth-child(4) { width: 85%; }
+    .mock-stationery .mock-letterhead .mock-line:nth-child(5) { width: 40%; }
+
+    .mock-stationery .mock-envelope {
+      position: absolute;
+      bottom: -4px;
+      right: -20px;
+      width: 65%;
+      height: 35%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      padding: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .mock-stationery .mock-envelope .mock-logo {
+      width: 18px;
+      height: 18px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5px;
+      font-weight: 900;
+    }
+
+    /* Presentation mock */
+    .mock-presentation {
+      width: 85%;
+      height: 70%;
+      background: var(--white);
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mock-presentation .mock-slide-header {
+      height: 30%;
+      background: linear-gradient(135deg, #b3d9f2 0%, #cee5f5 100%);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+    }
+
+    .mock-presentation .mock-slide-header .mock-logo {
+      width: 20px;
+      height: 20px;
+      background: var(--hss-blue);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5px;
+      font-weight: 900;
+    }
+
+    .mock-presentation .mock-slide-header .mock-slide-title {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+    }
+
+    .mock-presentation .mock-slide-body {
+      flex: 1;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mock-presentation .mock-slide-body .mock-line {
+      height: 3px;
+      background: #e8e8e8;
+      border-radius: 1px;
+    }
+
+    .mock-presentation .mock-slide-body .mock-line:nth-child(2) { width: 80%; }
+    .mock-presentation .mock-slide-body .mock-line:nth-child(3) { width: 65%; }
+
+    .collateral-card-body {
+      padding: 20px;
+    }
+
+    .collateral-card-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .collateral-card-body p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .collateral-card-body .collateral-note {
+      display: block;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--hss-dark-gray);
+      font-style: italic;
+    }
+
+    /* Design Principles row */
+    .design-principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid #e4e8ec;
+    }
+
+    .design-principle {
+      text-align: center;
+      padding: 20px 12px;
+    }
+
+    .design-principle-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto var(--space-sm);
+      background: var(--hss-cool-neutral);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .design-principle-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--hss-blue);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .design-principle h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 6px;
+    }
+
+    .design-principle p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .collateral-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .design-principles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ---- Appointment Banner (above footer) ---- */
+    .appointment-banner {
+      background: #1B2838;
+      padding: var(--space-lg) 0;
+      text-align: center;
+    }
+
+    .appointment-banner h2 {
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---- Footer ---- */
+    .site-footer {
+      background: var(--hss-footer-gray);
+      padding: var(--space-xl) 0 0;
+      border-top: none;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-brand .footer-logo {
+      width: 64px;
+      height: 64px;
+      background: var(--hss-blue);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-connect-label {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.2s;
+    }
+
+    .footer-social-icons a:hover {
+      color: var(--white);
+    }
+
+    .footer-social-icons svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .footer-brand-links {
+      list-style: none;
+    }
+
+    .footer-brand-links li {
+      margin-bottom: 14px;
+    }
+
+    .footer-brand-links a {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-brand-links a:hover {
+      color: var(--white);
+    }
+
+    .footer-col h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: var(--space-md) 0 var(--space-lg);
+      margin-top: var(--space-md);
+    }
+
+    .footer-legal {
+      font-family: 'Sofia Sans Condensed', Arial, sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .footer-legal p {
+      margin-bottom: 4px;
+    }
+
+    /* Back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .back-to-top:hover {
+      background: #005A91;
+    }
+
+    .back-to-top svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    /* ---- Responsive ---- */
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .header-nav {
+        gap: 20px;
+      }
+
+      .header-nav a {
+        font-size: 14px;
+      }
+
+      .utility-links a {
+        padding: 0 6px;
+        font-size: 12px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      /* Header mobile */
+      .utility-bar {
+        padding: 6px 16px;
+        font-size: 12px;
+      }
+
+      .utility-links a {
+        padding: 0 6px;
+        font-size: 11px;
+      }
+
+      .utility-signin {
+        font-size: 13px;
+        margin-left: 12px;
+      }
+
+      .main-nav-inner {
+        padding: 0 16px;
+        height: 52px;
+      }
+
+      .logo-mark {
+        width: 46px;
+        height: 50px;
+        font-size: 15px;
+      }
+
+      .header-search {
+        display: none;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .header-phone {
+        display: none;
+      }
+
+      .header-cta {
+        padding: 8px 14px;
+        font-size: 12px;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      /* Hero mobile */
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      /* Services mobile */
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Stats mobile */
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
+      }
+
+      .stat-item .stat-number {
+        font-size: 40px;
+      }
+
+      /* Locations mobile */
+      .locations-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Appointment banner mobile */
+      .appointment-banner h2 {
+        font-size: 22px;
+      }
+
+      /* Footer mobile */
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+
+      .footer-bottom {
+        text-align: center;
+      }
+
+      .ranking-banner h2 {
+        font-size: 24px;
+      }
+
+      .back-to-top {
+        bottom: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* ---- Focus States (WCAG 2.1 AA) ---- */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--hss-blue);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       HEADER — Two-tier: utility bar + main nav
+       Matches HSS.edu header pattern
+       Logo: HSS monogram in HSS Blue, min 36px, not clipped
+       ================================================================ -->
+  <header class="site-header">
+    <!-- Utility bar (top tier) -->
+    <div class="utility-bar">
+      <div class="utility-links">
+        <a href="#">Giving</a>
+        <span class="separator">|</span>
+        <a href="#">Careers</a>
+        <span class="separator">|</span>
+        <a href="#">Why Choose HSS</a>
+      </div>
+      <a href="#" class="utility-signin">
+        MyHSS Sign In
+        <span class="signin-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Main nav bar (bottom tier) -->
+    <div class="main-nav-bar">
+      <div class="main-nav-inner">
+        <a href="#" class="logo" aria-label="HSS - Hospital for Special Surgery">
+          <div class="logo-mark">HSS</div>
+        </a>
+
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="#">Find a Doctor</a>
+          <a href="#">Locations</a>
+          <a href="#">Patient Care</a>
+          <a href="#">Health Library</a>
+          <a href="#">Research &amp; Education</a>
+          <button class="header-search" aria-label="Search">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </nav>
+
+        <div class="header-right">
+          <a href="tel:12126061000" class="header-phone">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            1.212.606.1000
+          </a>
+          <a href="#" class="header-cta">Make an Appointment</a>
+        </div>
+
+        <button class="mobile-menu-btn" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       HERO
+       Background: HSS Cool Neutral (#F0F5F7) — preferred
+       Headline: Inter Bold, HSS Blue
+       Photography: aspirational, People on the Move
+       ================================================================ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>Get Back to What You Love</h1>
+        <p class="subhead">World-class orthopedic care, personalized for you.</p>
+        <p class="body-text">
+          At HSS, we combine advanced medical expertise with a compassionate, patient-first approach.
+          From diagnosis to recovery, our specialists are with you every step of the way, helping you
+          move better and live better.
+        </p>
+        <a href="#" class="hero-cta">
+          Schedule a Consultation
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="hero-image">
+        <span>Photography: People on the Move<br>Aspirational lifestyle imagery<br><em>images/photography/people-on-the-move/</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       #1 RANKING BANNER
+       #1 statement: always HSS Blue or white, always ALL CAPS
+       ================================================================ -->
+  <section class="ranking-banner">
+    <div>
+      <h2>#1 IN ORTHOPEDICS</h2>
+      <p class="ranking-sub">Nationally ranked by U.S. News &amp; World Report</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SERVICES
+       Card backgrounds: Cool Neutral
+       Icons: Two-color (HSS Blue + Dark Blue)
+       ================================================================ -->
+  <section class="services">
+    <div class="services-inner">
+      <div class="section-heading">
+        <h2>Our Areas of Expertise</h2>
+        <p>Comprehensive musculoskeletal care from the world's leading specialists.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4v2a4 4 0 01-8 0V6a4 4 0 014-4zM6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+          </div>
+          <h3>Joint Replacement</h3>
+          <p>Advanced hip, knee, and shoulder replacement with innovative surgical techniques and faster recovery times.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 4a3 3 0 00-3 3v4a3 3 0 006 0V7a3 3 0 00-3-3zM6 4a3 3 0 00-3 3v4a3 3 0 006 0V7a3 3 0 00-3-3zM12 18v4M8 22h8"/></svg>
+          </div>
+          <h3>Sports Medicine</h3>
+          <p>Helping athletes of all levels return to peak performance with personalized treatment plans and rehabilitation.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <h3>Spine</h3>
+          <p>Comprehensive spinal care from minimally invasive procedures to complex reconstructive surgery.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Rheumatology</h3>
+          <p>Expert diagnosis and treatment of autoimmune and inflammatory conditions affecting joints and connective tissues.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697A3.42 3.42 0 001.946 9.12 3.42 3.42 0 004.6 15.29l7.4 5.71 7.4-5.71a3.42 3.42 0 002.654-6.17 3.42 3.42 0 00-5.89-4.42L12 8.93l-4.165-4.233z"/></svg>
+          </div>
+          <h3>Rehabilitation</h3>
+          <p>Physical therapy and rehabilitation programs designed to restore function and improve quality of life.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l4 2"/></svg>
+          </div>
+          <h3>Imaging &amp; Diagnostics</h3>
+          <p>State-of-the-art imaging technology for precise diagnosis, including MRI, CT, and musculoskeletal ultrasound.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       STATS
+       Large numbers: bold typography, distinctive design
+       ================================================================ -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Patient Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">900+</div>
+          <div class="stat-label">Physicians &amp; Scientists</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">35K+</div>
+          <div class="stat-label">Surgeries Annually</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       TESTIMONIAL
+       Large quotation marks: distinctive design element
+       Quote text: Inter Medium, HSS Blue
+       ================================================================ -->
+  <section class="testimonial">
+    <div class="testimonial-inner">
+      <div class="quote-mark">&ldquo;</div>
+      <blockquote>
+        Thanks to the incredible team at HSS, I was able to get back to running within
+        months of my surgery. They gave me my life back.
+      </blockquote>
+      <cite>
+        <span class="name">Sarah M.</span><br>
+        <span class="title">Marathon runner, New York</span>
+      </cite>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LOCATIONS
+       Descriptor style: HSS (Inter Black) + location (Inter Medium)
+       All in HSS Blue
+       ================================================================ -->
+  <section class="locations">
+    <div class="locations-inner">
+      <div class="section-heading">
+        <h2>Locations Near You</h2>
+        <p>Convenient access to world-class care across the Tri-State area and beyond.</p>
+      </div>
+      <div class="locations-grid">
+        <div class="location-card">
+          <div class="descriptor"><strong>HSS</strong> | Hospital for Special Surgery</div>
+          <h3>Main Campus</h3>
+          <p>535 East 70th Street<br>New York, NY 10021</p>
+          <a href="#" class="location-link">Get Directions &rarr;</a>
+        </div>
+        <div class="location-card">
+          <div class="descriptor"><strong>HSS</strong> Westchester</div>
+          <h3>Westchester</h3>
+          <p>1133 Westchester Avenue<br>White Plains, NY 10605</p>
+          <a href="#" class="location-link">Get Directions &rarr;</a>
+        </div>
+        <div class="location-card">
+          <div class="descriptor"><strong>HSS</strong> Paramus</div>
+          <h3>Paramus</h3>
+          <p>Midland Avenue<br>Paramus, NJ 07652</p>
+          <a href="#" class="location-link">Get Directions &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CTA BANNER
+       Reverse lockup: white on HSS Blue background
+       ================================================================ -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <h2>Ready to Move Better?</h2>
+      <p>Our team is here to help you find the right specialist and start your journey to recovery.</p>
+      <a href="#" class="cta-btn-light">Schedule an Appointment</a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ADVERTISING & COLLATERAL
+       Brand collateral templates — not for digital product guidelines.
+       Sourced from HSS Brand Identity Guidelines (Jan 2026), pp. 21, 41–50
+       ================================================================ -->
+  <section class="advertising-section" id="advertising">
+    <div class="advertising-inner">
+      <div class="section-heading">
+        <h2>Advertising &amp; Collateral</h2>
+        <p>Brand templates and collateral for print, advertising, and marketing communications.</p>
+      </div>
+
+      <p class="advertising-intro">
+        Our design elements come together to produce a unique look and feel for HSS communications.
+        Templates are available in the HSS Brand Center on the intranet. All collateral should utilize brand elements
+        with a color focus on HSS Blue. Headlines for advertising are always ALL CAPS.
+      </p>
+
+      <div class="collateral-grid">
+        <!-- Flyers -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-flyer">
+              <div class="mock-logo">HSS</div>
+              <div class="mock-headline">#1 in Orthopedics<br>in Westchester</div>
+              <div class="mock-photo"></div>
+              <div class="mock-body-lines">
+                <div class="mock-line" style="width:100%"></div>
+                <div class="mock-line"></div>
+                <div class="mock-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Flyers</h3>
+            <p>Used for many purposes — events, services, announcements. All utilize brand elements with a color focus on HSS Blue.</p>
+            <span class="collateral-note">HSS logo prominent, bold Inter headlines, relatable photography.</span>
+          </div>
+        </div>
+
+        <!-- Pocket Brochures -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-brochure">
+              <div class="mock-panel">
+                <div class="mock-logo">HSS</div>
+                <div class="mock-title">#1 in Orthopedics</div>
+                <div class="mock-img"></div>
+              </div>
+              <div class="mock-panel">
+                <div class="mock-title" style="color: var(--hss-dark-blue)">Center of Excellence</div>
+                <div class="mock-img"></div>
+              </div>
+              <div class="mock-panel">
+                <div class="mock-img" style="margin-bottom:4px"></div>
+                <div class="mock-title" style="color: #555; font-size:6px">Patient information and resources</div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Pocket Brochures</h3>
+            <p>Available in 1, 2, or 3 panel formats. Standard brand typography with relatable imagery.</p>
+            <span class="collateral-note">Can feature service lines, departments, or programs.</span>
+          </div>
+        </div>
+
+        <!-- Postcards -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-postcard">
+              <div class="mock-left"></div>
+              <div class="mock-right">
+                <div class="mock-logo">HSS</div>
+                <div class="mock-text">New Benefit<br>To help you<br>move better.</div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Postcards</h3>
+            <p>Can be mailed or used as handouts. Feature bold messaging with brand photography.</p>
+            <span class="collateral-note">Relocations, new benefits, internal programs.</span>
+          </div>
+        </div>
+
+        <!-- Business Cards -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-bizcard">
+              <div class="mock-logo">HSS</div>
+              <div class="mock-info">
+                <div class="mock-name">FIRST LAST NAME, MD</div>
+                <div class="mock-detail"></div>
+                <div class="mock-detail"></div>
+                <div class="mock-detail" style="width:50px; margin-top:4px; background:var(--hss-blue); height:2px;"></div>
+                <div class="mock-detail" style="width:70px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Business Cards</h3>
+            <p>Follow a specific layout depending on the amount of required information. Standard, 3-line, 5-line, and QR code variants.</p>
+            <span class="collateral-note">Order through Linear / GHX e-requisitions. Never recreate layouts.</span>
+          </div>
+        </div>
+
+        <!-- Stationery -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-stationery">
+              <div class="mock-letterhead">
+                <div class="mock-logo">HSS</div>
+                <div class="mock-lines">
+                  <div class="mock-line" style="width:100%"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-line"></div>
+                </div>
+              </div>
+              <div class="mock-envelope">
+                <div class="mock-logo">HSS</div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Stationery</h3>
+            <p>Letterhead and envelopes follow a specific layout and should not be altered.</p>
+            <span class="collateral-note">Order through Linear / GHX e-requisitions on the intranet.</span>
+          </div>
+        </div>
+
+        <!-- Presentations -->
+        <div class="collateral-card">
+          <div class="collateral-card-preview">
+            <div class="mock-presentation">
+              <div class="mock-slide-header">
+                <div class="mock-logo">HSS</div>
+                <div class="mock-slide-title">Title of the Presentation</div>
+              </div>
+              <div class="mock-slide-body">
+                <div class="mock-line" style="width:100%"></div>
+                <div class="mock-line"></div>
+                <div class="mock-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="collateral-card-body">
+            <h3>Presentations</h3>
+            <p>PowerPoint templates available in wide screen and letter size. Cover, content, picture, and infographic layouts.</p>
+            <span class="collateral-note">Find templates via Templafy or the HSS Brand Center.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Principles -->
+      <div class="design-principles">
+        <div class="design-principle">
+          <div class="design-principle-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+          </div>
+          <h4>Confident Logo</h4>
+          <p>HSS logo always presented prominently. Never distort, recolor, or add elements.</p>
+        </div>
+        <div class="design-principle">
+          <div class="design-principle-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+          </div>
+          <h4>Bold Typography</h4>
+          <p>Inter Bold headlines in HSS Blue. ALL CAPS for advertising. Large numbers for impact.</p>
+        </div>
+        <div class="design-principle">
+          <div class="design-principle-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <h4>Relatable Photography</h4>
+          <p>Aspirational, authentic imagery. People on the move, families, HSS professionals in action.</p>
+        </div>
+        <div class="design-principle">
+          <div class="design-principle-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h4>Brand Consistency</h4>
+          <p>HSS Blue color focus. Market designation (NY | NJ | CT | FL) required on all advertising.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       APPOINTMENT BANNER — above footer
+       Dark background, centered white text
+       ================================================================ -->
+  <section class="appointment-banner">
+    <h2>Make an Appointment at HSS</h2>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       Background: Light gray (#f7f7f7) matching HSS.edu
+       Logo + social icons + Connect With Us + 3 link columns
+       Legal: Sofia Sans Condensed
+       ================================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Left column: logo, social, links -->
+        <div class="footer-brand">
+          <div class="footer-logo">HSS</div>
+          <p class="footer-connect-label">Connect With Us</p>
+          <div class="footer-social-icons">
+            <!-- Facebook -->
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z"/></svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="#" aria-label="X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.507a2.786 2.786 0 00-.766-1.27 3.05 3.05 0 00-1.338-.742C19.518 4 12 4 12 4s-7.518 0-9.396.495a3.05 3.05 0 00-1.338.742 2.786 2.786 0 00-.766 1.27C0 8.368 0 12.25 0 12.25s0 3.882.5 5.743a2.786 2.786 0 00.766 1.27 3.05 3.05 0 001.338.742C4.482 20.5 12 20.5 12 20.5s7.518 0 9.396-.495a3.05 3.05 0 001.338-.742 2.786 2.786 0 00.766-1.27c.5-1.861.5-5.743.5-5.743s0-3.882-.5-5.743zM9.75 15.77V8.73L15.5 12.25 9.75 15.77z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+          <ul class="footer-brand-links">
+            <li><a href="#">Share Your Story</a></li>
+            <li><a href="#">Read Articles from Move Better Feel Better</a></li>
+            <li><a href="#">Subscribe to our eNewsletters</a></li>
+            <li><a href="#">Make a Donation</a></li>
+          </ul>
+        </div>
+
+        <!-- Learn More column -->
+        <div class="footer-col">
+          <h4>Learn More</h4>
+          <ul>
+            <li><a href="#">About HSS</a></li>
+            <li><a href="#">Newsroom</a></li>
+            <li><a href="#">Community Benefit</a></li>
+            <li><a href="#">HSS Store</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Information For column -->
+        <div class="footer-col">
+          <h4>Information For</h4>
+          <ul>
+            <li><a href="#">Patients and Visitors</a></li>
+            <li><a href="#">Medical Professionals</a></li>
+            <li><a href="#">Job Seekers</a></li>
+            <li><a href="#">Employers</a></li>
+            <li><a href="#">Vendors</a></li>
+            <li><a href="#">HSS Staff</a></li>
+          </ul>
+        </div>
+
+        <!-- Policies column -->
+        <div class="footer-col">
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="#">HSS Patient Policies and Guidelines</a></li>
+            <li><a href="#">Website Terms of Use</a></li>
+            <li><a href="#">Website/App Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer bottom: legal text -->
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <p>&copy; 2026 Hospital for Special Surgery. 535 East 70th Street, New York, NY 10021</p>
+          <p>Hospital for Special Surgery, HSS and the HSS logo are trademarks or registered trademarks of Hospital for Special Surgery in the United States and other countries.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
+
+</body>
+</html>

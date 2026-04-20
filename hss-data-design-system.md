@@ -1,47 +1,10 @@
+---
+name: hss-design-system
+description: "Use when building any frontend UI, web components, pages, dashboards, or applications for HSS Data — enforces HSS brand tokens, typography, components, and design patterns. Triggers on: 'build UI', 'create component', 'add page', 'frontend', 'dashboard layout', 'design', 'style', 'CSS', 'React component', 'data visualization'."
+---
 # HSS Data Design System — Claude Reference
 
 Use this file as the authoritative design system reference when building UI for any HSS Data application. All tokens, components, patterns, and guidelines below are sourced from the HSS Data Design Library (Figma) and the styleguide.html.
-
----
-
-## Table of Contents
-
-### Part 1 — Application Design System
-- [Fonts](#fonts)
-- [Typography Scale](#typography-scale)
-- [Primitive Colors](#primitive-colors)
-- [Semantic Tokens (Light / Dark)](#semantic-tokens-light--dark)
-- [Spacing Scale](#spacing-scale)
-- [Border Radius](#border-radius)
-- [Components](#components)
-- [Navigation Patterns](#navigation-patterns)
-- [Dashboard Layout Anatomy](#dashboard-layout-anatomy)
-- [Iconography](#iconography)
-- [Urgency Color System](#urgency-color-system)
-- [Accessibility Requirements](#accessibility-requirements-wcag-21-aa)
-- [Dark Mode Rules](#dark-mode-rules)
-- [Data Visualization Guidelines](#data-visualization-guidelines)
-- [Figma Source Files](#figma-source-files)
-- [Token Naming Convention](#token-naming-convention)
-
-### Part 2 — Marketing Brand System
-- [HSS Marketing Brand Subsystem](#hss-marketing-brand-subsystem) (scope, brand foundation, tone of voice)
-- [Logo Rules](#logo-rules-quick-reference)
-- [HSS Organization](#hss-organization)
-- [Marketing Color Palette](#marketing-color-palette)
-- [Marketing Typography](#marketing-typography)
-- [Typographic Style Rules](#typographic-style-rules)
-- [Business Descriptors](#business-descriptors)
-- [Departments & Services](#departments--services)
-- [Locations](#locations)
-- [Special Programs](#special-programs)
-- [Co-Branding](#co-branding-quick-reference)
-- [Photography](#photography)
-- [Advertising](#advertising)
-- [Collateral Patterns](#collateral-patterns)
-- [Physician Website Rules](#physician-website-rules)
-- [ERG Logos](#erg-logos)
-- [Marketing Color → Data Token Mapping](#marketing-color--data-token-mapping)
 
 ---
 
@@ -197,10 +160,7 @@ Use this file as the authoritative design system reference when building UI for 
 | `--action-secondary-border` | #0074BC | #FFFFFF | Secondary button border |
 | `--action-ghost` | #FFFFFF | #0F172A | Ghost button bg |
 | `--action-ghost-hover` | #EFF6FF | #1E293B | Ghost hover |
-| `--tab-active` | #0D172C | #FFFFFF | Active tab background |
-| `--tab-active-text` | #FFFFFF | #0D172C | Active tab text |
 | `--action-accent` | #0074BC | #0074BC | Links, inline actions |
-| `--action-accent-hover` | #005A91 | #005A91 | Link/action hover |
 | `--action-disabled` | #E2E8F0 | #475569 | Disabled state |
 | `--action-destructive` | #DC2626 | #EF4444 | Destructive actions |
 
@@ -215,13 +175,7 @@ Use this file as the authoritative design system reference when building UI for 
 | `--warning-text` | #D97706 | #FEF3C7 | Warning text |
 | `--info-bg` | #EFF6FF | #15304B | Info banner bg |
 | `--info-text` | #2563EB | #A8C8E8 | Info text |
-| `--info-border` | #BFDBFE | #0074BC | Info banner border |
-
-### Branding
-| Token | Light | Dark | Usage |
-|-------|-------|------|-------|
-| `--powered-by-bg` | #F8FAFC | #0F172A | Powered-by section bg |
-| `--powered-by-text` | #64748B | #94A3B8 | Powered-by label text |
+| `--info-border` | #BFDBFE | #0074BC | Info border |
 
 ### Header & Footer
 | Token | Light | Dark | Usage |
@@ -368,6 +322,13 @@ Reference images: `images/navigation/desktop-light/`, `images/navigation/desktop
 - Height: 56px, padding: 0 24px
 - Background: `--footer-bg` (light: #FFFFFF, dark: #0F172A), border-top: 1px `--footer-border` (light: #E2E8F0, dark: #1E293B)
 - Left: Pulse Grid icon 28x28 (`--footer-icon-fill`) + "POWERED BY" (13.5px, medium, `--footer-powered-by`) + "HSS Data" (20px, bold, `--footer-brand-text`), gap 10px
+
+#### Pulse Grid Icon (SVG Spec)
+The Pulse Grid is the "Powered by HSS Data" brand mark — a 3x3 node grid with cross beams:
+- **ViewBox:** 0 0 28 28
+- **Structure:** Vertical beam (rect x=12 y=7 w=4 h=14 rx=2), horizontal beam (rect x=7 y=12 w=14 h=4 rx=2), 4 corner nodes (circles r=2 at 7,7 / 21,7 / 7,21 / 21,21), 4 edge nodes (circles r=2 at 14,7 / 7,14 / 21,14 / 14,21), 1 center node (circle r=3.5 at 14,14)
+- **Fill:** Uses `.pg-fill { fill: var(--footer-icon-fill); }` for theme-aware coloring
+- **Sizes:** 28x28 desktop, 22x22 mobile
 - Center: "© 2026 HSS" (12px, `--text-tertiary`)
 - Right: "Support & Feedback" pill button — padding 8px 20px, radius 20px, border 1.5px `--footer-btn-border`, font-weight 600, 14px, color `--footer-btn-text`
 
@@ -502,7 +463,6 @@ Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7
   - Components / Data Viz + Data Viz — Dark Mode
   - Token Export Preview
   - Accessibility guidelines
-  - **Marketing Brand System** — Brand foundation, tone of voice, logo, colors, typography, business descriptors, co-branding, ERGs, collateral patterns, and desktop/mobile HSS homepage mockups
 
 ---
 
@@ -514,306 +474,54 @@ Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7
 - Token flow: Primitive value → Semantic alias → Component usage
 
 ---
----
 
-# Part 2 — HSS Marketing Brand System
+## Implementation Files
 
-> **For marketing collateral, print design, brand communications, and consumer/patient-facing materials.** This section extends the application design system above with marketing-specific guidelines sourced from the HSS Brand Identity Guidelines (January 2026). For the dedicated Claude skill, see `hss-marketing`.
+| File | Description |
+|------|-------------|
+| `hss-dashboard-layout.html` | Reference implementation of the canonical dashboard layout with header, filter bar, KPI cards, charts, data table, and footer. Supports light/dark mode. |
+| `hss-marketing-landing-page.html` | Marketing landing page with two-tier header (utility bar + main nav), hero, services, stats, locations, advertising/collateral section, and dark footer. |
+| `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
+| `claudedesign.md` | Machine-readable design system reference combining both data and marketing systems. |
+| `hss-data-design-system.md` | This file — data design system reference for Claude. |
+| `hss-marketing-brand-system.md` | Marketing brand system reference for Claude. |
+
+### Image Assets
+| Directory | Contents |
+|-----------|----------|
+| `images/icons/` | Two-color HSS icon grid (Blue + Dark Blue) |
+| `images/illustrations/` | Patient-facing illustrations (orthopedic diagrams, anatomy) |
+| `images/navigation/` | Header/footer reference screenshots — desktop-light, desktop-dark, mobile-dark |
+| `images/photography/` | Brand photography — people-on-the-move, families-and-community, hss-in-action, employee-community |
 
 ---
 
 ## HSS Marketing Brand Subsystem
 
-The HSS Marketing Brand Subsystem provides authoritative guidelines for all marketing and brand communications. It extends this design system with marketing-specific rules sourced from the HSS Brand Identity Guidelines (January 2026).
-
-### Scope Division
-
-| Context | System | Reference |
-|---------|--------|-----------|
-| Application UI, dashboards, data-viz | **HSS Data Design System** (this file) | Semantic tokens, components, dark mode |
-| Marketing collateral, print, brand comms | **HSS Marketing Brand System** | Logo, tone of voice, print colors, co-branding |
-| Consumer/patient-facing digital | **Both** — UI tokens from Data System, brand voice from Marketing | Cross-reference both |
-
-### Brand Foundation
-
-- **Purpose:** To help people get back to what they need and love to do better than any other place in the world.
-- **Mission:** Highest quality patient care, improve mobility, advance orthopedic/rheumatology science.
-- **Vision:** Lead the world as the most innovative source of musculoskeletal care.
-- **Brand Essence:** Better possibilities for quality of life through better quality of movement.
-- **Tagline:** "Choose Better. Move Better." — always ALL CAPS, HSS Blue.
-
-### Tone of Voice
-
-| We Are | We Are Not |
-|--------|------------|
-| Knowledgeable | Boastful |
-| Personable | Playful |
-| Direct | Verbose |
-| Approachable | Clinical |
-| Confident | Alarming |
-
-**Guardrails:** Speak with confidence (no boasting), speak in simple terms (no jargon), don't scaremonger (promote positively).
-
-### Logo Rules (Quick Reference)
-
-- **HSS Monogram** always presented in **HSS Blue** (`#0074BC` digital / PMS 3005 print)
-- Represents the entire HSS ecosystem
-- Clear space = **X** on all sides, where X = 1/4 the height of the monogram logo
-- Minimum size: **0.5 inches** (36 pixels) in height — never smaller
-
-#### Background Control
-
-**Preferred Background:**
-| Background | Notes |
-|------------|-------|
-| HSS Cool Neutral (`#F0F5F7`) | **Preferred** — logo in HSS Blue on neutral background |
-
-**Alternative Backgrounds:**
-| Background | Notes |
-|------------|-------|
-| Light photograph | Logo in HSS Blue — background must be light and must not distract from the logo |
-| HSS Blue (`#0074BC`) | Logo in HSS Blue with **white outline** — for use on HSS Blue backgrounds only |
-| White (`#FFFFFF`) | Logo in HSS Blue on white |
-
-The HSS logo should not appear on colors other than those shown above.
-
-#### Logo and Taglines
-
-The following lockups are the only approved configurations. The same Clear Space, Minimum Size, and Background Control rules apply to lockups as to the HSS logo.
-
-**Approved Lockups:**
-| Lockup | Description |
-|--------|-------------|
-| HSS + **HOSPITAL FOR SPECIAL SURGERY** | Full name lockup — used where "HSS" may not be well known |
-| HSS + **#1 IN ORTHOPEDICS** | Ranking lockup — HSS monogram with "#1 IN ORTHOPEDICS" text |
-| HSS + **CHOOSE BETTER MOVE BETTER** | Tagline lockup — HSS monogram with brand tagline |
-| HSS + **Lerner Children's Pavilion** | Pediatric unit lockup — horizontal and vertical versions |
-
-**Tagline:** Standard usage in all caps, HSS Blue. Other variations acceptable with Marketing approval. Artwork available from HSS Brand Center on the intranet.
-
-**Positive vs. Reverse:**
-- **Positive lockups** (HSS Blue on light background) — **preferred**
-- **Reverse lockups** (white on HSS Blue background) — for use on dark backgrounds only
-
-#### Incorrect Logo Use
-- Never use old versions of the logo
-- Never change the color of the logo
-- Never add text or graphic elements to the logo
-- Never distort the logo
-- Never use the outline logo over a photograph
-- Never use in black when color is possible (exception: B&W advertising)
-
-### Marketing Color Palette
-
-#### Primary (Print & Digital)
-| Name | Print (SPOT) | Digital (HTML) |
-|------|-------------|----------------|
-| HSS Blue | PMS 3005 | `#0074BC` (ADA) / `#0081C8` (print) |
-| HSS Cool Neutral | 10% PMS 5435 | `#F0F5F7` |
-| White | — | `#FFFFFF` |
-
-#### Secondary
-| Name | Print (SPOT) | Digital (HTML) |
-|------|-------------|----------------|
-| HSS Cyan | PMS 2995 | `#00ADE6` |
-| HSS Dark Blue | PMS 7687 | `#264583` |
-| Black | Process Black | `#000000` |
-
-#### Tertiary
-| Name | Print (SPOT) | Digital (HTML) |
-|------|-------------|----------------|
-| HSS Gold | PMS 7752 | `#D4B640` |
-| HSS Dark Gray | PMS 5415 | `#5F849C` |
-| HSS Green | PMS 369 | `#68A42D` (ADA) |
-| HSS Teal | PMS 7710 | `#00A4AF` (ADA) |
-| HSS Light Gray | PMS 5435 | `#A2BACA` |
-
-### Marketing Typography
-
-| Role | Font | Notes |
-|------|------|-------|
-| Primary headline | Inter Bold, HSS Blue | ALL CAPS for advertising |
-| Secondary headline | Inter Medium | — |
-| Subhead | Inter Medium or Bold | — |
-| Body copy | Inter Regular | — |
-| Boilerplate | Sofia Sans Condensed Italic | Legal, footnotes |
-| Fallback (MS apps) | Arial | PowerPoint, Word only |
-
-### Typographic Style Rules
-- Headlines: upper/lower case or all caps for branded collateral; always ALL CAPS for advertising
-- All caps can be combined with upper & lower case to separate information
-- **#1 statement** ("#1 IN ORTHOPEDICS"): always HSS Blue or white, always ALL CAPS
-- Prioritize HSS Blue for type, followed by HSS Dark Blue, then Black for variety
-- Bold typography + large numbers create distinctive design elements
-- Large quotation marks create a distinctive design element with quotes
-
-### Digital Typography ADA Compliance
-| Color | Minimum on White | Minimum Reversed |
-|-------|-----------------|------------------|
-| HSS ADA Blue `#0074BC` | 12pt regular | 12pt regular |
-| HSS Dark Blue `#264583` | 12pt regular | 12pt regular |
-| HSS Blue `#0077C8` | 18pt bold | 18pt bold |
-| HSS ADA Green `#68A42D` | 18pt bold | 18pt bold |
-| HSS ADA Teal `#00A4AF` | 18pt bold | 18pt bold |
-| HSS Dark Gray `#5F849C` | 18pt bold | 18pt bold |
-| HSS Gold `#D4B640` | Non-compliant on white | 12pt bold reversed |
-
-**Non-compliant for text:** HSS Cyan, HSS Teal (brand), HSS Cool Neutral, HSS Green (print), HSS Light Gray, HSS Warm Neutral
-
-### HSS Organization
-- B2B Business Areas: HSS Education Institute, HSS Research Institute, HSS Innovation Institute
-- Consumer Facing Patient Care: HSS | Hospital for Special Surgery, HSS Westchester (Locations), HSS Spine (Departments & Services)
-- Logos can only be created with permission from **HSS Marketing**
-
-### Business Descriptors
-- Format: **HSS** (Inter Black) + **Business Area** (Inter Medium)
-- Always in HSS Blue on light backgrounds, white on dark
-- Hospital for Special Surgery uses vertical line: **HSS | Hospital for Special Surgery**
-- Never lock up with HSS logo (signage exception)
-
-### Departments & Services
-- Public-facing departments/services use descriptor lock-up: **HSS** (Inter Black) + service (Inter Medium)
-- On business cards, department is part of Hospital for Special Surgery address
-- On consumer-facing, descriptor is plain text in body + used as sign-off
-- Examples: HSS Spine, HSS Sports Medicine Institute, HSS Adult Reconstruction and Joint Replacement
-
-### Locations
-- Wholly owned: identified by city/location (e.g., "HSS Westchester")
-- Signage: location name can lock up with HSS logo
-- All other materials: HSS monogram as hero, location in text only
-- Examples: HSS Westchester, Northern NJ Surgery Center, HSS Paramus
-
-### Special Programs
-- Donor/honoree programs may have special lockups (e.g., Lerner Children's Pavilion + Penny Doerge Adaptive Academy)
-- HSS Perform: B2B offering direct to employers
-- Internal programs (e.g., Stronger with HSS) can be branded with HSS Marketing permission
-
-### Co-Branding Quick Reference
-| Type | Language | Example |
-|------|----------|---------|
-| Collaboration | "in collaboration with" or "with" | HSS Orthopedics in collaboration with Stamford Health |
-| Collaboration | "in collaboration with" | HSS in collaboration with Lima Corporate |
-| At-location | "at" | HSS at NCH |
-| Knowledge/data | "Powered by HSS" | RightMove, CarePathways |
-
-**Never use "partnership"** — does not meet legal definition (important risk/liability implications). Subject to prior approval by HSS Legal and HSS Brand Management.
-
-### ERG Logos
-- Internal use only (exception: community events/parades)
-- Preferred backgrounds: white, black
-- Never modify colors, rearrange elements, or add graphics
-- ERGs: BEST, HOLA, WISE, HAPI, LGBTQ+ Standing Together
-
-### Photography
-
-#### People on the Move
-Photography is used to represent people enjoying their lives and the freedom of movement that we provide to them. Always use color imagery, in clear focus and crop appropriately to display the subject in a flattering way. Images should always be aspirational.
-
-**Photo examples:**
-| Image | Description |
-|-------|-------------|
-| `images/photography/people-on-the-move/woman-running-arches.png` | Woman running through arches |
-| `images/photography/people-on-the-move/man-moving-city.png` | Man moving joyfully in city |
-| `images/photography/people-on-the-move/girl-kicking-soccer.png` | Girl kicking soccer ball |
-
-#### Families and Community
-Images can include people enjoying their everyday lives. Lives that we've enhanced by helping them be their best selves.
-
-**Photo examples:**
-| Image | Description |
-|-------|-------------|
-| `images/photography/families-and-community/mother-child-surfing.png` | Mother and child surfing |
-| `images/photography/families-and-community/group-tai-chi-park.png` | Group doing tai chi in park |
-| `images/photography/families-and-community/women-walking-city.png` | Two women walking in city |
-
-#### HSS in Action
-Another area of imagery we use shows our professionals in action, doing what they do best. Avoid overly posed images, and focus on capturing a moment in the lives of our dedicated staff. Ensure that all logos that may appear on clothing or equipment are **blurred**.
-
-**Photo examples:**
-| Image | Description |
-|-------|-------------|
-| `images/photography/hss-in-action/surgical-team-procedure.png` | Surgical team performing procedure |
-| `images/photography/hss-in-action/surgeons-vr-headsets.png` | Surgeons using VR headsets in OR |
-| `images/photography/hss-in-action/medical-team-discussion.png` | Medical team in discussion |
-
-#### HSS Employee Community
-Our HSS family represents who we are as an organization unlike anything else. Showing employees enjoying different aspects of their lives is very important.
-
-**Photo examples:**
-| Image | Description |
-|-------|-------------|
-| `images/photography/employee-community/employee-marathon-medal.png` | Employee with NYC Half Marathon medal |
-| `images/photography/employee-community/employees-baseball-game.png` | Employees at baseball game |
-| `images/photography/employee-community/employees-event-booth.png` | Employees at community event booth |
-
-#### Photography Rules
-- Always use licensed or approved imagery
-- Never take images from the internet without confirming licensing
-- Stock photography can be licensed for diverse community representation
-
-### Infographics and Icons
-
-A variety of stock icons and illustrations can be utilized to emphasize meaning and add interest.
-
-Two-color icons in **HSS Blue** and **HSS Dark Blue** are available for use. Other icons can be created as long as the style remains consistent.
-
-Icon subjects include: heart/vitals, user profiles, medical devices, pills/medication, clipboard/records, laptop/digital health, nutrition, megaphone/communications, fitness, ambulance, yoga/wellness, anatomy (knee, shoulder, spine, foot, hand, elbow), and general healthcare themes.
-
-Reference: `images/icons/hss-icon-grid.png`
-
-### Illustration — Patient Facing
-
-Illustration is a good way to communicate with patients in a friendly and supportive way. These examples show illustrations that have been developed specifically for patient videos and brochures.
-
-These illustrations would **not** be appropriate for clinical or educational materials for our professional audiences.
-
-Illustration style: Friendly, supportive line-art in HSS Blue color scheme — depicting medical themes (orthopedic anatomy cycles, patient education diagrams, knee/joint anatomy).
-
-| Image | Description |
-|-------|-------------|
-| `images/illustrations/orthopedic-cycle-diagram.png` | Orthopedic cycle — bone, joint, muscle, and treatment icons |
-| `images/illustrations/patient-knee-anatomy.png` | Patient-facing knee anatomy illustration |
-
-### Advertising
-
-- **Headlines:** Always ALL CAPS, bold, confident messaging
-- **Market designation required** on all advertising — acceptable formats: stacked (NY / NJ / CT / FL) or inline (NY | NJ | CT | FL)
-- Market designation must appear near the HSS logo
-- Backgrounds can be HSS Cool Neutral in color
-- Logo can be locked up with tagline in advertising
-
-### Collateral Patterns
-
-| Type | Key Rules |
-|------|-----------|
-| **Flyers** | HSS Blue color focus. Logo prominent. Bold Inter headlines. Relatable photography. ERG logo lower-left for ERG-related. |
-| **Pocket Brochures** | 1, 2, or 3 panels. Standard HSS brand typography and color. |
-| **Postcards** | Mailed or handouts. Multiple purposes, all using brand elements. |
-| **Business Cards** | Approved templates only — standard, 3-line title, 4-5 line title, QR code variants. Order via Linear/GHX e-requisitions. |
-| **Stationery** | Specific layouts — never alter. Must use approved templates. |
-| **Presentations** | Templafy templates in widescreen/letter. Correct logos, color palettes, sample imagery. Font fallback: Arial. |
-| **Email Newsletters** | HSS logo prominent. Headlines large and bold. Photography used purposefully. Secondary colors can separate areas of information. |
-| **Branded Merchandise** | HSS monogram only (no department branding). Must follow logo rules. |
-| **Advertising** | ALL CAPS headlines. Market designation (NY &bull; NJ &bull; CT &bull; FL) required near HSS logo. |
-
-### Physician Website Rules
-
-**Do:** Ensure all uses of HSS name and brand identity are consistent with brand guidelines.
-
-**Don't:**
-- Use patient stories from "Back in the Game" (consent is limited)
-- Use the US News & World Report badge
-- Use the Olympic rings
-- Use old versions of an HSS logo
-- Use the HSS logo on any business venture outside of or not affiliated with HSS
-
-### Marketing Color → Data Token Mapping
+For **marketing collateral, print design, brand communications, and consumer/patient-facing materials**, see the dedicated `hss-marketing` skill. It covers:
+
+- **Brand foundation:** Purpose, mission, vision, brand essence, values
+- **Tone of voice:** Knowledgeable, personable, direct, approachable, confident — with guardrails and headline rules
+- **Logo usage:** Monogram rules, clear space, minimum size, background control, incorrect usage
+- **Tagline:** "Choose Better. Move Better." — usage rules and lockup guidance
+- **Business descriptors:** HSS [Business Area] formatting, Inter Black/Medium convention, location naming
+- **Marketing typography:** Print hierarchy (Inter Bold headlines, Medium subheads, Regular body, Sofia Sans Condensed boilerplate), ADA digital compliance rules
+- **Color palette (print):** SPOT/CMYK/RGB values for HSS Blue (PMS 3005), Cyan (PMS 2995), Dark Blue (PMS 7687), Gold (PMS 7752), tertiary colors
+- **Color palette (digital):** ADA-compliant variants — HSS ADA Blue (`#0074BC`), ADA Green (`#68A42D`), ADA Teal (`#00A4AF`); non-compliant colors for text (Cyan, Teal brand, Cool Neutral, Green print, Light Gray, Warm Neutral)
+- **Photography:** People on the Move, Families & Community, HSS in Action, Employee Community — aspirational, authentic, always licensed; blur logos on clothing/equipment
+- **Advertising:** ALL CAPS headlines required; market designation (NY, NJ, CT, FL) separated by bullets must appear near HSS logo on all advertising
+- **Co-branding:** Collaboration language rules ("in collaboration with", "at", "Powered by HSS" — never "partnership"), logo size parity, vertical line separator, subject to HSS Legal approval
+- **ERG branding:** BEST, HOLA, WISE, HAPI, LGBTQ+ Standing Together — internal use only (exception: community events/parades), preferred backgrounds white/black, never modify colors/elements
+- **Collateral patterns:** Flyers, pocket brochures, postcards, business cards, stationery, presentations, email newsletters, branded merchandise — always use approved templates
+- **Physician website rules:** Consistent brand usage required; never use "Back in the Game" stories, US News badge, Olympic rings, old logos, or logo on non-affiliated ventures
+
+### Key Mapping: Marketing Colors → Data System Tokens
 | Marketing Name | Marketing Hex | Data System Token |
 |----------------|---------------|-------------------|
-| HSS Blue (print) | `#0081C8` | `blue-500` / `#0074BC` |
-| HSS Dark Blue | `#264583` | `blue-800` / `#264583` |
-| HSS Cyan | `#00ADE6` | `cyan-60` / `#00ADE6` |
-| HSS Cool Neutral | `#F0F5F7` | `slate-50` / `#ECF1F4` |
-| HSS Gold | `#D4B640` | `dataviz-5` / `#D4B640` |
-| HSS Green (ADA) | `#68A42D` | `green-500` / `#72B431` |
-| HSS Teal (ADA) | `#00A4AF` | `teal-60` / `#00AEBA` |
+| HSS Blue (print PMS 3005) | `#0081C8` | `blue-500` (`#0074BC`) — ADA digital variant |
+| HSS Dark Blue | `#264583` | `blue-800` (`#264583`) — exact match |
+| HSS Cyan | `#00ADE6` | `cyan-60` (`#00ADE6`) — exact match |
+| HSS Cool Neutral | `#F0F5F7` | `slate-50` (`#ECF1F4`) — close equivalent |
+| HSS Gold | `#D4B640` | dataviz-5 (`#D4B640`) — exact match |
+| HSS Green (ADA) | `#68A42D` | `green-500` (`#72B431`) — print variant differs |
+| HSS Teal (ADA) | `#00A4AF` | `teal-60` (`#00AEBA`) — print variant differs |
