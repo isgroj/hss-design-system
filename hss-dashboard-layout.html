@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSS Data Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       HSS Data Dashboard Layout
+       System: HSS Data Design System (NOT Marketing)
+       Tokens: Semantic CSS custom properties, light/dark
+       Components: Buttons, cards, tabs, badges, data-stat, alerts
+       Layout: Canonical dashboard anatomy (header > filters >
+               KPI > charts > table > footer)
+       ========================================================= */
+
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    /* ---- Primitive Tokens ---- */
+    :root {
+      /* Blue Brand */
+      --color-blue-50: #E2F4FE;
+      --color-blue-100: #88D2F8;
+      --color-blue-200: #4097CD;
+      --color-blue-500: #0074BC;
+      --color-blue-550: #005A91;
+      --color-blue-600: #004D7D;
+      --color-blue-700: #00273F;
+      --color-blue-800: #264583;
+      --color-blue-900: #192E57;
+      --navy-800: #30233B;
+      --navy-900: #0D172C;
+
+      /* Neutrals */
+      --white: #FFFFFF;
+      --slate-50: #ECF1F4;
+      --slate-100: #EAEBEC;
+      --slate-200: #E1E2E4;
+      --slate-300: #C4C5C8;
+      --slate-400: #A6A8AD;
+      --slate-500: #6B6D76;
+      --slate-700: #3E515A;
+      --slate-900: #192328;
+
+      /* Accent */
+      --green-100: #F0F8E8;
+      --green-500: #72B431;
+      --green-600: #498C1D;
+      --red-100: #FEE5E5;
+      --red-500: #BC0000;
+      --amber-100: #FFF6D0;
+      --amber-500: #D08007;
+      --amber-600: #DCBF27;
+      --teal-60: #00AEBA;
+      --purple-500: #7B3C84;
+
+      /* Data Viz */
+      --dataviz-1: #1E3A5F;
+      --dataviz-2: #98579B;
+      --dataviz-3: #00AEBA;
+      --dataviz-4: #5C7986;
+      --dataviz-5: #D4B640;
+      --dataviz-6: #0074BC;
+      --dataviz-7: #72B431;
+
+      /* Spacing (4px base) */
+      --space-0: 0px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+
+      /* Radius */
+      --radius-none: 0px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-2xl: 24px;
+      --radius-full: 9999px;
+    }
+
+    /* ---- Semantic Tokens: Light Mode ---- */
+    [data-theme="light"] {
+      --bg-base: #FFFFFF;
+      --bg-surface: #F8FAFC;
+      --bg-elevated: #FFFFFF;
+      --bg-brand: #2563EB;
+      --bg-brand-subtle: #EFF6FF;
+      --bg-invert: #0F172A;
+
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-tertiary: #94A3B8;
+      --text-inverse: #FFFFFF;
+      --text-brand: #0D172C;
+      --text-accent: #1D4ED8;
+      --text-disabled: #CBD5E1;
+
+      --border-default: #E2E8F0;
+      --border-strong: #CBD5E1;
+      --border-brand: #0074BC;
+      --border-focus: #0D172C;
+
+      --action-primary: #0074BC;
+      --action-primary-hover: #005A91;
+      --action-primary-active: #004D7D;
+      --action-primary-text: #FFFFFF;
+      --action-secondary: #F1F5F9;
+      --action-secondary-text: #272725;
+      --action-secondary-border: #0074BC;
+      --action-ghost-hover: #EFF6FF;
+      --action-accent: #0074BC;
+      --action-disabled: #E2E8F0;
+      --action-destructive: #DC2626;
+
+      --success-bg: #DCFCE7;
+      --success-text: #16A34A;
+      --error-bg: #FEE2E2;
+      --error-text: #DC2626;
+      --warning-bg: #FEF3C7;
+      --warning-text: #D97706;
+      --info-bg: #EFF6FF;
+      --info-text: #2563EB;
+      --info-border: #BFDBFE;
+
+      /* Header / Footer — explicit hex per design system */
+      --header-bg: #FFFFFF;
+      --header-nav-active: #0D172C;
+      --header-nav-inactive: #64748B;
+      --header-icon: #64748B;
+      --header-avatar: #0074BC;
+      --footer-bg: #FFFFFF;
+      --footer-border: #E2E8F0;
+      --footer-icon-fill: #0074BC;
+      --footer-powered-by: #0074BC;
+      --footer-brand-text: #0D172C;
+      --footer-btn-border: #14334D;
+      --footer-btn-text: #14334D;
+
+      /* Tab */
+      --tab-active: var(--bg-elevated);
+      --tab-active-text: var(--text-primary);
+    }
+
+    /* ---- Semantic Tokens: Dark Mode ---- */
+    [data-theme="dark"] {
+      --bg-base: #020617;
+      --bg-surface: #0F172A;
+      --bg-elevated: #1E293B;
+      --bg-brand: #3B82F6;
+      --bg-brand-subtle: #1E3A8A;
+      --bg-invert: #FFFFFF;
+
+      --text-primary: #FFFFFF;
+      --text-secondary: #CBD5E1;
+      --text-tertiary: #64748B;
+      --text-inverse: #0F172A;
+      --text-brand: #60A5FA;
+      --text-accent: #93C5FD;
+      --text-disabled: #475569;
+
+      --border-default: #1E293B;
+      --border-strong: #475569;
+      --border-brand: #60A5FA;
+      --border-focus: #60A5FA;
+
+      --action-primary: #FFFFFF;
+      --action-primary-hover: #E2E8F0;
+      --action-primary-active: #CBD5E1;
+      --action-primary-text: #0D172C;
+      --action-secondary: #1E293B;
+      --action-secondary-text: #FFFFFF;
+      --action-secondary-border: #FFFFFF;
+      --action-ghost-hover: #1E293B;
+      --action-accent: #0074BC;
+      --action-disabled: #475569;
+      --action-destructive: #EF4444;
+
+      --success-bg: #16A34A;
+      --success-text: #DCFCE7;
+      --error-bg: #DC2626;
+      --error-text: #FEE2E2;
+      --warning-bg: #D97706;
+      --warning-text: #FEF3C7;
+      --info-bg: #15304B;
+      --info-text: #A8C8E8;
+      --info-border: #0074BC;
+
+      --header-bg: #0F172A;
+      --header-nav-active: #FFFFFF;
+      --header-nav-inactive: #64748B;
+      --header-icon: #94A3B8;
+      --header-avatar: #64748B;
+      --footer-bg: #0F172A;
+      --footer-border: #1E293B;
+      --footer-icon-fill: #FFFFFF;
+      --footer-powered-by: rgba(255,255,255,0.7);
+      --footer-brand-text: #FFFFFF;
+      --footer-btn-border: #FFFFFF;
+      --footer-btn-text: #FFFFFF;
+
+      --tab-active: var(--bg-elevated);
+      --tab-active-text: var(--text-primary);
+    }
+
+    /* ---- Base ---- */
+    html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- App Header — 56px ---- */
+    .app-header {
+      height: 56px;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border-default);
+      padding: 0 var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .header-left { display: flex; align-items: center; gap: var(--space-6); }
+    .header-right { display: flex; align-items: center; gap: var(--space-3); }
+
+    .hss-logo {
+      width: 32px; height: 32px;
+      background: #0074BC;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .header-nav { display: flex; gap: var(--space-6); }
+    .header-nav a {
+      font-size: 14px; font-weight: 400;
+      color: var(--header-nav-inactive);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .header-nav a:hover { color: var(--header-nav-active); }
+    .header-nav a.active {
+      color: var(--header-nav-active);
+      font-weight: 600;
+    }
+
+    .header-icon {
+      width: 20px; height: 20px;
+      color: var(--header-icon);
+    }
+
+    .avatar {
+      width: 32px; height: 32px;
+      border-radius: var(--radius-full);
+      background: var(--header-avatar);
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF; font-size: 12px; font-weight: 700;
+    }
+
+    .username {
+      font-size: 14px; color: var(--text-secondary);
+    }
+
+    /* Theme toggle — dark mode only */
+    .theme-toggle {
+      display: flex; align-items: center; gap: 6px; cursor: pointer;
+      padding: 4px;
+    }
+    .theme-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .theme-dot.light-dot { background: #64748B; }
+    .theme-dot.dark-dot { background: #94A3B8; }
+    [data-theme="light"] .theme-toggle .dark-dot { opacity: 0.4; }
+    [data-theme="dark"] .theme-toggle .light-dot { opacity: 0.4; }
+
+    /* ---- Main Content ---- */
+    .main-content {
+      flex: 1;
+      padding: var(--space-6);
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    /* ---- Page Header ---- */
+    .page-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .page-header h1 {
+      font-size: 28px; font-weight: 700; line-height: 36.4px;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    .page-header .page-subtitle {
+      font-size: 14px; color: var(--text-secondary); margin-top: 2px;
+    }
+    .page-actions { display: flex; gap: var(--space-2); }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      height: 40px; padding: 10px 24px;
+      border-radius: var(--radius-xl);
+      font-size: 14px; font-weight: 600; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-primary {
+      background: var(--action-primary);
+      color: var(--action-primary-text);
+    }
+    .btn-primary:hover { background: var(--action-primary-hover); }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--action-secondary-border);
+      color: var(--action-secondary-text);
+    }
+    .btn-secondary:hover { background: var(--action-ghost-hover); }
+    .btn-ghost {
+      background: transparent; color: var(--action-accent);
+    }
+    .btn-ghost:hover { background: var(--action-ghost-hover); }
+
+    /* ---- Filter Bar — 48px ---- */
+    .filter-bar {
+      display: flex; align-items: center; gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    /* Tabs */
+    .tab-container {
+      display: flex; align-items: center;
+      background: var(--action-secondary);
+      border-radius: var(--radius-xl);
+      padding: 4px; gap: 4px;
+    }
+    .tab-item {
+      padding: 8px 20px;
+      border-radius: var(--radius-lg);
+      font-size: 14px; font-weight: 400;
+      color: var(--text-secondary);
+      cursor: pointer; border: none; background: none;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .tab-item.active {
+      background: var(--tab-active);
+      color: var(--tab-active-text);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .tab-item:hover:not(.active) { color: var(--text-primary); }
+
+    /* Chips */
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 500;
+      background: var(--action-secondary);
+      color: var(--text-secondary);
+      cursor: pointer; border: none;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .chip.selected {
+      background: var(--action-primary);
+      color: var(--action-primary-text);
+    }
+    .chip:hover:not(.selected) { background: var(--border-default); }
+
+    .filter-separator {
+      width: 1px; height: 24px;
+      background: var(--border-default);
+      margin: 0 var(--space-2);
+    }
+
+    /* ---- KPI Card Row ---- */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    /* Data-Stat Card */
+    .data-stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .data-stat-card .stat-label {
+      font-size: 12px; font-weight: 600; color: var(--text-secondary);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: var(--space-2);
+    }
+    .data-stat-card .stat-value {
+      font-size: 36px; font-weight: 700; color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .data-stat-card .stat-trend {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 13px; font-weight: 500;
+      margin-top: var(--space-2);
+    }
+    .trend-up { color: var(--success-text); }
+    .trend-down { color: var(--error-text); }
+    .trend-neutral { color: var(--text-tertiary); }
+
+    /* Semantic tint variants */
+    .data-stat-card.tint-approved {
+      background: #F0FDF4; border-color: #BBF7D0;
+    }
+    [data-theme="dark"] .data-stat-card.tint-approved {
+      background: rgba(22,163,74,0.1); border-color: rgba(22,163,74,0.3);
+    }
+    .data-stat-card.tint-pending {
+      background: #FFFBEB; border-color: #FDE68A;
+    }
+    [data-theme="dark"] .data-stat-card.tint-pending {
+      background: rgba(217,119,6,0.1); border-color: rgba(217,119,6,0.3);
+    }
+    .data-stat-card.tint-rejected {
+      background: #FEF2F2; border-color: #FECACA;
+    }
+    [data-theme="dark"] .data-stat-card.tint-rejected {
+      background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3);
+    }
+
+    /* ---- Chart Area — 2-column ---- */
+    .chart-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    .chart-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+    }
+    .chart-card .chart-title {
+      font-size: 18px; font-weight: 600; line-height: 25.2px;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Chart placeholder using dataviz palette */
+    .chart-placeholder {
+      height: 220px;
+      border-radius: var(--radius-md);
+      background: var(--bg-base);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-4);
+      gap: var(--space-2);
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: opacity 0.2s;
+      min-width: 20px;
+    }
+    .bar:hover { opacity: 0.8; }
+
+    /* Donut chart placeholder */
+    .donut-placeholder {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .donut-ring {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--dataviz-1) 0deg 108deg,
+        var(--dataviz-2) 108deg 180deg,
+        var(--dataviz-3) 180deg 234deg,
+        var(--dataviz-5) 234deg 288deg,
+        var(--dataviz-6) 288deg 342deg,
+        var(--dataviz-7) 342deg 360deg
+      );
+      display: flex; align-items: center; justify-content: center;
+    }
+    .donut-hole {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .donut-hole .donut-value {
+      font-size: 24px; font-weight: 700; color: var(--text-primary);
+    }
+    .donut-hole .donut-label {
+      font-size: 10px; color: var(--text-tertiary);
+    }
+
+    .chart-legend {
+      display: flex; flex-wrap: wrap; gap: var(--space-4);
+      margin-top: var(--space-3);
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--text-secondary);
+    }
+    .legend-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+
+    /* ---- Data Table ---- */
+    .table-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--space-5);
+      border-bottom: 1px solid var(--border-default);
+    }
+    .table-header h3 {
+      font-size: 18px; font-weight: 600; color: var(--text-primary);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Source Sans Pro', 'Inter', sans-serif;
+    }
+    .data-table th {
+      text-align: left;
+      padding: var(--space-3) var(--space-5);
+      font-size: 12px; font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border-default);
+      background: var(--bg-surface);
+      font-family: 'Inter', sans-serif;
+    }
+    .data-table td {
+      padding: var(--space-3) var(--space-5);
+      font-size: 14px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-default);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--action-ghost-hover); }
+
+    /* Badges */
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+    .badge-success { background: var(--success-bg); color: var(--success-text); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning-text); }
+    .badge-error { background: var(--error-bg); color: var(--error-text); }
+    .badge-info { background: var(--info-bg); color: var(--info-text); }
+    .badge-neutral {
+      background: var(--action-secondary);
+      color: var(--text-secondary);
+    }
+
+    /* Sparkline (inline trend) */
+    .sparkline {
+      display: inline-block; vertical-align: middle;
+    }
+    .sparkline svg { display: block; }
+
+    /* ---- Alert ---- */
+    .alert {
+      display: flex; align-items: flex-start; gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+    }
+    .alert-info { background: var(--info-bg); color: var(--info-text); border: 1px solid var(--info-border); }
+    .alert svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .alert-content { font-size: 14px; line-height: 1.5; }
+
+    /* ---- App Footer — 56px ---- */
+    .app-footer {
+      height: 56px;
+      background: var(--footer-bg);
+      border-top: 1px solid var(--footer-border);
+      padding: 0 var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .footer-left {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+
+    /* Pulse Grid icon — SVG */
+    .pulse-grid-icon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+    }
+    .pulse-grid-icon .pg-fill {
+      fill: var(--footer-icon-fill);
+    }
+
+    .footer-powered-by {
+      font-size: 13.5px; font-weight: 500;
+      color: var(--footer-powered-by);
+    }
+    .footer-brand-text {
+      font-size: 20px; font-weight: 700;
+      color: var(--footer-brand-text);
+    }
+
+    .footer-center {
+      font-size: 12px; color: var(--text-tertiary);
+    }
+
+    .footer-right .support-btn {
+      display: inline-flex; align-items: center;
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1.5px solid var(--footer-btn-border);
+      font-size: 14px; font-weight: 600;
+      color: var(--footer-btn-text);
+      background: none; cursor: pointer; font-family: inherit;
+      transition: background 0.15s;
+    }
+    .footer-right .support-btn:hover {
+      background: var(--action-ghost-hover);
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .chart-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .kpi-row { grid-template-columns: 1fr; }
+      .chart-row { grid-template-columns: 1fr; }
+      .main-content { padding: var(--space-4); }
+      .page-header { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+      .filter-bar { flex-direction: column; align-items: flex-start; }
+      .filter-separator { display: none; }
+      .header-nav { display: none; }
+      .username { display: none; }
+      .app-footer {
+        height: auto;
+        flex-direction: column;
+        padding: var(--space-5) var(--space-4);
+        gap: var(--space-3);
+        text-align: center;
+      }
+      .footer-left { justify-content: center; }
+      .footer-center { order: 3; }
+      .footer-right { order: 2; }
+      .data-table { font-size: 12px; }
+      .data-table th, .data-table td { padding: var(--space-2) var(--space-3); }
+    }
+
+    /* ---- Focus States (WCAG 2.1 AA) ---- */
+    a:focus-visible, button:focus-visible, .tab-item:focus-visible, .chip:focus-visible {
+      outline: 2px solid var(--action-primary);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       1. APP HEADER — 56px
+       ================================================================ -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="hss-logo">HSS</div>
+      <nav class="header-nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">Cases</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+      </nav>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="theme-dot light-dot"></span>
+        <span class="theme-dot dark-dot"></span>
+      </div>
+      <svg class="header-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 6.667a5 5 0 10-10 0c0 5.833-2.5 7.5-2.5 7.5h15S15 12.5 15 6.667zM11.442 17.5a1.667 1.667 0 01-2.884 0"/>
+      </svg>
+      <div class="avatar">JD</div>
+      <span class="username">Jane Doe</span>
+    </div>
+  </header>
+
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <h1>Surgical Operations Dashboard</h1>
+        <div class="page-subtitle">Real-time overview of surgical volume and outcomes</div>
+      </div>
+      <div class="page-actions">
+        <button class="btn btn-secondary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 8h12M8 2v12"/></svg>
+          Export
+        </button>
+        <button class="btn btn-primary">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13.5 2.5l-11 11M13.5 2.5H6.5M13.5 2.5v7"/></svg>
+          New Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Alert -->
+    <div class="alert alert-info">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+      <div class="alert-content">Data refreshes every 15 minutes. Last updated: April 17, 2026 at 2:30 PM EST.</div>
+    </div>
+
+    <!-- ============================================================
+         2. FILTER BAR — Tabs + Chips
+         ============================================================ -->
+    <div class="filter-bar">
+      <div class="tab-container">
+        <button class="tab-item active">All Cases</button>
+        <button class="tab-item">Orthopedic</button>
+        <button class="tab-item">Spine</button>
+        <button class="tab-item">Rheumatology</button>
+      </div>
+      <div class="filter-separator"></div>
+      <button class="chip selected">Last 30 Days</button>
+      <button class="chip">Last 7 Days</button>
+      <button class="chip">Today</button>
+      <div class="filter-separator"></div>
+      <button class="chip">Main Campus</button>
+      <button class="chip">Westchester</button>
+      <button class="chip">All Locations</button>
+    </div>
+
+    <!-- ============================================================
+         3. KPI CARD ROW — 3-column Data-Stat cards
+         ============================================================ -->
+    <div class="kpi-row">
+      <div class="data-stat-card tint-approved">
+        <div class="stat-label">Completed Surgeries</div>
+        <div class="stat-value">1,247</div>
+        <div class="stat-trend trend-up">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M7 3l-3 3M7 3l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          +12.3% vs last period
+        </div>
+      </div>
+      <div class="data-stat-card tint-pending">
+        <div class="stat-label">Pending Cases</div>
+        <div class="stat-value">86</div>
+        <div class="stat-trend trend-neutral">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          No change
+        </div>
+      </div>
+      <div class="data-stat-card">
+        <div class="stat-label">Avg. Recovery (days)</div>
+        <div class="stat-value">4.2</div>
+        <div class="stat-trend trend-up">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 11V3M7 3l-3 3M7 3l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          -0.8 days improvement
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         4. CHART AREA — 2-column grid
+         ============================================================ -->
+    <div class="chart-row">
+      <!-- Bar Chart -->
+      <div class="chart-card">
+        <div class="chart-title">Surgical Volume by Department</div>
+        <div class="chart-placeholder">
+          <div class="bar" style="height:85%;background:var(--dataviz-1)"></div>
+          <div class="bar" style="height:65%;background:var(--dataviz-2)"></div>
+          <div class="bar" style="height:90%;background:var(--dataviz-3)"></div>
+          <div class="bar" style="height:45%;background:var(--dataviz-4)"></div>
+          <div class="bar" style="height:70%;background:var(--dataviz-5)"></div>
+          <div class="bar" style="height:55%;background:var(--dataviz-6)"></div>
+          <div class="bar" style="height:40%;background:var(--dataviz-7)"></div>
+        </div>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-1)"></span>Joint Repl.</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-2)"></span>Sports Med</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-3)"></span>Spine</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-4)"></span>Foot/Ankle</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-5)"></span>Hand/Wrist</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-6)"></span>Shoulder</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-7)"></span>Rheumatology</span>
+        </div>
+      </div>
+
+      <!-- Donut Chart -->
+      <div class="chart-card">
+        <div class="chart-title">Case Status Distribution</div>
+        <div class="donut-placeholder">
+          <div class="donut-ring">
+            <div class="donut-hole">
+              <div class="donut-value">1,333</div>
+              <div class="donut-label">Total Cases</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-1)"></span>Completed (72%)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-2)"></span>In Progress (12%)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-3)"></span>Scheduled (8%)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-5)"></span>Pending Review (5%)</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--dataviz-6)"></span>Other (3%)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         5. DATA TABLE — Full-width sortable
+         ============================================================ -->
+    <div class="table-card">
+      <div class="table-header">
+        <h3>Recent Surgical Cases</h3>
+        <button class="btn btn-ghost">View All</button>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Case ID</th>
+            <th>Patient</th>
+            <th>Department</th>
+            <th>Surgeon</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Recovery</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4821</td>
+            <td>Rodriguez, Maria</td>
+            <td>Joint Replacement</td>
+            <td>Dr. Chen</td>
+            <td>Apr 16, 2026</td>
+            <td><span class="badge badge-success">Completed</span></td>
+            <td>3 days</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4820</td>
+            <td>Thompson, James</td>
+            <td>Spine</td>
+            <td>Dr. Patel</td>
+            <td>Apr 16, 2026</td>
+            <td><span class="badge badge-success">Completed</span></td>
+            <td>5 days</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4819</td>
+            <td>Williams, Sarah</td>
+            <td>Sports Medicine</td>
+            <td>Dr. Kim</td>
+            <td>Apr 15, 2026</td>
+            <td><span class="badge badge-warning">In Recovery</span></td>
+            <td>Est. 7 days</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4818</td>
+            <td>Johnson, Robert</td>
+            <td>Shoulder</td>
+            <td>Dr. Martinez</td>
+            <td>Apr 15, 2026</td>
+            <td><span class="badge badge-info">Scheduled</span></td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4817</td>
+            <td>Davis, Emily</td>
+            <td>Rheumatology</td>
+            <td>Dr. Anderson</td>
+            <td>Apr 14, 2026</td>
+            <td><span class="badge badge-error">Cancelled</span></td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-accent)">HSS-2026-4816</td>
+            <td>Lee, Michael</td>
+            <td>Joint Replacement</td>
+            <td>Dr. Chen</td>
+            <td>Apr 14, 2026</td>
+            <td><span class="badge badge-success">Completed</span></td>
+            <td>4 days</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- ================================================================
+       6. APP FOOTER — 56px
+       ================================================================ -->
+  <footer class="app-footer">
+    <div class="footer-left">
+      <!-- Pulse Grid icon — 3x3 node grid with cross connector -->
+      <svg class="pulse-grid-icon" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cross beams connecting edge nodes through center -->
+        <rect class="pg-fill" x="12" y="7" width="4" height="14" rx="2"/>
+        <rect class="pg-fill" x="7" y="12" width="14" height="4" rx="2"/>
+        <!-- 4 corner nodes -->
+        <circle class="pg-fill" cx="7" cy="7" r="2"/>
+        <circle class="pg-fill" cx="21" cy="7" r="2"/>
+        <circle class="pg-fill" cx="7" cy="21" r="2"/>
+        <circle class="pg-fill" cx="21" cy="21" r="2"/>
+        <!-- 4 edge nodes (on cross) -->
+        <circle class="pg-fill" cx="14" cy="7" r="2"/>
+        <circle class="pg-fill" cx="7" cy="14" r="2"/>
+        <circle class="pg-fill" cx="21" cy="14" r="2"/>
+        <circle class="pg-fill" cx="14" cy="21" r="2"/>
+        <!-- Center node (larger) -->
+        <circle class="pg-fill" cx="14" cy="14" r="3.5"/>
+      </svg>
+      <span class="footer-powered-by">POWERED BY</span>
+      <span class="footer-brand-text">HSS Data</span>
+    </div>
+    <div class="footer-center">&copy; 2026 HSS</div>
+    <div class="footer-right">
+      <button class="support-btn">Support &amp; Feedback</button>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+
+    // Tab click handler
+    document.querySelectorAll('.tab-item').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tab.parentElement.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    // Chip toggle handler
+    document.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        chip.classList.toggle('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>
