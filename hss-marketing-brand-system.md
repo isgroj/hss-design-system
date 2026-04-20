@@ -443,60 +443,96 @@ Each group has a unique logo locked up with the HSS monogram and descriptor line
 
 ---
 
-## Design Highlights
+## Putting It All Together — Design Principles
 
-Key design principles across all collateral types:
+Our design elements come together to produce a unique look and feel for HSS communications. Templates are available in the HSS Brand Center on the intranet. There are also inspiration design examples demonstrating appropriate use of the new HSS brand look and feel.
+
+### Four Pillars of HSS Collateral Design
+
+| Principle | Description |
+|-----------|-------------|
+| **Confident Logo Presentation** | HSS logo always presented prominently. Never distort, recolor, or add elements. |
+| **Bold Typography** | Inter Bold headlines in HSS Blue. ALL CAPS for advertising. Large numbers for impact. Large quotation marks for distinctive pull quotes. |
+| **Relatable Photography** | Aspirational, authentic imagery. People on the move, families, HSS professionals in action. Color, in focus, cropped flatteringly. |
+| **Brand Consistency** | HSS Blue color focus across all materials. Market designation (NY \| NJ \| CT \| FL) required on all advertising. Secondary colors to separate areas of information. |
+
+### Design Highlight Annotations
 - The logo can be locked up with the tagline in advertising and marketing materials
 - Headlines are large and bold — for branded collateral, upper and lower case or all caps can be used
-- Headlines for advertising should be in all caps
+- Headlines for advertising must always be in ALL CAPS
 - Photography depicts real life, used purposefully to add value to the message
-- Backgrounds can be HSS Cool Neutral in color; headlines for advertising should be in all caps
+- Backgrounds can be HSS Cool Neutral in color
 - Secondary colors can be used to separate areas of information
-- The HSS logo is always presented prominently
-- Bold use of typography is encouraged — large Inter Bold headlines in HSS Blue
 - Printed brochures should feature bold use of typography with the HSS logo always in a prominent position
+- Email newsletters: HSS logo prominent, bold headlines, photography with purpose, secondary colors to separate areas
 
 ---
 
 ## Marketing Collateral Patterns
 
+> **Note:** These patterns are for **print, advertising, and marketing communications only** — not for digital product or application UI guidelines. For digital products, see the HSS Data Design System.
+
 ### Flyers
-- Color focus: HSS Blue
-- HSS logo presented prominently
+- **Color focus:** HSS Blue
+- HSS logo presented prominently at top
 - Bold typography (Inter Bold for headlines in HSS Blue)
-- Relatable photography
+- Relatable photography — aspirational, authentic
 - ERG logo anchored in lower left for ERG-related flyers
+- Can be used for events, services, announcements, location promotions
+- Example uses: "#1 IN ORTHOPEDICS in Westchester", health & wellness events, performance programs
+- Reference: HSS Brand Guidelines p. 42
 
 ### Pocket Brochures
-- Can have 1, 2, or 3 panels
+- Can have **1, 2, or 3 panels**
 - Follow standard HSS brand typography and color
+- HSS logo in prominent position on cover panel
+- Photography and bold headings on interior panels
+- Example uses: "#1 IN ORTHOPEDICS" informational, Center of Excellence, Guest Suites at HSS
+- Reference: HSS Brand Guidelines p. 43
 
 ### Postcards
 - Can be mailed or used as handouts
-- Multiple purposes, all using brand elements
+- Multiple purposes — relocations, new benefits, internal programs
+- Brand photography with bold messaging
+- HSS logo prominent
+- Example uses: "HSS Paramus RELOCATION", "New Benefit To help you move better", "Workday Is HERE!"
+- Reference: HSS Brand Guidelines p. 44
 
 ### Business Cards
-- Specific layouts depending on information volume
-- Standard, 3-line title, 4-5 line title, and QR code variants
-- Must use approved templates — never recreate layouts
-- Order through Linear/GHX e-requisitions
+- Specific layouts depending on amount of required information:
+  - **Standard layout** — name, title, department, address, phone, email
+  - **QR code variant** — connects to physician's hss.edu profile page
+  - **3-line title** — for longer titles (e.g., Surgeon-In-Chief, Professor)
+  - **4-5 line title** — for multiple titles and affiliations
+- Must use approved templates — **never recreate layouts**
+- Order through **Linear / GHX e-requisitions** on the intranet
+- HSS logo in blue square at left, name in HSS Blue, "HSS | Hospital for Special Surgery" in address block
+- Reference: HSS Brand Guidelines p. 48
 
 ### Stationery
-- Specific layouts — never alter
+- **Letterhead:** HSS logo top-left, "hss.edu" and "HSS | Hospital for Special Surgery" address at bottom
+- **Envelope:** HSS logo top-left, return address below
+- Specific layouts — **never alter**
 - Must use approved templates
-- Order through approved sources
+- Order through **Linear / GHX e-requisitions** on the intranet
+- Reference: HSS Brand Guidelines p. 49
 
 ### Presentations (PowerPoint)
-- Templates available in widescreen and letter size
-- Include correct logos, color palettes, and sample imagery
-- Available via Templafy in PowerPoint or Brand Center
-- Font fallback: Arial (when Inter unavailable)
+- Templates available in both **widescreen and letter size**
+- **Cover options:** HSS logo with title, photography backgrounds, blue gradient
+- **Interior layouts:** Title and content, content with picture, infographic
+- Correct logos, color palettes, and sample imagery built into templates
+- Available via **Templafy** in PowerPoint or the HSS Brand Center on the intranet
+- Font fallback: **Arial** (when Inter is unavailable in Microsoft apps)
+- Reference: HSS Brand Guidelines p. 50
 
 ### Email Newsletters
-- HSS logo presented prominently
-- Headlines: large and bold
+- HSS logo presented prominently at top
+- Headlines: large and bold (Inter Bold in HSS Blue)
 - Photography used purposefully to add value to the message
 - Secondary colors can separate areas of information
+- Bold call-to-action sections
+- Reference: HSS Brand Guidelines p. 21
 
 ### Branded Merchandise
 - Only HSS monogram logo (no department branding)
@@ -516,6 +552,36 @@ Key design principles across all collateral types:
 - Don't use the Olympic rings
 - Don't use old versions of an HSS logo
 - Don't use the HSS logo on any business venture outside of or not affiliated with HSS
+
+---
+
+## Implementation Files
+
+| File | Description |
+|------|-------------|
+| `hss-marketing-landing-page.html` | Reference implementation of the HSS marketing landing page — two-tier header (utility bar + main nav), hero section, services grid, statistics, locations, advertising & collateral showcase, dark footer with social icons and link columns. |
+| `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
+| `hss-marketing-brand-system.md` | This file — marketing brand system reference for Claude. |
+| `hss-data-design-system.md` | Data design system reference for Claude (tokens, components, dark mode). |
+
+### Marketing Landing Page Structure
+The canonical marketing page follows this section order:
+1. **Two-tier header** — utility bar (Giving, Careers, Why Choose HSS, MyHSS Sign In) + main nav bar (HSS square logo, nav links, search, phone, CTA button)
+2. **Hero section** — HSS Cool Neutral background, Inter Bold headline in HSS Blue, aspirational photography
+3. **Services grid** — 3-column card layout with service descriptions
+4. **Statistics row** — Large bold numbers (Inter ExtraBold) with descriptors
+5. **Testimonial** — Patient quote with large quotation marks
+6. **Locations** — Business descriptor format cards (HSS + location name)
+7. **CTA banner** — HSS Blue background, white text, reverse lockup
+8. **Advertising & Collateral** — Showcase of brand collateral types (flyers, brochures, postcards, business cards, stationery, presentations) with design principles
+9. **Appointment banner** — Dark background (#1B2838), "Make an Appointment at HSS"
+10. **Footer** — Dark background (HSS Footer Gray #30333E), HSS square logo, social icons, 3 link columns (Learn More, Information For, Policies), legal text in Sofia Sans Condensed
+
+### Key Implementation Details
+- **HSS logo:** Square with `border-radius: 4px`, 12px internal padding, HSS Blue background, white "HSS" text in Inter Black
+- **Button/input border-radius:** 8px (moderate rounded, not pill-shaped)
+- **Footer:** Dark background (`--hss-footer-gray: #30333E`), white text, light white links (`rgba(255,255,255,0.75)`)
+- **Appointment banner:** Dark navy (`#1B2838`), white text, light weight (300)
 
 ---
 

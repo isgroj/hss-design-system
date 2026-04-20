@@ -322,6 +322,13 @@ Reference images: `images/navigation/desktop-light/`, `images/navigation/desktop
 - Height: 56px, padding: 0 24px
 - Background: `--footer-bg` (light: #FFFFFF, dark: #0F172A), border-top: 1px `--footer-border` (light: #E2E8F0, dark: #1E293B)
 - Left: Pulse Grid icon 28x28 (`--footer-icon-fill`) + "POWERED BY" (13.5px, medium, `--footer-powered-by`) + "HSS Data" (20px, bold, `--footer-brand-text`), gap 10px
+
+#### Pulse Grid Icon (SVG Spec)
+The Pulse Grid is the "Powered by HSS Data" brand mark — a 3x3 node grid with cross beams:
+- **ViewBox:** 0 0 28 28
+- **Structure:** Vertical beam (rect x=12 y=7 w=4 h=14 rx=2), horizontal beam (rect x=7 y=12 w=14 h=4 rx=2), 4 corner nodes (circles r=2 at 7,7 / 21,7 / 7,21 / 21,21), 4 edge nodes (circles r=2 at 14,7 / 7,14 / 21,14 / 14,21), 1 center node (circle r=3.5 at 14,14)
+- **Fill:** Uses `.pg-fill { fill: var(--footer-icon-fill); }` for theme-aware coloring
+- **Sizes:** 28x28 desktop, 22x22 mobile
 - Center: "© 2026 HSS" (12px, `--text-tertiary`)
 - Right: "Support & Feedback" pill button — padding 8px 20px, radius 20px, border 1.5px `--footer-btn-border`, font-weight 600, 14px, color `--footer-btn-text`
 
@@ -465,6 +472,27 @@ Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7
 - **Semantic:** `--{category}-{role}` where category = bg, text, border, action, success, error, warning, info
 - Never reference primitives directly in components — always use semantic tokens
 - Token flow: Primitive value → Semantic alias → Component usage
+
+---
+
+## Implementation Files
+
+| File | Description |
+|------|-------------|
+| `hss-dashboard-layout.html` | Reference implementation of the canonical dashboard layout with header, filter bar, KPI cards, charts, data table, and footer. Supports light/dark mode. |
+| `hss-marketing-landing-page.html` | Marketing landing page with two-tier header (utility bar + main nav), hero, services, stats, locations, advertising/collateral section, and dark footer. |
+| `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
+| `claudedesign.md` | Machine-readable design system reference combining both data and marketing systems. |
+| `hss-data-design-system.md` | This file — data design system reference for Claude. |
+| `hss-marketing-brand-system.md` | Marketing brand system reference for Claude. |
+
+### Image Assets
+| Directory | Contents |
+|-----------|----------|
+| `images/icons/` | Two-color HSS icon grid (Blue + Dark Blue) |
+| `images/illustrations/` | Patient-facing illustrations (orthopedic diagrams, anatomy) |
+| `images/navigation/` | Header/footer reference screenshots — desktop-light, desktop-dark, mobile-dark |
+| `images/photography/` | Brand photography — people-on-the-move, families-and-community, hss-in-action, employee-community |
 
 ---
 
