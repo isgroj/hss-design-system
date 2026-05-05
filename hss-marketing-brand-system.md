@@ -560,6 +560,7 @@ Our design elements come together to produce a unique look and feel for HSS comm
 | File | Description |
 |------|-------------|
 | `hss-marketing-landing-page.html` | Reference implementation of the HSS marketing landing page — two-tier header (utility bar + main nav), hero section, services grid, statistics, locations, advertising & collateral showcase, dark footer with social icons and link columns. |
+| `hss-marketing-page-layouts.html` | Page layout reference — five complete layout templates: Locations (map + list), Find a Doctor (search + filter sidebar), Service Detail (content + sticky sidebar), About/Content (TOC + rich media), News/Blog (featured hero + card grid). |
 | `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
 | `hss-marketing-brand-system.md` | This file — marketing brand system reference for Claude. |
 | `hss-data-design-system.md` | Data design system reference for Claude (tokens, components, dark mode). |
@@ -582,6 +583,53 @@ The canonical marketing page follows this section order:
 - **Button/input border-radius:** 8px (moderate rounded, not pill-shaped)
 - **Footer:** Dark background (`--hss-footer-gray: #30333E`), white text, light white links (`rgba(255,255,255,0.75)`)
 - **Appointment banner:** Dark navy (`#1B2838`), white text, light weight (300)
+
+---
+
+## Page Layout Templates
+
+The file `hss-marketing-page-layouts.html` contains five complete page layout references for marketing website pages. All layouts share the same two-tier header, dark footer, brand tokens, and responsive breakpoints.
+
+### 1. Locations Page
+- **Hero:** Breadcrumb + `h1` in HSS Blue + subtitle on Cool Neutral background
+- **Filter bar:** Sticky below header — region dropdown, service type dropdown, search input, submit button
+- **Layout:** Split-panel — interactive map (sticky left) + location card list (scrollable right)
+- **Location cards:** Address, phone, hours, facility type, service tags (pill chips), "Book Appointment" primary CTA + "Get Directions" link
+- **Pagination:** Numbered buttons with active state
+
+### 2. Find a Doctor Page
+- **Search hero:** Centered heading + combined search bar (text input + specialty dropdown + search button) with shadow elevation
+- **Layout:** Sidebar (260px) + content area
+- **Sidebar filters:** Checkbox groups — specialty, location, insurance, language
+- **Results header:** Count text + grid/list view toggle
+- **Doctor cards:** Photo circle, name, specialty, location, star rating, "Book Appointment" inline CTA
+
+### 3. Service Detail Page
+- **Hero:** Breadcrumb + `h1` + subtitle on Cool Neutral
+- **Layout:** Main content (flexible) + sticky sidebar (340px)
+- **Content sections:** Overview (paragraphs), Conditions Treated (2-column grid with dot indicators), Our Specialists (3-column physician mini-cards)
+- **Sidebar:** Appointment form (name, phone, service select, submit button), phone CTA with icon, related services link list
+
+### 4. About / Content Page
+- **Hero:** Dark background (HSS Dark Blue gradient + subtle pattern overlay), white breadcrumb + heading + subtitle
+- **Layout:** Sticky table of contents (220px, left-border active state) + long-form main content
+- **Content elements:** Section headings with bottom border, body paragraphs, pullquote (left blue border + Cool Neutral background), inline stats row (3-column), photo callout (2-column image + text)
+- **Related content:** Full-width Cool Neutral section with 3-column related page cards
+
+### 5. News / Blog Listing Page
+- **Featured article:** Large card on Cool Neutral background — image left (1.2fr) + body right with tag, headline, excerpt, meta, read-more link
+- **Category tabs:** Horizontal tab bar with underline active state (All, Research, Patient Stories, Wellness, Events, Awards)
+- **Article grid:** 3-column cards — image top (180px), body with category tag, title, excerpt (3-line clamp), date
+- **Load more:** Centered outlined button (border becomes filled on hover)
+
+### Shared Layout Patterns
+| Pattern | Implementation |
+|---------|---------------|
+| Two-tier header | Utility bar (right-aligned links + sign-in) + main nav (logo, nav links, search, phone, CTA) |
+| Breadcrumb | `Home / Section / Current` with HSS Blue links and gray separators |
+| Sticky sidebar | `position: sticky; top: 80px; align-self: start` — collapses to static on tablet |
+| Dark footer | HSS Footer Gray (#30333E), 4-column grid (brand + 3 link columns), legal bar in Sofia Sans Condensed |
+| Responsive | 1024px: single-column layouts, sidebars become static. 768px: full mobile stack, hamburger menu |
 
 ---
 

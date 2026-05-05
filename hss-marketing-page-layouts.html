@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSS Marketing Page Layouts — Design System Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sofia+Sans+Condensed:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       HSS Marketing Page Layouts Reference
+       Brand: HSS Brand Identity Guidelines (January 2026)
+       Colors: Digital palette — HSS ADA Blue #0074BC primary
+       Typography: Inter (primary), Sofia Sans Condensed (legal)
+       ADA: WCAG 2.1 AA compliant text/background combos
+       ========================================================= */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --hss-blue: #0074BC;
+      --hss-cool-neutral: #F0F5F7;
+      --white: #FFFFFF;
+      --hss-cyan: #00ADE6;
+      --hss-dark-blue: #264583;
+      --black: #000000;
+      --hss-gold: #D4B640;
+      --hss-dark-gray: #5F849C;
+      --hss-green: #68A42D;
+      --hss-teal: #00A4AF;
+      --hss-light-gray: #A2BACA;
+      --hss-footer-gray: #30333E;
+      --hss-warm-neutral: #F5F5F5;
+      --hss-blue-graphics: #0077C8;
+
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 40px;
+      --space-xl: 64px;
+      --space-2xl: 96px;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       LAYOUT NAVIGATOR — Table of contents for this document
+       ========================================================= */
+    .layout-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid #e4e8ec;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .layout-nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .layout-nav-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .layout-nav-links {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .layout-nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--hss-dark-gray);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .layout-nav-links a:hover {
+      background: var(--hss-cool-neutral);
+      color: var(--hss-blue);
+    }
+
+    /* =========================================================
+       LAYOUT SECTION WRAPPER
+       ========================================================= */
+    .layout-section {
+      padding-top: 80px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .layout-section + .layout-section {
+      border-top: 1px solid #e4e8ec;
+    }
+
+    .layout-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px var(--space-md);
+      border-bottom: 2px solid var(--hss-blue);
+      margin-bottom: var(--space-lg);
+    }
+
+    .layout-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--hss-dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .layout-header p {
+      font-size: 16px;
+      color: var(--hss-dark-gray);
+      max-width: 700px;
+    }
+
+    .layout-header .layout-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .layout-header .layout-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--hss-cool-neutral);
+      color: var(--hss-dark-blue);
+    }
+
+    .layout-demo {
+      border: 1px solid #e4e8ec;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 0 24px var(--space-2xl);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* =========================================================
+       SHARED: HEADER (Two-tier)
+       ========================================================= */
+    .site-header {
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .utility-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 8px 24px;
+      gap: 4px;
+      font-size: 13px;
+    }
+
+    .utility-links {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .utility-links a {
+      color: #333;
+      text-decoration: none;
+      padding: 0 10px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .utility-links a:hover { color: var(--hss-blue); }
+
+    .utility-links .separator {
+      color: #ccc;
+      font-weight: 300;
+    }
+
+    .utility-signin {
+      margin-left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .utility-signin:hover { color: var(--hss-blue); }
+
+    .utility-signin .signin-icon {
+      width: 22px;
+      height: 22px;
+      border: 2px solid #999;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-nav-bar {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .main-nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      background: #0081C8;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #333;
+    }
+
+    .mobile-menu-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .header-nav a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-nav a:hover { color: var(--hss-blue); }
+    .header-nav a.active { color: var(--hss-blue); font-weight: 600; }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+
+    .header-phone {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .header-phone svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .header-cta {
+      background: var(--hss-blue);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-cta:hover { background: #005A91; }
+
+    .header-search {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: #333;
+    }
+
+    .header-search svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* =========================================================
+       SHARED: FOOTER
+       ========================================================= */
+    .site-footer {
+      background: var(--hss-footer-gray);
+      padding: var(--space-xl) 0 0;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-brand .footer-logo {
+      width: 56px;
+      height: 56px;
+      background: #0081C8;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: -0.2px;
+      margin-bottom: var(--space-md);
+    }
+
+    .footer-connect-label {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-social-icons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer-social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.2s;
+    }
+
+    .footer-social-icons a:hover { color: var(--white); }
+
+    .footer-social-icons svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      stroke: none;
+    }
+
+    .footer-col h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 14px;
+    }
+
+    .footer-col a {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: var(--space-md) 0 var(--space-lg);
+      margin-top: var(--space-md);
+    }
+
+    .footer-legal {
+      font-family: 'Sofia Sans Condensed', Arial, sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+    }
+
+    .footer-legal p { margin-bottom: 4px; }
+
+    /* =========================================================
+       SHARED: BREADCRUMB
+       ========================================================= */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .breadcrumb a {
+      color: var(--hss-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .breadcrumb .sep {
+      color: var(--hss-dark-gray);
+      font-size: 12px;
+    }
+
+    .breadcrumb .current {
+      color: var(--hss-dark-gray);
+      font-weight: 400;
+    }
+
+    /* =========================================================
+       LAYOUT 1: LOCATIONS PAGE
+       ========================================================= */
+    .loc-hero {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-lg) 0;
+    }
+
+    .loc-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .loc-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      margin-bottom: 8px;
+    }
+
+    .loc-hero .loc-subtitle {
+      font-size: 18px;
+      color: var(--hss-dark-blue);
+      font-weight: 400;
+    }
+
+    .loc-filters {
+      background: var(--white);
+      border-bottom: 1px solid #e4e8ec;
+      padding: var(--space-sm) 0;
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+    }
+
+    .loc-filters-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .loc-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .loc-filter-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--hss-dark-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .loc-filter-select,
+    .loc-filter-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 8px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      color: var(--black);
+      transition: border-color 0.2s;
+    }
+
+    .loc-filter-select {
+      padding-right: 32px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .loc-filter-select:focus,
+    .loc-filter-input:focus {
+      outline: none;
+      border-color: var(--hss-blue);
+      box-shadow: 0 0 0 3px rgba(0,116,188,0.1);
+    }
+
+    .loc-filter-input {
+      width: 240px;
+    }
+
+    .loc-filter-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 20px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .loc-filter-btn:hover { background: #005A91; }
+
+    .loc-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .loc-map {
+      background: linear-gradient(135deg, #e8f4fd 0%, #d4ecf9 100%);
+      border-radius: var(--radius-lg);
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d1e8f5;
+      position: sticky;
+      top: 130px;
+      align-self: start;
+    }
+
+    .loc-map-placeholder {
+      text-align: center;
+      color: var(--hss-dark-gray);
+    }
+
+    .loc-map-placeholder svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--hss-blue);
+      fill: none;
+      stroke-width: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .loc-map-placeholder p {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .loc-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .loc-card {
+      background: var(--white);
+      border: 1px solid #e4e8ec;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .loc-card:hover {
+      border-color: var(--hss-blue);
+      box-shadow: 0 4px 16px rgba(0,116,188,0.1);
+    }
+
+    .loc-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .loc-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+    }
+
+    .loc-card .loc-badge {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: #e8f7ef;
+      color: var(--hss-green);
+    }
+
+    .loc-card-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .loc-card-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: #4a4a4a;
+    }
+
+    .loc-card-detail svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--hss-dark-gray);
+      fill: none;
+      stroke-width: 2;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .loc-card-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .loc-card-services span {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--hss-cool-neutral);
+      color: var(--hss-dark-blue);
+    }
+
+    .loc-card-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .loc-card-actions .btn-primary {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .loc-card-actions .btn-primary:hover { background: #005A91; }
+
+    .loc-card-actions .btn-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--hss-blue);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .loc-card-actions .btn-link:hover { text-decoration: underline; }
+
+    .loc-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: var(--space-lg) 0;
+    }
+
+    .loc-pagination button {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      color: #333;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .loc-pagination button:hover { border-color: var(--hss-blue); color: var(--hss-blue); }
+    .loc-pagination button.active { background: var(--hss-blue); color: var(--white); border-color: var(--hss-blue); }
+
+    /* =========================================================
+       LAYOUT 2: FIND A DOCTOR PAGE
+       ========================================================= */
+    .doc-hero {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-xl) 0;
+      text-align: center;
+    }
+
+    .doc-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .doc-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      margin-bottom: var(--space-sm);
+    }
+
+    .doc-hero p {
+      font-size: 18px;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-md);
+    }
+
+    .doc-search-bar {
+      display: flex;
+      gap: 0;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border: 1px solid #e4e8ec;
+    }
+
+    .doc-search-bar input {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      padding: 16px 20px;
+      border: none;
+      outline: none;
+    }
+
+    .doc-search-bar select {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 16px 40px 16px 20px;
+      border: none;
+      border-left: 1px solid #e4e8ec;
+      background: var(--white);
+      color: #333;
+      cursor: pointer;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+
+    .doc-search-bar button {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 16px 32px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .doc-search-bar button:hover { background: #005A91; }
+
+    .doc-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: var(--space-lg);
+    }
+
+    .doc-sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .doc-filter-section {
+      margin-bottom: var(--space-md);
+    }
+
+    .doc-filter-section h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e4e8ec;
+    }
+
+    .doc-filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #3d3d3d;
+      cursor: pointer;
+    }
+
+    .doc-filter-option input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--hss-blue);
+    }
+
+    .doc-results-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-md);
+    }
+
+    .doc-results-count {
+      font-size: 14px;
+      color: var(--hss-dark-gray);
+    }
+
+    .doc-results-count strong {
+      color: var(--hss-dark-blue);
+    }
+
+    .doc-view-toggle {
+      display: flex;
+      gap: 4px;
+      background: var(--hss-cool-neutral);
+      border-radius: var(--radius-md);
+      padding: 3px;
+    }
+
+    .doc-view-toggle button {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--hss-dark-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .doc-view-toggle button.active {
+      background: var(--white);
+      color: var(--hss-dark-blue);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .doc-card {
+      background: var(--white);
+      border: 1px solid #e4e8ec;
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      display: flex;
+      gap: var(--space-sm);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .doc-card:hover {
+      border-color: var(--hss-blue);
+      box-shadow: 0 4px 16px rgba(0,116,188,0.1);
+    }
+
+    .doc-card-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b3d9f2 0%, #e0eef8 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .doc-card-photo svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--hss-blue);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .doc-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .doc-card-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 4px;
+    }
+
+    .doc-card-info .doc-specialty {
+      font-size: 13px;
+      color: var(--hss-blue);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .doc-card-info .doc-location {
+      font-size: 12px;
+      color: var(--hss-dark-gray);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+
+    .doc-card-info .doc-location svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--hss-dark-gray);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .doc-card-rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .doc-card-rating .stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .doc-card-rating .stars svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--hss-gold);
+    }
+
+    .doc-card-rating .rating-text {
+      font-size: 12px;
+      color: var(--hss-dark-gray);
+    }
+
+    .doc-card-cta {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 16px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .doc-card-cta:hover { background: #005A91; }
+
+    /* =========================================================
+       LAYOUT 3: SERVICE DETAIL PAGE
+       ========================================================= */
+    .svc-hero {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-lg) 0;
+    }
+
+    .svc-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .svc-hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--hss-blue);
+      margin-bottom: 8px;
+    }
+
+    .svc-hero .svc-subtitle {
+      font-size: 18px;
+      color: var(--hss-dark-blue);
+      font-weight: 400;
+      max-width: 700px;
+    }
+
+    .svc-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: var(--space-xl);
+    }
+
+    .svc-main {
+      min-width: 0;
+    }
+
+    .svc-section {
+      margin-bottom: var(--space-xl);
+    }
+
+    .svc-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-sm);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--hss-cool-neutral);
+    }
+
+    .svc-section p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: var(--space-sm);
+    }
+
+    .svc-conditions-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      list-style: none;
+      margin-top: var(--space-sm);
+    }
+
+    .svc-conditions-list li {
+      font-size: 14px;
+      color: #3d3d3d;
+      padding: 10px 14px;
+      background: var(--hss-cool-neutral);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .svc-conditions-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--hss-blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .svc-physicians {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+    }
+
+    .svc-physician-card {
+      text-align: center;
+      padding: var(--space-md);
+      background: var(--hss-cool-neutral);
+      border-radius: var(--radius-md);
+      transition: transform 0.2s;
+    }
+
+    .svc-physician-card:hover { transform: translateY(-2px); }
+
+    .svc-physician-card .svc-doc-photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b3d9f2 0%, #e0eef8 100%);
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .svc-physician-card .svc-doc-photo svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--hss-blue);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .svc-physician-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 4px;
+    }
+
+    .svc-physician-card p {
+      font-size: 12px;
+      color: var(--hss-dark-gray);
+    }
+
+    .svc-sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .svc-sidebar-card {
+      background: var(--white);
+      border: 1px solid #e4e8ec;
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      margin-bottom: var(--space-sm);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .svc-sidebar-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-sm);
+    }
+
+    .svc-sidebar-card .svc-form-group {
+      margin-bottom: 12px;
+    }
+
+    .svc-sidebar-card .svc-form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--hss-dark-blue);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .svc-sidebar-card .svc-form-group input,
+    .svc-sidebar-card .svc-form-group select {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    .svc-sidebar-card .svc-form-group select {
+      padding-right: 36px;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .svc-sidebar-card .svc-form-group input:focus,
+    .svc-sidebar-card .svc-form-group select:focus {
+      outline: none;
+      border-color: var(--hss-blue);
+      box-shadow: 0 0 0 3px rgba(0,116,188,0.1);
+    }
+
+    .svc-sidebar-card .svc-form-btn {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px;
+      background: var(--hss-blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+
+    .svc-sidebar-card .svc-form-btn:hover { background: #005A91; }
+
+    .svc-sidebar-phone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: var(--space-sm);
+      background: var(--hss-cool-neutral);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-sm);
+    }
+
+    .svc-sidebar-phone .phone-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--hss-blue);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .svc-sidebar-phone .phone-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--white);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .svc-sidebar-phone .phone-text {
+      font-size: 13px;
+      color: #4a4a4a;
+    }
+
+    .svc-sidebar-phone .phone-text strong {
+      display: block;
+      font-size: 16px;
+      color: var(--hss-dark-blue);
+    }
+
+    .svc-related-services {
+      list-style: none;
+    }
+
+    .svc-related-services li {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .svc-related-services li:last-child { border-bottom: none; }
+
+    .svc-related-services a {
+      font-size: 14px;
+      color: var(--hss-blue);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .svc-related-services a:hover { text-decoration: underline; }
+
+    .svc-related-services a::after {
+      content: "\2192";
+      font-size: 14px;
+      color: var(--hss-dark-gray);
+    }
+
+    /* =========================================================
+       LAYOUT 4: ABOUT / CONTENT PAGE
+       ========================================================= */
+    .about-hero {
+      position: relative;
+      padding: var(--space-2xl) 0;
+      background: linear-gradient(135deg, var(--hss-dark-blue) 0%, #1a3a6b 100%);
+      overflow: hidden;
+    }
+
+    .about-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .about-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-hero .breadcrumb a { color: rgba(255,255,255,0.9); }
+    .about-hero .breadcrumb .sep { color: rgba(255,255,255,0.5); }
+    .about-hero .breadcrumb .current { color: rgba(255,255,255,0.75); }
+
+    .about-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .about-hero .about-subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+      max-width: 650px;
+    }
+
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-xl);
+    }
+
+    .about-toc {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .about-toc h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e4e8ec;
+    }
+
+    .about-toc ul {
+      list-style: none;
+    }
+
+    .about-toc li {
+      margin-bottom: 2px;
+    }
+
+    .about-toc a {
+      font-size: 14px;
+      color: var(--hss-dark-gray);
+      text-decoration: none;
+      display: block;
+      padding: 6px 12px;
+      border-left: 3px solid transparent;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      transition: all 0.2s;
+    }
+
+    .about-toc a:hover {
+      color: var(--hss-blue);
+      background: var(--hss-cool-neutral);
+    }
+
+    .about-toc a.active {
+      color: var(--hss-blue);
+      border-left-color: var(--hss-blue);
+      background: var(--hss-cool-neutral);
+      font-weight: 600;
+    }
+
+    .about-main {
+      min-width: 0;
+    }
+
+    .about-section {
+      margin-bottom: var(--space-xl);
+      scroll-margin-top: 80px;
+    }
+
+    .about-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-sm);
+    }
+
+    .about-section p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: var(--space-sm);
+    }
+
+    .about-pullquote {
+      margin: var(--space-lg) 0;
+      padding: var(--space-md) var(--space-lg);
+      border-left: 4px solid var(--hss-blue);
+      background: var(--hss-cool-neutral);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .about-pullquote p {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--hss-blue);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .about-pullquote cite {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-style: normal;
+      color: var(--hss-dark-gray);
+      font-weight: 500;
+    }
+
+    .about-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .about-stat {
+      text-align: center;
+      padding: var(--space-md);
+      background: var(--hss-cool-neutral);
+      border-radius: var(--radius-md);
+    }
+
+    .about-stat .stat-number {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--hss-blue);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about-stat .stat-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--hss-dark-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .about-photo-callout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--hss-cool-neutral);
+    }
+
+    .about-photo-callout .photo-placeholder {
+      background: linear-gradient(135deg, #b3d9f2 0%, #e0eef8 100%);
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hss-dark-gray);
+      font-size: 14px;
+    }
+
+    .about-photo-callout .photo-text {
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-photo-callout .photo-text h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 8px;
+    }
+
+    .about-photo-callout .photo-text p {
+      font-size: 15px;
+      color: #3d3d3d;
+      line-height: 1.7;
+    }
+
+    .about-related {
+      padding: var(--space-xl) 0;
+      background: var(--hss-cool-neutral);
+    }
+
+    .about-related-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .about-related h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: var(--space-md);
+    }
+
+    .about-related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .about-related-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      border: 1px solid #e4e8ec;
+      transition: box-shadow 0.2s;
+    }
+
+    .about-related-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    .about-related-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      margin-bottom: 6px;
+    }
+
+    .about-related-card p {
+      font-size: 14px;
+      color: #4a4a4a;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .about-related-card a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--hss-blue);
+      text-decoration: none;
+    }
+
+    .about-related-card a:hover { text-decoration: underline; }
+
+    /* =========================================================
+       LAYOUT 5: NEWS / BLOG LISTING PAGE
+       ========================================================= */
+    .news-featured {
+      background: var(--hss-cool-neutral);
+      padding: var(--space-lg) 0;
+    }
+
+    .news-featured-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .news-featured-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .news-featured-img {
+      background: linear-gradient(135deg, var(--hss-blue) 0%, var(--hss-dark-blue) 100%);
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .news-featured-body {
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .news-featured-body .news-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--hss-teal);
+      margin-bottom: 12px;
+    }
+
+    .news-featured-body h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .news-featured-body p {
+      font-size: 16px;
+      color: #4a4a4a;
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+    }
+
+    .news-featured-body .news-meta {
+      font-size: 13px;
+      color: var(--hss-dark-gray);
+    }
+
+    .news-featured-body .news-read-more {
+      margin-top: var(--space-sm);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--hss-blue);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .news-featured-body .news-read-more:hover { text-decoration: underline; }
+
+    .news-tabs {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-md) 24px 0;
+      display: flex;
+      gap: 4px;
+      border-bottom: 1px solid #e4e8ec;
+    }
+
+    .news-tab {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 20px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--hss-dark-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: -1px;
+    }
+
+    .news-tab:hover { color: var(--hss-blue); }
+    .news-tab.active {
+      color: var(--hss-blue);
+      border-bottom-color: var(--hss-blue);
+      font-weight: 600;
+    }
+
+    .news-grid-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-lg) 24px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .news-card {
+      background: var(--white);
+      border: 1px solid #e4e8ec;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .news-card-img {
+      height: 180px;
+      background: linear-gradient(135deg, #b3d9f2 0%, #e0eef8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--hss-dark-gray);
+      font-size: 13px;
+    }
+
+    .news-card-body {
+      padding: var(--space-md);
+    }
+
+    .news-card-body .news-card-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--hss-teal);
+      margin-bottom: 8px;
+    }
+
+    .news-card-body h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hss-dark-blue);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .news-card-body .news-card-excerpt {
+      font-size: 14px;
+      color: #4a4a4a;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .news-card-body .news-card-date {
+      font-size: 12px;
+      color: var(--hss-dark-gray);
+    }
+
+    .news-load-more {
+      text-align: center;
+      padding: var(--space-lg) 0;
+    }
+
+    .news-load-more button {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 36px;
+      background: var(--white);
+      color: var(--hss-blue);
+      border: 2px solid var(--hss-blue);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .news-load-more button:hover {
+      background: var(--hss-blue);
+      color: var(--white);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 1024px) {
+      .header-nav { gap: 16px; }
+      .header-nav a { font-size: 13px; }
+      .header-phone { display: none; }
+      .loc-content { grid-template-columns: 1fr; }
+      .loc-map { position: static; min-height: 300px; }
+      .doc-content { grid-template-columns: 1fr; }
+      .doc-sidebar { position: static; }
+      .svc-content { grid-template-columns: 1fr; }
+      .svc-sidebar { position: static; }
+      .about-content { grid-template-columns: 1fr; }
+      .about-toc { position: static; display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid #e4e8ec; padding-bottom: var(--space-sm); margin-bottom: var(--space-md); }
+      .about-toc h4 { display: none; }
+      .about-toc ul { display: flex; gap: 4px; flex-wrap: wrap; }
+      .about-toc a { border-left: none; border-radius: var(--radius-sm); padding: 6px 10px; }
+      .news-featured-card { grid-template-columns: 1fr; }
+      .news-featured-img { min-height: 200px; }
+    }
+
+    @media (max-width: 768px) {
+      .layout-nav-inner { padding: 10px 16px; gap: 12px; }
+      .layout-nav-links a { font-size: 12px; padding: 5px 10px; }
+      .layout-header h2 { font-size: 24px; }
+
+      /* Header mobile */
+      .utility-bar { display: none; }
+      .main-nav-inner { padding: 0 16px; height: 56px; gap: 12px; }
+      .logo-mark { width: 38px; height: 38px; font-size: 16px; }
+      .header-nav { display: none; }
+      .header-phone { display: none; }
+      .header-cta { padding: 8px 14px; font-size: 13px; }
+      .mobile-menu-btn { display: block; }
+
+      /* Heroes mobile */
+      .loc-hero h1, .doc-hero h1, .svc-hero h1, .about-hero h1 { font-size: 28px; }
+      .loc-hero, .doc-hero, .svc-hero { padding: var(--space-md) 0; }
+      .about-hero { padding: var(--space-lg) 0; }
+      .about-hero h1 { font-size: 32px; }
+
+      /* Locations mobile */
+      .loc-filters { top: 56px; }
+      .loc-filters-inner { flex-direction: column; align-items: stretch; }
+      .loc-filter-group { flex-direction: column; gap: 4px; }
+      .loc-filter-input { width: 100%; }
+      .loc-card-details { grid-template-columns: 1fr; }
+      .loc-card-services { gap: 4px; }
+      .loc-card-services span { font-size: 11px; padding: 2px 8px; }
+
+      /* Find a Doctor mobile */
+      .doc-grid { grid-template-columns: 1fr; }
+      .doc-search-bar { flex-direction: column; }
+      .doc-search-bar input { border-bottom: 1px solid #e4e8ec; }
+      .doc-search-bar select { border-left: none; border-top: none; border-bottom: 1px solid #e4e8ec; }
+      .doc-card { flex-direction: column; align-items: center; text-align: center; }
+      .doc-card-info .doc-location { justify-content: center; }
+
+      /* Service Detail mobile */
+      .svc-conditions-list { grid-template-columns: 1fr; }
+      .svc-physicians { grid-template-columns: 1fr; }
+
+      /* About page mobile */
+      .about-stats-row { grid-template-columns: 1fr; }
+      .about-photo-callout { grid-template-columns: 1fr; }
+      .about-related-grid { grid-template-columns: 1fr; }
+      .about-pullquote { padding: var(--space-sm) var(--space-md); }
+      .about-pullquote p { font-size: 17px; }
+
+      /* News mobile */
+      .news-grid { grid-template-columns: 1fr; }
+      .news-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .news-tab { white-space: nowrap; padding: 8px 14px; font-size: 13px; }
+      .news-featured-body h2 { font-size: 22px; }
+      .news-featured-body { padding: var(--space-md); }
+
+      /* Footer mobile */
+      .footer-top { grid-template-columns: 1fr; gap: var(--space-md); }
+      .footer-bottom { text-align: center; }
+    }
+
+    /* Focus states */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--hss-blue);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================================================================
+       LAYOUT NAVIGATOR
+       ================================================================ -->
+  <nav class="layout-nav" aria-label="Page layouts navigation">
+    <div class="layout-nav-inner">
+      <span class="layout-nav-title">HSS Page Layouts</span>
+      <div class="layout-nav-links">
+        <a href="#locations">Locations</a>
+        <a href="#find-a-doctor">Find a Doctor</a>
+        <a href="#service-detail">Service Detail</a>
+        <a href="#about-content">About / Content</a>
+        <a href="#news-blog">News / Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       LAYOUT 1: LOCATIONS PAGE
+       Based on hss.edu/locations — improved with:
+       - Split map/list layout for context
+       - Better card density with services, hours, CTAs
+       - Sticky filter bar for quick refinement
+       - Accessible filter controls
+       ================================================================ -->
+  <section class="layout-section" id="locations">
+    <div class="layout-header">
+      <h2>Locations Page</h2>
+      <p>Directory of all HSS locations with map view, filterable by region, service type, and search. Improved card density and split-panel layout.</p>
+      <div class="layout-tags">
+        <span class="layout-tag">Directory</span>
+        <span class="layout-tag">Filter + Search</span>
+        <span class="layout-tag">Map Integration</span>
+      </div>
+    </div>
+    <div class="layout-demo">
+
+      <!-- Header -->
+      <header class="site-header">
+        <div class="utility-bar">
+          <div class="utility-links">
+            <a href="#">Giving</a><span class="separator">|</span>
+            <a href="#">Careers</a><span class="separator">|</span>
+            <a href="#">Why Choose HSS</a>
+          </div>
+          <a href="#" class="utility-signin">MyHSS Sign In
+            <span class="signin-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#999" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          </a>
+        </div>
+        <div class="main-nav-bar">
+          <div class="main-nav-inner">
+            <a href="#" class="logo"><div class="logo-mark">HSS</div></a>
+            <nav class="header-nav">
+              <a href="#">Find a Doctor</a>
+              <a href="#" class="active">Locations</a>
+              <a href="#">Patient Care</a>
+              <a href="#">Health Library</a>
+              <a href="#">Research &amp; Education</a>
+              <button class="header-search" aria-label="Search"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+            </nav>
+            <div class="header-right">
+              <a href="tel:12126061000" class="header-phone"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>1.212.606.1000</a>
+              <a href="#" class="header-cta">Make an Appointment</a>
+              <button class="mobile-menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Locations Hero -->
+      <section class="loc-hero">
+        <div class="loc-hero-inner">
+          <nav class="breadcrumb">
+            <a href="#">Home</a><span class="sep">/</span><span class="current">Locations</span>
+          </nav>
+          <h1>Our Locations</h1>
+          <p class="loc-subtitle">World-class orthopedic care across New York, New Jersey, Connecticut, and Florida.</p>
+        </div>
+      </section>
+
+      <!-- Filter Bar -->
+      <div class="loc-filters">
+        <div class="loc-filters-inner">
+          <div class="loc-filter-group">
+            <label for="loc-region">Region</label>
+            <select id="loc-region" class="loc-filter-select">
+              <option>All Regions</option>
+              <option>New York City</option>
+              <option>Long Island</option>
+              <option>Westchester</option>
+              <option>New Jersey</option>
+              <option>Connecticut</option>
+              <option>Florida</option>
+            </select>
+          </div>
+          <div class="loc-filter-group">
+            <label for="loc-service">Service</label>
+            <select id="loc-service" class="loc-filter-select">
+              <option>All Services</option>
+              <option>Joint Replacement</option>
+              <option>Sports Medicine</option>
+              <option>Spine</option>
+              <option>Rheumatology</option>
+              <option>Imaging</option>
+              <option>Physical Therapy</option>
+            </select>
+          </div>
+          <div class="loc-filter-group">
+            <label for="loc-search">Search</label>
+            <input type="search" id="loc-search" class="loc-filter-input" placeholder="Search by name, address, or zip code">
+          </div>
+          <button class="loc-filter-btn">Search</button>
+        </div>
+      </div>
+
+      <!-- Map + List Split -->
+      <div class="loc-content">
+        <div class="loc-map">
+          <div class="loc-map-placeholder">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p>Interactive Map<br><small>Google Maps / Mapbox integration</small></p>
+          </div>
+        </div>
+        <div class="loc-list">
+          <!-- Location Card 1 -->
+          <div class="loc-card">
+            <div class="loc-card-header">
+              <h3>HSS Main Campus</h3>
+              <span class="loc-badge">Flagship</span>
+            </div>
+            <div class="loc-card-details">
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>535 East 70th Street<br>New York, NY 10021</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>212.606.1000</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                <span>Mon-Fri: 6am - 8pm<br>Sat: 7am - 3pm</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                <span>Full service hospital</span>
+              </div>
+            </div>
+            <div class="loc-card-services">
+              <span>Joint Replacement</span>
+              <span>Sports Medicine</span>
+              <span>Spine</span>
+              <span>Rheumatology</span>
+              <span>Imaging</span>
+            </div>
+            <div class="loc-card-actions">
+              <a href="#" class="btn-primary">Book Appointment</a>
+              <a href="#" class="btn-link">Get Directions <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <!-- Location Card 2 -->
+          <div class="loc-card">
+            <div class="loc-card-header">
+              <h3>HSS Westchester</h3>
+            </div>
+            <div class="loc-card-details">
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>1133 Westchester Ave<br>White Plains, NY 10605</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>914.840.5040</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                <span>Mon-Fri: 7am - 6pm</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                <span>Ambulatory surgery</span>
+              </div>
+            </div>
+            <div class="loc-card-services">
+              <span>Joint Replacement</span>
+              <span>Sports Medicine</span>
+              <span>Physical Therapy</span>
+            </div>
+            <div class="loc-card-actions">
+              <a href="#" class="btn-primary">Book Appointment</a>
+              <a href="#" class="btn-link">Get Directions <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <!-- Location Card 3 -->
+          <div class="loc-card">
+            <div class="loc-card-header">
+              <h3>HSS Paramus</h3>
+            </div>
+            <div class="loc-card-details">
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>140 Route 17 North<br>Paramus, NJ 07652</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                <span>201.487.9500</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                <span>Mon-Fri: 7am - 5pm</span>
+              </div>
+              <div class="loc-card-detail">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+                <span>Outpatient center</span>
+              </div>
+            </div>
+            <div class="loc-card-services">
+              <span>Orthopedics</span>
+              <span>Imaging</span>
+              <span>Physical Therapy</span>
+            </div>
+            <div class="loc-card-actions">
+              <a href="#" class="btn-primary">Book Appointment</a>
+              <a href="#" class="btn-link">Get Directions <span>&rarr;</span></a>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="loc-pagination">
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-logo">HSS</div>
+              <p class="footer-connect-label">Connect With Us</p>
+              <div class="footer-social-icons">
+                <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5M12 7a5 5 0 110 10 5 5 0 010-10m0 2a3 3 0 100 6 3 3 0 000-6z"/></svg></a>
+                <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.43z"/><polygon points="9.75,15.02 15.5,11.75 9.75,8.48"/></svg></a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <h4>Learn More</h4>
+              <ul><li><a href="#">About HSS</a></li><li><a href="#">Awards</a></li><li><a href="#">Community</a></li><li><a href="#">Research</a></li></ul>
+            </div>
+            <div class="footer-col">
+              <h4>Information For</h4>
+              <ul><li><a href="#">Patients</a></li><li><a href="#">Physicians</a></li><li><a href="#">Employers</a></li><li><a href="#">Media</a></li></ul>
+            </div>
+            <div class="footer-col">
+              <h4>Policies</h4>
+              <ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Non-Discrimination</a></li><li><a href="#">Accessibility</a></li></ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-legal">
+              <p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p>
+              <p>535 East 70th Street, New York, NY 10021 | 212.606.1000</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LAYOUT 2: FIND A DOCTOR PAGE
+       Improvements:
+       - Prominent search with specialty dropdown
+       - Sidebar filters with checkboxes
+       - Modern card design with rating, inline CTA
+       - List/grid view toggle
+       ================================================================ -->
+  <section class="layout-section" id="find-a-doctor">
+    <div class="layout-header">
+      <h2>Find a Doctor</h2>
+      <p>Physician directory with search, multi-facet filtering, and profile cards with inline booking CTAs.</p>
+      <div class="layout-tags">
+        <span class="layout-tag">Search</span>
+        <span class="layout-tag">Filter Sidebar</span>
+        <span class="layout-tag">Profile Cards</span>
+      </div>
+    </div>
+    <div class="layout-demo">
+
+      <!-- Header (abbreviated) -->
+      <header class="site-header">
+        <div class="utility-bar">
+          <div class="utility-links">
+            <a href="#">Giving</a><span class="separator">|</span><a href="#">Careers</a><span class="separator">|</span><a href="#">Why Choose HSS</a>
+          </div>
+          <a href="#" class="utility-signin">MyHSS Sign In <span class="signin-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#999" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></a>
+        </div>
+        <div class="main-nav-bar">
+          <div class="main-nav-inner">
+            <a href="#" class="logo"><div class="logo-mark">HSS</div></a>
+            <nav class="header-nav">
+              <a href="#" class="active">Find a Doctor</a>
+              <a href="#">Locations</a>
+              <a href="#">Patient Care</a>
+              <a href="#">Health Library</a>
+              <a href="#">Research &amp; Education</a>
+              <button class="header-search" aria-label="Search"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+            </nav>
+            <div class="header-right">
+              <a href="tel:12126061000" class="header-phone"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>1.212.606.1000</a>
+              <a href="#" class="header-cta">Make an Appointment</a>
+              <button class="mobile-menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Doctor Search Hero -->
+      <section class="doc-hero">
+        <div class="doc-hero-inner">
+          <h1>Find a Doctor</h1>
+          <p>Search our world-renowned specialists by name, specialty, or condition.</p>
+          <div class="doc-search-bar">
+            <input type="search" placeholder="Search by name, specialty, or condition...">
+            <select>
+              <option>All Specialties</option>
+              <option>Orthopedic Surgery</option>
+              <option>Sports Medicine</option>
+              <option>Rheumatology</option>
+              <option>Spine Surgery</option>
+              <option>Hand &amp; Upper Extremity</option>
+              <option>Foot &amp; Ankle</option>
+            </select>
+            <button>Search</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <div class="doc-content">
+        <!-- Sidebar Filters -->
+        <aside class="doc-sidebar">
+          <div class="doc-filter-section">
+            <h4>Specialty</h4>
+            <label class="doc-filter-option"><input type="checkbox" checked> Orthopedic Surgery</label>
+            <label class="doc-filter-option"><input type="checkbox"> Sports Medicine</label>
+            <label class="doc-filter-option"><input type="checkbox"> Rheumatology</label>
+            <label class="doc-filter-option"><input type="checkbox"> Spine Surgery</label>
+            <label class="doc-filter-option"><input type="checkbox"> Physical Therapy</label>
+          </div>
+          <div class="doc-filter-section">
+            <h4>Location</h4>
+            <label class="doc-filter-option"><input type="checkbox"> Main Campus (NYC)</label>
+            <label class="doc-filter-option"><input type="checkbox"> Westchester</label>
+            <label class="doc-filter-option"><input type="checkbox"> Long Island</label>
+            <label class="doc-filter-option"><input type="checkbox"> New Jersey</label>
+            <label class="doc-filter-option"><input type="checkbox"> Florida</label>
+          </div>
+          <div class="doc-filter-section">
+            <h4>Insurance</h4>
+            <label class="doc-filter-option"><input type="checkbox"> Aetna</label>
+            <label class="doc-filter-option"><input type="checkbox"> Blue Cross</label>
+            <label class="doc-filter-option"><input type="checkbox"> Cigna</label>
+            <label class="doc-filter-option"><input type="checkbox"> United</label>
+            <label class="doc-filter-option"><input type="checkbox"> Medicare</label>
+          </div>
+          <div class="doc-filter-section">
+            <h4>Language</h4>
+            <label class="doc-filter-option"><input type="checkbox"> English</label>
+            <label class="doc-filter-option"><input type="checkbox"> Spanish</label>
+            <label class="doc-filter-option"><input type="checkbox"> Mandarin</label>
+            <label class="doc-filter-option"><input type="checkbox"> Korean</label>
+          </div>
+        </aside>
+
+        <!-- Results Grid -->
+        <div>
+          <div class="doc-results-header">
+            <p class="doc-results-count">Showing <strong>48 doctors</strong> matching your search</p>
+            <div class="doc-view-toggle">
+              <button class="active">Grid</button>
+              <button>List</button>
+            </div>
+          </div>
+          <div class="doc-grid">
+            <!-- Doctor Card 1 -->
+            <div class="doc-card">
+              <div class="doc-card-photo">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="doc-card-info">
+                <h3>Dr. Sarah Chen, MD</h3>
+                <p class="doc-specialty">Orthopedic Surgery, Joint Replacement</p>
+                <p class="doc-location"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Main Campus, NYC</p>
+                <div class="doc-card-rating">
+                  <div class="stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                  </div>
+                  <span class="rating-text">4.9 (127 reviews)</span>
+                </div>
+                <a href="#" class="doc-card-cta">Book Appointment</a>
+              </div>
+            </div>
+
+            <!-- Doctor Card 2 -->
+            <div class="doc-card">
+              <div class="doc-card-photo">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="doc-card-info">
+                <h3>Dr. Michael Torres, MD</h3>
+                <p class="doc-specialty">Sports Medicine</p>
+                <p class="doc-location"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> HSS Westchester</p>
+                <div class="doc-card-rating">
+                  <div class="stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                  </div>
+                  <span class="rating-text">4.8 (89 reviews)</span>
+                </div>
+                <a href="#" class="doc-card-cta">Book Appointment</a>
+              </div>
+            </div>
+
+            <!-- Doctor Card 3 -->
+            <div class="doc-card">
+              <div class="doc-card-photo">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="doc-card-info">
+                <h3>Dr. Emily Rodriguez, MD</h3>
+                <p class="doc-specialty">Rheumatology</p>
+                <p class="doc-location"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Main Campus, NYC</p>
+                <div class="doc-card-rating">
+                  <div class="stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                  </div>
+                  <span class="rating-text">4.9 (156 reviews)</span>
+                </div>
+                <a href="#" class="doc-card-cta">Book Appointment</a>
+              </div>
+            </div>
+
+            <!-- Doctor Card 4 -->
+            <div class="doc-card">
+              <div class="doc-card-photo">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="doc-card-info">
+                <h3>Dr. James Park, MD</h3>
+                <p class="doc-specialty">Spine Surgery</p>
+                <p class="doc-location"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> HSS Paramus, NJ</p>
+                <div class="doc-card-rating">
+                  <div class="stars">
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                    <svg viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                  </div>
+                  <span class="rating-text">4.7 (94 reviews)</span>
+                </div>
+                <a href="#" class="doc-card-cta">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand"><div class="footer-logo">HSS</div><p class="footer-connect-label">Connect With Us</p></div>
+            <div class="footer-col"><h4>Learn More</h4><ul><li><a href="#">About HSS</a></li><li><a href="#">Awards</a></li></ul></div>
+            <div class="footer-col"><h4>Information For</h4><ul><li><a href="#">Patients</a></li><li><a href="#">Physicians</a></li></ul></div>
+            <div class="footer-col"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li></ul></div>
+          </div>
+          <div class="footer-bottom"><div class="footer-legal"><p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p></div></div>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LAYOUT 3: SERVICE DETAIL PAGE
+       Improvements:
+       - Two-column with sticky sidebar for conversion
+       - Structured conditions list
+       - Physician carousel
+       - Inline appointment form
+       ================================================================ -->
+  <section class="layout-section" id="service-detail">
+    <div class="layout-header">
+      <h2>Service Detail Page</h2>
+      <p>Individual service or condition page with rich content, structured condition lists, physician carousel, and sticky appointment sidebar.</p>
+      <div class="layout-tags">
+        <span class="layout-tag">Content + Sidebar</span>
+        <span class="layout-tag">Conversion CTA</span>
+        <span class="layout-tag">Physician Carousel</span>
+      </div>
+    </div>
+    <div class="layout-demo">
+
+      <!-- Header -->
+      <header class="site-header">
+        <div class="utility-bar">
+          <div class="utility-links"><a href="#">Giving</a><span class="separator">|</span><a href="#">Careers</a><span class="separator">|</span><a href="#">Why Choose HSS</a></div>
+          <a href="#" class="utility-signin">MyHSS Sign In <span class="signin-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#999" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></a>
+        </div>
+        <div class="main-nav-bar">
+          <div class="main-nav-inner">
+            <a href="#" class="logo"><div class="logo-mark">HSS</div></a>
+            <nav class="header-nav">
+              <a href="#">Find a Doctor</a>
+              <a href="#">Locations</a>
+              <a href="#" class="active">Patient Care</a>
+              <a href="#">Health Library</a>
+              <a href="#">Research &amp; Education</a>
+              <button class="header-search" aria-label="Search"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+            </nav>
+            <div class="header-right">
+              <a href="tel:12126061000" class="header-phone"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>1.212.606.1000</a>
+              <a href="#" class="header-cta">Make an Appointment</a>
+              <button class="mobile-menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Service Hero -->
+      <section class="svc-hero">
+        <div class="svc-hero-inner">
+          <nav class="breadcrumb">
+            <a href="#">Home</a><span class="sep">/</span>
+            <a href="#">Patient Care</a><span class="sep">/</span>
+            <span class="current">Joint Replacement</span>
+          </nav>
+          <h1>Joint Replacement</h1>
+          <p class="svc-subtitle">Advanced hip, knee, and shoulder replacement from the #1 hospital in orthopedics, with faster recovery and better outcomes.</p>
+        </div>
+      </section>
+
+      <!-- Two-Column Content -->
+      <div class="svc-content">
+        <main class="svc-main">
+          <div class="svc-section">
+            <h2>Overview</h2>
+            <p>HSS performs more joint replacement procedures than any other hospital in the country. Our surgeons use the latest techniques, including minimally invasive approaches, robotic-assisted surgery, and patient-specific implants to ensure the best possible outcomes.</p>
+            <p>We offer comprehensive care from initial evaluation through recovery, including pre-surgical education, personalized surgical planning, and dedicated rehabilitation programs designed to get you moving again as quickly and safely as possible.</p>
+          </div>
+
+          <div class="svc-section">
+            <h2>Conditions We Treat</h2>
+            <p>Our joint replacement specialists treat a wide range of conditions that affect the hip, knee, and shoulder joints.</p>
+            <ul class="svc-conditions-list">
+              <li>Osteoarthritis</li>
+              <li>Rheumatoid Arthritis</li>
+              <li>Avascular Necrosis</li>
+              <li>Post-Traumatic Arthritis</li>
+              <li>Hip Dysplasia</li>
+              <li>Bone Fractures</li>
+              <li>Rotator Cuff Arthropathy</li>
+              <li>Failed Previous Surgery</li>
+              <li>Inflammatory Arthritis</li>
+              <li>Cartilage Damage</li>
+            </ul>
+          </div>
+
+          <div class="svc-section">
+            <h2>Our Specialists</h2>
+            <p>Our joint replacement team includes some of the most experienced surgeons in the world.</p>
+            <div class="svc-physicians">
+              <div class="svc-physician-card">
+                <div class="svc-doc-photo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <h4>Dr. Sarah Chen</h4>
+                <p>Hip &amp; Knee Replacement</p>
+              </div>
+              <div class="svc-physician-card">
+                <div class="svc-doc-photo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <h4>Dr. Robert Kim</h4>
+                <p>Shoulder Replacement</p>
+              </div>
+              <div class="svc-physician-card">
+                <div class="svc-doc-photo"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <h4>Dr. Maria Santos</h4>
+                <p>Revision Surgery</p>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Sticky Sidebar -->
+        <aside class="svc-sidebar">
+          <div class="svc-sidebar-card">
+            <h3>Schedule an Appointment</h3>
+            <div class="svc-form-group">
+              <label for="svc-name">Full Name</label>
+              <input type="text" id="svc-name" placeholder="Your full name">
+            </div>
+            <div class="svc-form-group">
+              <label for="svc-phone">Phone</label>
+              <input type="tel" id="svc-phone" placeholder="(555) 555-5555">
+            </div>
+            <div class="svc-form-group">
+              <label for="svc-service">Service Needed</label>
+              <select id="svc-service">
+                <option>Joint Replacement</option>
+                <option>Hip Replacement</option>
+                <option>Knee Replacement</option>
+                <option>Shoulder Replacement</option>
+              </select>
+            </div>
+            <button class="svc-form-btn">Request Appointment</button>
+            <div class="svc-sidebar-phone">
+              <div class="phone-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+              <div class="phone-text">Or call us<br><strong>212.606.1000</strong></div>
+            </div>
+          </div>
+
+          <div class="svc-sidebar-card">
+            <h3>Related Services</h3>
+            <ul class="svc-related-services">
+              <li><a href="#">Sports Medicine</a></li>
+              <li><a href="#">Physical Therapy</a></li>
+              <li><a href="#">Pain Management</a></li>
+              <li><a href="#">Imaging &amp; Diagnostics</a></li>
+              <li><a href="#">Pre-Surgical Education</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand"><div class="footer-logo">HSS</div><p class="footer-connect-label">Connect With Us</p></div>
+            <div class="footer-col"><h4>Learn More</h4><ul><li><a href="#">About HSS</a></li><li><a href="#">Awards</a></li></ul></div>
+            <div class="footer-col"><h4>Information For</h4><ul><li><a href="#">Patients</a></li><li><a href="#">Physicians</a></li></ul></div>
+            <div class="footer-col"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li></ul></div>
+          </div>
+          <div class="footer-bottom"><div class="footer-legal"><p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p></div></div>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LAYOUT 4: ABOUT / CONTENT PAGE
+       Improvements:
+       - Dark hero with subtle pattern overlay
+       - Sticky table of contents with active state
+       - Pullquotes, inline stats, photo callouts
+       - Related content cards at bottom
+       ================================================================ -->
+  <section class="layout-section" id="about-content">
+    <div class="layout-header">
+      <h2>About / Content Page</h2>
+      <p>Long-form content page with dark hero, sticky table of contents, pullquotes, inline statistics, and photo callouts.</p>
+      <div class="layout-tags">
+        <span class="layout-tag">Long-form</span>
+        <span class="layout-tag">Sticky TOC</span>
+        <span class="layout-tag">Rich Media</span>
+      </div>
+    </div>
+    <div class="layout-demo">
+
+      <!-- Header -->
+      <header class="site-header">
+        <div class="utility-bar">
+          <div class="utility-links"><a href="#">Giving</a><span class="separator">|</span><a href="#">Careers</a><span class="separator">|</span><a href="#">Why Choose HSS</a></div>
+          <a href="#" class="utility-signin">MyHSS Sign In <span class="signin-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#999" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></a>
+        </div>
+        <div class="main-nav-bar">
+          <div class="main-nav-inner">
+            <a href="#" class="logo"><div class="logo-mark">HSS</div></a>
+            <nav class="header-nav">
+              <a href="#">Find a Doctor</a>
+              <a href="#">Locations</a>
+              <a href="#">Patient Care</a>
+              <a href="#">Health Library</a>
+              <a href="#" class="active">Research &amp; Education</a>
+              <button class="header-search" aria-label="Search"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+            </nav>
+            <div class="header-right">
+              <a href="tel:12126061000" class="header-phone"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>1.212.606.1000</a>
+              <a href="#" class="header-cta">Make an Appointment</a>
+              <button class="mobile-menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- About Hero -->
+      <section class="about-hero">
+        <div class="about-hero-inner">
+          <nav class="breadcrumb">
+            <a href="#">Home</a><span class="sep">/</span>
+            <a href="#">About</a><span class="sep">/</span>
+            <span class="current">Our History</span>
+          </nav>
+          <h1>Our History</h1>
+          <p class="about-subtitle">For over 160 years, HSS has been a pioneer in musculoskeletal health, advancing the science and practice of orthopedic surgery.</p>
+        </div>
+      </section>
+
+      <!-- Content with TOC -->
+      <div class="about-content">
+        <nav class="about-toc" aria-label="Table of contents">
+          <h4>On This Page</h4>
+          <ul>
+            <li><a href="#" class="active">Our Founding</a></li>
+            <li><a href="#">Growth &amp; Innovation</a></li>
+            <li><a href="#">Modern Era</a></li>
+            <li><a href="#">By the Numbers</a></li>
+            <li><a href="#">Looking Forward</a></li>
+          </ul>
+        </nav>
+
+        <main class="about-main">
+          <div class="about-section">
+            <h2>Our Founding</h2>
+            <p>Hospital for Special Surgery was founded in 1863 as the Hospital for the Ruptured and Crippled by Dr. James Knight. It was one of the first hospitals in the nation dedicated to orthopedic medicine, born from a conviction that patients with musculoskeletal conditions deserved specialized care.</p>
+            <p>From its earliest days, the institution was committed to both clinical excellence and medical education, establishing a teaching philosophy that continues to this day.</p>
+
+            <div class="about-pullquote">
+              <p>Our mission has always been simple: to help people move better so they can live better.</p>
+              <cite>Dr. James Knight, Founder, 1863</cite>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2>Growth &amp; Innovation</h2>
+            <p>Throughout the 20th century, HSS became a world leader in orthopedic research and innovation. Our surgeons developed groundbreaking techniques in joint replacement, sports medicine, and rehabilitation that are now standard practice worldwide.</p>
+
+            <div class="about-photo-callout">
+              <div class="photo-placeholder">Photography: HSS in Action</div>
+              <div class="photo-text">
+                <h3>Pioneering Joint Replacement</h3>
+                <p>In the 1970s, HSS surgeons helped develop and refine total joint replacement procedures that have since restored mobility to millions of patients around the world.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2>By the Numbers</h2>
+            <p>Today, HSS is the largest academic medical center focused on musculoskeletal health in the world.</p>
+
+            <div class="about-stats-row">
+              <div class="about-stat">
+                <div class="stat-number">160+</div>
+                <div class="stat-label">Years of Excellence</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-number">32</div>
+                <div class="stat-label">Consecutive #1 Rankings</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-number">30K+</div>
+                <div class="stat-label">Surgeries Per Year</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2>Looking Forward</h2>
+            <p>As we look to the future, HSS continues to invest in research, technology, and expanded access to care. Our commitment to innovation means exploring new frontiers in regenerative medicine, precision surgery, and digital health tools that will define the next chapter of musculoskeletal care.</p>
+            <p>With locations across the northeastern United States and partnerships around the world, we are bringing world-class orthopedic care closer to the patients who need it most.</p>
+          </div>
+        </main>
+      </div>
+
+      <!-- Related Content -->
+      <section class="about-related">
+        <div class="about-related-inner">
+          <h3>Related Pages</h3>
+          <div class="about-related-grid">
+            <div class="about-related-card">
+              <h4>Our Leadership</h4>
+              <p>Meet the physicians and administrators who guide HSS into the future.</p>
+              <a href="#">Learn More &rarr;</a>
+            </div>
+            <div class="about-related-card">
+              <h4>Research Institute</h4>
+              <p>Advancing musculoskeletal science through groundbreaking research programs.</p>
+              <a href="#">Learn More &rarr;</a>
+            </div>
+            <div class="about-related-card">
+              <h4>Community Programs</h4>
+              <p>Serving our community through education, outreach, and accessible care.</p>
+              <a href="#">Learn More &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand"><div class="footer-logo">HSS</div><p class="footer-connect-label">Connect With Us</p></div>
+            <div class="footer-col"><h4>Learn More</h4><ul><li><a href="#">About HSS</a></li><li><a href="#">Awards</a></li></ul></div>
+            <div class="footer-col"><h4>Information For</h4><ul><li><a href="#">Patients</a></li><li><a href="#">Physicians</a></li></ul></div>
+            <div class="footer-col"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li></ul></div>
+          </div>
+          <div class="footer-bottom"><div class="footer-legal"><p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p></div></div>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       LAYOUT 5: NEWS / BLOG LISTING PAGE
+       Improvements:
+       - Magazine-style featured article card
+       - Category filter tabs
+       - 3-column article grid with line-clamp excerpts
+       - Load more pagination
+       ================================================================ -->
+  <section class="layout-section" id="news-blog">
+    <div class="layout-header">
+      <h2>News / Blog Listing</h2>
+      <p>Magazine-style news listing with featured article hero, category tabs, article card grid, and progressive loading.</p>
+      <div class="layout-tags">
+        <span class="layout-tag">Featured Hero</span>
+        <span class="layout-tag">Category Tabs</span>
+        <span class="layout-tag">Card Grid</span>
+      </div>
+    </div>
+    <div class="layout-demo">
+
+      <!-- Header -->
+      <header class="site-header">
+        <div class="utility-bar">
+          <div class="utility-links"><a href="#">Giving</a><span class="separator">|</span><a href="#">Careers</a><span class="separator">|</span><a href="#">Why Choose HSS</a></div>
+          <a href="#" class="utility-signin">MyHSS Sign In <span class="signin-icon"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#999" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></a>
+        </div>
+        <div class="main-nav-bar">
+          <div class="main-nav-inner">
+            <a href="#" class="logo"><div class="logo-mark">HSS</div></a>
+            <nav class="header-nav">
+              <a href="#">Find a Doctor</a>
+              <a href="#">Locations</a>
+              <a href="#">Patient Care</a>
+              <a href="#" class="active">Health Library</a>
+              <a href="#">Research &amp; Education</a>
+              <button class="header-search" aria-label="Search"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+            </nav>
+            <div class="header-right">
+              <a href="tel:12126061000" class="header-phone"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>1.212.606.1000</a>
+              <a href="#" class="header-cta">Make an Appointment</a>
+              <button class="mobile-menu-btn" aria-label="Open menu"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Featured Article -->
+      <section class="news-featured">
+        <div class="news-featured-inner">
+          <div class="news-featured-card">
+            <div class="news-featured-img">Photography: People on the Move</div>
+            <div class="news-featured-body">
+              <span class="news-tag">Research &amp; Innovation</span>
+              <h2>HSS Researchers Develop New Cartilage Regeneration Technique</h2>
+              <p>A groundbreaking study from the HSS Research Institute demonstrates a novel approach to cartilage repair that could delay or prevent the need for joint replacement in younger patients.</p>
+              <span class="news-meta">April 28, 2026 &middot; 5 min read</span>
+              <a href="#" class="news-read-more">Read Full Article <span>&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Tabs -->
+      <div class="news-tabs">
+        <button class="news-tab active">All</button>
+        <button class="news-tab">Research</button>
+        <button class="news-tab">Patient Stories</button>
+        <button class="news-tab">Wellness</button>
+        <button class="news-tab">Events</button>
+        <button class="news-tab">Awards</button>
+      </div>
+
+      <!-- Article Grid -->
+      <div class="news-grid-section">
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Patient Stories</span>
+              <h3>Marathon Runner Returns to Racing After Complex Knee Surgery</h3>
+              <p class="news-card-excerpt">After a devastating knee injury that threatened to end her running career, Maria found her way back to the starting line with the help of HSS sports medicine specialists.</p>
+              <span class="news-card-date">April 22, 2026</span>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Wellness</span>
+              <h3>5 Exercises to Protect Your Joints as You Age</h3>
+              <p class="news-card-excerpt">HSS physical therapists share their top recommendations for maintaining joint health and preventing injury through targeted exercises and lifestyle changes.</p>
+              <span class="news-card-date">April 18, 2026</span>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Awards</span>
+              <h3>HSS Named #1 in Orthopedics for 32nd Consecutive Year</h3>
+              <p class="news-card-excerpt">U.S. News &amp; World Report has once again recognized Hospital for Special Surgery as the nation's top hospital for orthopedic care.</p>
+              <span class="news-card-date">April 15, 2026</span>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Research</span>
+              <h3>AI-Powered Imaging Improves Fracture Detection Accuracy</h3>
+              <p class="news-card-excerpt">A new machine learning model developed at HSS can detect subtle fractures that are often missed on initial imaging, potentially reducing missed diagnoses by 40%.</p>
+              <span class="news-card-date">April 10, 2026</span>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Events</span>
+              <h3>HSS Community Health Fair Returns This Summer</h3>
+              <p class="news-card-excerpt">Join us for free health screenings, educational workshops, and family activities at our annual community health fair at the Main Campus.</p>
+              <span class="news-card-date">April 5, 2026</span>
+            </div>
+          </article>
+          <article class="news-card">
+            <div class="news-card-img">Photography placeholder</div>
+            <div class="news-card-body">
+              <span class="news-card-tag">Patient Stories</span>
+              <h3>Young Dancer Overcomes Hip Condition to Perform on Broadway</h3>
+              <p class="news-card-excerpt">At just 22, professional dancer Aisha faced a diagnosis that could have ended her career. Her journey back to the stage is a testament to resilience and expert care.</p>
+              <span class="news-card-date">March 30, 2026</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="news-load-more">
+          <button>Load More Articles</button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand"><div class="footer-logo">HSS</div><p class="footer-connect-label">Connect With Us</p></div>
+            <div class="footer-col"><h4>Learn More</h4><ul><li><a href="#">About HSS</a></li><li><a href="#">Awards</a></li></ul></div>
+            <div class="footer-col"><h4>Information For</h4><ul><li><a href="#">Patients</a></li><li><a href="#">Physicians</a></li></ul></div>
+            <div class="footer-col"><h4>Policies</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li></ul></div>
+          </div>
+          <div class="footer-bottom"><div class="footer-legal"><p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p></div></div>
+        </div>
+      </footer>
+
+    </div>
+  </section>
+
+</body>
+</html>
