@@ -1961,6 +1961,7 @@
         <a href="#service-detail">Service Detail</a>
         <a href="#about-content">About / Content</a>
         <a href="#news-blog">News / Blog</a>
+        <a href="#audit" style="border-left: 1px solid #e4e8ec; margin-left: 8px; padding-left: 18px; color: var(--hss-dark-blue); font-weight: 600;">Audit</a>
       </div>
     </div>
   </nav>
@@ -2931,6 +2932,174 @@
           <div class="footer-bottom"><div class="footer-legal"><p>&copy; 2026 HSS | Hospital for Special Surgery. All rights reserved.</p></div></div>
         </div>
       </footer>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+       AUDIT TAB — Design Audit Findings
+       ================================================================ -->
+  <section class="layout-section" id="audit">
+    <div class="layout-header">
+      <h2>Design Audit</h2>
+      <p>Findings and recommendations from the design system audit of all marketing page layouts. Tracked by implementation status.</p>
+      <div class="layout-tags">
+        <span class="layout-tag" style="background: #DCFCE7; color: #16A34A;">Implemented</span>
+        <span class="layout-tag" style="background: #FEF3C7; color: #92400E;">Not Implemented</span>
+      </div>
+    </div>
+
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 24px var(--space-2xl);">
+
+      <!-- Implemented Recommendations -->
+      <div style="margin-bottom: var(--space-xl);">
+        <h3 style="font-size: 22px; font-weight: 700; color: #16A34A; margin-bottom: var(--space-md); display: flex; align-items: center; gap: 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#DCFCE7"/><path d="M8 12l3 3 5-5" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Implemented Recommendations
+        </h3>
+
+        <div style="display: grid; gap: 16px;">
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Logo Corrected to Brand Spec</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Logo mark updated to use official HSS Blue (#0081C8 / PANTONE 3005), Inter Black (weight 900), tight kerning (-0.2px), and square corners (no border-radius). Matches the January 2026 Brand Onesheet exactly.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Header &amp; Footer</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Footer Social Icons Fixed</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Replaced broken stroke-based SVG icons with fill-only SVG paths. Added <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">fill: currentColor; stroke: none;</code> to ensure consistent rendering across browsers.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Footer</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Mobile Responsiveness — Logo Overlap Fixed</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Logo was overlapping nav text at smaller viewports. Resolved by properly constraining logo width, increasing nav gap, and hiding utility bar on mobile. Hamburger menu button shown below 768px.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Header</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Dropdown Caret Spacing Improved</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Custom select dropdowns now use <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">padding-right: 32px</code> with caret positioned at <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">right 12px center</code> for comfortable spacing between text and arrow indicator.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Locations &bull; Find a Doctor</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Body Text Color Standardized</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Inconsistent grays (#333, #444, #555, #666) consolidated to a tight, purposeful range: #333 (primary), #3d3d3d (secondary), #4a4a4a (tertiary). Improves visual cohesion and WCAG compliance.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Border Radius Tokenized</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">All <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">border-radius</code> values now use CSS tokens (<code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">--radius-sm: 4px</code>, <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">--radius-md: 8px</code>, <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">--radius-lg: 12px</code>) instead of hardcoded pixel values. Logo mark explicitly set to 0 per brand spec.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">WCAG Contrast — Hero Breadcrumbs</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">About page hero breadcrumb links had opacity 0.7 on white text over dark backgrounds, failing WCAG AA. Increased to 0.9 for minimum 4.5:1 contrast ratio.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">About / Content</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Sticky Element Alignment</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Sticky filter bars, sidebars, and map containers had misaligned <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">top</code> values after nav height change. Corrected to 64px (filters), 88px (sidebars), 130px (map) to account for header + filter bar stacking.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Locations &bull; Find a Doctor &bull; Service Detail</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #16A34A; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Responsive Grid Collapse</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">All multi-column grids collapse to single-column on mobile (768px). Location cards, doctor cards, article grids, and footer columns stack vertically. Sidebar layouts become full-width stacked sections.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Not Implemented Recommendations -->
+      <div>
+        <h3 style="font-size: 22px; font-weight: 700; color: #92400E; margin-bottom: var(--space-md); display: flex; align-items: center; gap: 10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#FEF3C7"/><path d="M12 8v4m0 4h.01" stroke="#92400E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Not Yet Implemented
+        </h3>
+
+        <div style="display: grid; gap: 16px;">
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Interactive Map Integration</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Locations page uses a static placeholder for the map panel. Needs integration with a mapping provider (Google Maps, Mapbox) for interactive pin markers, zoom, and click-to-select location behavior.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Locations &bull; Priority: High</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Functional Filter &amp; Search Logic</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Filter dropdowns and search inputs are styled but non-functional. Requires JavaScript to handle filtering, sorting, and live search across location cards, doctor cards, and article listings.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Locations &bull; Find a Doctor &bull; News/Blog &bull; Priority: High</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Mobile Navigation Drawer</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Hamburger menu button is present on mobile but no slide-out drawer is implemented. Needs an off-canvas panel with all nav links, utility links (MyHSS, search), and smooth open/close animation.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Priority: High</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Pagination / Infinite Scroll</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Location list, doctor results, and blog articles show static content with no pagination controls or "Load More" behavior. For production, implement paginated results with proper state management.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Locations &bull; Find a Doctor &bull; News/Blog &bull; Priority: Medium</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Doctor Star Ratings — Real Data</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Star ratings on doctor cards are hardcoded. Need API integration to pull real patient satisfaction scores and review counts. Consider showing "No reviews yet" state and rating distribution tooltips.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Find a Doctor &bull; Priority: Medium</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Appointment Booking Form Validation</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Sidebar appointment forms on Service Detail and Find a Doctor pages are layout-only. Need form validation, date picker integration, insurance provider lookup, and submission flow with confirmation state.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Service Detail &bull; Find a Doctor &bull; Priority: Medium</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Table of Contents — Scroll Spy</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">About/Content page sidebar TOC is static. Needs JavaScript scroll spy to highlight the current section and smooth-scroll to anchors on click. Consider adding progress indicator.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">About / Content &bull; Priority: Medium</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Physician Carousel Interaction</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Service Detail page physician section shows a static grid. Convert to a horizontally scrollable carousel with prev/next controls, touch swipe support, and auto-rotation with pause-on-hover.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Service Detail &bull; Priority: Low</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Dark Mode Support</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Marketing pages are light-only. The data design system supports dark mode with semantic tokens. Marketing layouts should adopt <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">prefers-color-scheme: dark</code> with adjusted brand colors and image treatments.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Priority: Low</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Skip-to-Content &amp; ARIA Landmarks</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">No skip-to-content link or full ARIA landmark roles on layout regions. Add <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">role="main"</code>, <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">role="search"</code>, and a visible-on-focus skip link for keyboard/screen reader users.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Priority: Medium</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Performance — Image Lazy Loading</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">Doctor photos, article thumbnails, and hero images should use <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">loading="lazy"</code> and responsive <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">srcset</code> with WebP/AVIF fallbacks. Currently using placeholder backgrounds — real images will need optimization.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">All layouts &bull; Priority: Low</span>
+          </div>
+
+          <div style="background: var(--white); border: 1px solid #e4e8ec; border-left: 4px solid #D97706; border-radius: var(--radius-md); padding: var(--space-md);">
+            <h4 style="font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px;">Print Stylesheet</h4>
+            <p style="font-size: 14px; color: #4a4a4a; margin-bottom: 8px;">No <code style="font-size: 13px; background: #f3f4f6; padding: 2px 5px; border-radius: 3px;">@media print</code> styles defined. Service Detail and About pages particularly benefit from print optimization — hide nav, expand sidebars inline, ensure readable font sizes.</p>
+            <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--hss-dark-gray);">Service Detail &bull; About / Content &bull; Priority: Low</span>
+          </div>
+
+        </div>
+      </div>
 
     </div>
   </section>

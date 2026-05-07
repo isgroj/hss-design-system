@@ -19,7 +19,7 @@
   width: 28px;
   height: 28px;
   background: var(--action-primary);
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .title {
