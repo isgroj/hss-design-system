@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HSS Design System — Survey Results Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hss-blue: #0074bc;
+      --hss-blue-dark: #004d7d;
+      --hss-blue-light: #e2f4fe;
+      --white: #ffffff;
+      --slate-50: #ecf1f4;
+      --slate-100: #eaebec;
+      --slate-300: #c4c5c8;
+      --slate-500: #6b6d76;
+      --slate-700: #3e515a;
+      --slate-900: #192328;
+      --green-500: #72b431;
+      --gold-500: #d1a135;
+      --red-500: #bc0000;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--slate-50);
+      color: var(--slate-900);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--white);
+      border-bottom: 1px solid var(--slate-100);
+      padding: var(--space-6) var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: var(--hss-blue);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 { font-size: 18px; font-weight: 700; color: var(--slate-900); }
+    .header-text p { font-size: 13px; color: var(--slate-500); }
+
+    .container {
+      max-width: 960px;
+      margin: var(--space-10) auto;
+      padding: 0 var(--space-6);
+    }
+
+    .instructions {
+      background: var(--hss-blue-light);
+      border: 1px solid #b8dff5;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .instructions h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--hss-blue-dark);
+      margin-bottom: var(--space-3);
+    }
+
+    .instructions ol {
+      padding-left: var(--space-5);
+      font-size: 14px;
+      color: var(--slate-700);
+    }
+
+    .instructions li { margin-bottom: var(--space-2); }
+
+    .input-section {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+
+    .input-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+
+    .input-section textarea {
+      width: 100%;
+      min-height: 160px;
+      padding: 12px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-md);
+      resize: vertical;
+    }
+
+    .input-section textarea:focus {
+      outline: none;
+      border-color: var(--hss-blue);
+      box-shadow: 0 0 0 3px rgba(0, 116, 188, 0.1);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-primary { background: var(--hss-blue); color: var(--white); }
+    .btn-primary:hover { background: var(--hss-blue-dark); }
+    .btn-secondary { background: var(--slate-100); color: var(--slate-700); }
+    .btn-secondary:hover { background: var(--slate-300); }
+
+    .results { display: none; }
+    .results.visible { display: block; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    .summary-card {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      text-align: center;
+    }
+
+    .summary-card .value {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--hss-blue);
+    }
+
+    .summary-card .label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: var(--space-1);
+    }
+
+    .chart-section {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .chart-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+    }
+
+    .bar-chart-item {
+      margin-bottom: var(--space-5);
+    }
+
+    .bar-chart-item:last-child { margin-bottom: 0; }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: var(--space-2);
+    }
+
+    .bar-label .avg {
+      font-weight: 700;
+      color: var(--hss-blue);
+    }
+
+    .bar-track {
+      height: 24px;
+      background: var(--slate-50);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--hss-blue);
+      border-radius: var(--radius-sm);
+      transition: width 0.4s ease;
+    }
+
+    .responses-section {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .responses-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: var(--space-5);
+    }
+
+    .response-card {
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      margin-bottom: var(--space-4);
+    }
+
+    .response-card:last-child { margin-bottom: 0; }
+
+    .response-meta {
+      font-size: 12px;
+      color: var(--slate-500);
+      margin-bottom: var(--space-3);
+      display: flex;
+      gap: var(--space-4);
+    }
+
+    .response-meta strong { color: var(--slate-700); }
+
+    .response-field {
+      margin-bottom: var(--space-3);
+    }
+
+    .response-field:last-child { margin-bottom: 0; }
+
+    .response-field .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--slate-500);
+      margin-bottom: 2px;
+    }
+
+    .response-field .field-value {
+      font-size: 14px;
+      color: var(--slate-900);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--space-12);
+      color: var(--slate-500);
+    }
+
+    .empty-state p { font-size: 14px; }
+
+    .tab-bar {
+      display: flex;
+      gap: var(--space-1);
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--slate-100);
+      padding-bottom: 0;
+    }
+
+    .tab {
+      padding: var(--space-3) var(--space-5);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate-500);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      font-family: inherit;
+    }
+
+    .tab.active {
+      color: var(--hss-blue);
+      border-bottom-color: var(--hss-blue);
+      font-weight: 600;
+    }
+
+    .tab:hover { color: var(--slate-900); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 var(--space-4); margin: var(--space-6) auto; }
+      .summary-grid { grid-template-columns: 1fr 1fr; }
+      .header { padding: var(--space-4) var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-mark">HSS</div>
+    <div class="header-text">
+      <h1>Survey Results Viewer</h1>
+      <p>HSS Design System Team Feedback</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="instructions">
+      <h2>How to view responses</h2>
+      <ol>
+        <li>Go to your <strong>Formspree dashboard</strong> at formspree.io and log in</li>
+        <li>Select the HSS Design System form</li>
+        <li>Click <strong>Export</strong> &rarr; <strong>JSON</strong> to download all responses</li>
+        <li>Paste the JSON array below to see a formatted summary</li>
+      </ol>
+    </div>
+
+    <div class="input-section">
+      <h3>Paste Response Data</h3>
+      <textarea id="json-input" placeholder='Paste your JSON array here, e.g.:
+[
+  {
+    "name": "Jane Doe",
+    "role": "Designer",
+    "team": "Data Platform",
+    "overall_satisfaction": "4",
+    "typography_rating": "5",
+    "color_rating": "4",
+    "spacing_rating": "3",
+    "components_rating": "4",
+    "patterns_rating": "3",
+    "dataviz_rating": "4",
+    "ease_of_use": "4",
+    "documentation_rating": "3",
+    "working_well": "Colors and typography are solid.",
+    "needs_improvement": "Need more dashboard patterns.",
+    "feature_requests": "Dark mode support",
+    "additional_comments": ""
+  }
+]'></textarea>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="parse-btn">Analyze Responses</button>
+        <button class="btn btn-secondary" id="sample-btn">Load Sample Data</button>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="summary-grid" id="summary-grid"></div>
+
+      <div class="tab-bar">
+        <button class="tab active" data-tab="ratings">Ratings</button>
+        <button class="tab" data-tab="feedback">Open Feedback</button>
+        <button class="tab" data-tab="individual">Individual Responses</button>
+      </div>
+
+      <div class="tab-content active" id="tab-ratings">
+        <div class="chart-section">
+          <h3>Average Ratings by Category</h3>
+          <div id="ratings-chart"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-feedback">
+        <div class="responses-section">
+          <h3>What's Working Well</h3>
+          <div id="feedback-working"></div>
+        </div>
+        <div class="responses-section">
+          <h3>What Needs Improvement</h3>
+          <div id="feedback-improvement"></div>
+        </div>
+        <div class="responses-section">
+          <h3>Feature Requests</h3>
+          <div id="feedback-requests"></div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-individual">
+        <div id="individual-responses"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const RATING_FIELDS = [
+      { key: 'overall_satisfaction', label: 'Overall Satisfaction' },
+      { key: 'typography_rating', label: 'Typography' },
+      { key: 'color_rating', label: 'Color Palette' },
+      { key: 'spacing_rating', label: 'Spacing & Layout' },
+      { key: 'components_rating', label: 'UI Components' },
+      { key: 'patterns_rating', label: 'Page Patterns' },
+      { key: 'dataviz_rating', label: 'Data Visualization' },
+      { key: 'ease_of_use', label: 'Ease of Use' },
+      { key: 'documentation_rating', label: 'Documentation' }
+    ];
+
+    const SAMPLE_DATA = [
+      { name: "Alex Chen", role: "Frontend Developer", team: "Data Platform", overall_satisfaction: "4", typography_rating: "5", color_rating: "4", spacing_rating: "4", components_rating: "3", patterns_rating: "3", dataviz_rating: "4", ease_of_use: "4", documentation_rating: "3", working_well: "Typography scale is excellent. Color tokens are well organized and easy to apply.", needs_improvement: "Need more complex layout patterns for dashboards. Component library feels incomplete.", feature_requests: "Dark mode, more chart components, table patterns", additional_comments: "" },
+      { name: "Sarah Johnson", role: "Designer", team: "Marketing", overall_satisfaction: "5", typography_rating: "5", color_rating: "5", spacing_rating: "4", components_rating: "4", patterns_rating: "4", dataviz_rating: "3", ease_of_use: "5", documentation_rating: "4", working_well: "Brand consistency is great. Love the interactive styleguide — makes handoff easy.", needs_improvement: "Data visualization section could use more variety. Would like illustration guidelines.", feature_requests: "Animation tokens, icon library expansion", additional_comments: "Great progress overall!" },
+      { name: "Mike Torres", role: "Product Manager", team: "Clinical", overall_satisfaction: "3", typography_rating: "4", color_rating: "4", spacing_rating: "3", components_rating: "3", patterns_rating: "2", dataviz_rating: "3", ease_of_use: "3", documentation_rating: "2", working_well: "Consistent look and feel across products.", needs_improvement: "Documentation is hard to navigate. Can't easily find component usage examples.", feature_requests: "Better search, usage examples with code snippets, accessibility guidelines", additional_comments: "Would be great to have a changelog or what's new section." },
+      { name: "", role: "Full-Stack Developer", team: "Data Platform", overall_satisfaction: "4", typography_rating: "4", color_rating: "5", spacing_rating: "5", components_rating: "4", patterns_rating: "4", dataviz_rating: "5", ease_of_use: "4", documentation_rating: "4", working_well: "Spacing system is very logical. DataViz palette works great for our dashboards.", needs_improvement: "Wish there were React component exports, not just CSS.", feature_requests: "React component library, Figma plugin for devs", additional_comments: "" }
+    ];
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    document.getElementById('parse-btn').addEventListener('click', () => {
+      const input = document.getElementById('json-input').value.trim();
+      try {
+        const data = JSON.parse(input);
+        if (!Array.isArray(data)) throw new Error('Data must be a JSON array');
+        renderResults(data);
+      } catch (e) {
+        alert('Invalid JSON: ' + e.message);
+      }
+    });
+
+    document.getElementById('sample-btn').addEventListener('click', () => {
+      document.getElementById('json-input').value = JSON.stringify(SAMPLE_DATA, null, 2);
+      renderResults(SAMPLE_DATA);
+    });
+
+    function renderResults(data) {
+      document.getElementById('results').classList.add('visible');
+
+      // Summary cards
+      const totalResponses = data.length;
+      const avgOverall = average(data, 'overall_satisfaction');
+      const avgEase = average(data, 'ease_of_use');
+      const avgDocs = average(data, 'documentation_rating');
+
+      document.getElementById('summary-grid').innerHTML = `
+        <div class="summary-card"><div class="value">${totalResponses}</div><div class="label">Responses</div></div>
+        <div class="summary-card"><div class="value">${avgOverall}</div><div class="label">Avg Satisfaction</div></div>
+        <div class="summary-card"><div class="value">${avgEase}</div><div class="label">Avg Ease of Use</div></div>
+        <div class="summary-card"><div class="value">${avgDocs}</div><div class="label">Avg Documentation</div></div>
+      `;
+
+      // Ratings chart
+      let chartHTML = '';
+      RATING_FIELDS.forEach(field => {
+        const avg = average(data, field.key);
+        const pct = (parseFloat(avg) / 5 * 100).toFixed(0);
+        chartHTML += `
+          <div class="bar-chart-item">
+            <div class="bar-label"><span>${field.label}</span><span class="avg">${avg} / 5</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width: ${pct}%"></div></div>
+          </div>
+        `;
+      });
+      document.getElementById('ratings-chart').innerHTML = chartHTML;
+
+      // Open feedback
+      renderFeedbackList('feedback-working', data, 'working_well');
+      renderFeedbackList('feedback-improvement', data, 'needs_improvement');
+      renderFeedbackList('feedback-requests', data, 'feature_requests');
+
+      // Individual responses
+      let individualHTML = '';
+      data.forEach((r, i) => {
+        const name = r.name || 'Anonymous';
+        const role = r.role || 'Not specified';
+        const team = r.team || 'Not specified';
+        individualHTML += `
+          <div class="response-card">
+            <div class="response-meta">
+              <span><strong>${name}</strong></span>
+              <span>${role}</span>
+              <span>${team}</span>
+            </div>
+            ${renderResponseRatings(r)}
+            ${r.working_well ? `<div class="response-field"><div class="field-label">Working Well</div><div class="field-value">${escapeHtml(r.working_well)}</div></div>` : ''}
+            ${r.needs_improvement ? `<div class="response-field"><div class="field-label">Needs Improvement</div><div class="field-value">${escapeHtml(r.needs_improvement)}</div></div>` : ''}
+            ${r.feature_requests ? `<div class="response-field"><div class="field-label">Feature Requests</div><div class="field-value">${escapeHtml(r.feature_requests)}</div></div>` : ''}
+            ${r.additional_comments ? `<div class="response-field"><div class="field-label">Additional</div><div class="field-value">${escapeHtml(r.additional_comments)}</div></div>` : ''}
+          </div>
+        `;
+      });
+      document.getElementById('individual-responses').innerHTML = individualHTML || '<div class="empty-state"><p>No responses yet.</p></div>';
+    }
+
+    function renderResponseRatings(r) {
+      let html = '<div class="response-field"><div class="field-label">Ratings</div><div class="field-value" style="font-size:12px; color: var(--slate-500);">';
+      const parts = [];
+      RATING_FIELDS.forEach(f => {
+        if (r[f.key]) parts.push(`${f.label}: ${r[f.key]}/5`);
+      });
+      html += parts.join(' &bull; ') + '</div></div>';
+      return html;
+    }
+
+    function renderFeedbackList(containerId, data, field) {
+      const container = document.getElementById(containerId);
+      const items = data.filter(r => r[field] && r[field].trim()).map(r => {
+        const name = r.name || 'Anonymous';
+        return `<div class="response-card"><div class="response-meta"><strong>${escapeHtml(name)}</strong> <span>${r.role || ''} — ${r.team || ''}</span></div><p style="font-size:14px;">${escapeHtml(r[field])}</p></div>`;
+      });
+      container.innerHTML = items.length ? items.join('') : '<div class="empty-state"><p>No responses for this category.</p></div>';
+    }
+
+    function average(data, key) {
+      const values = data.map(r => parseFloat(r[key])).filter(v => !isNaN(v));
+      if (values.length === 0) return '—';
+      return (values.reduce((a, b) => a + b, 0) / values.length).toFixed(1);
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

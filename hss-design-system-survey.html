@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HSS Design System — Team Feedback Survey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --hss-blue: #0074bc;
+      --hss-blue-dark: #004d7d;
+      --hss-blue-light: #e2f4fe;
+      --white: #ffffff;
+      --slate-50: #ecf1f4;
+      --slate-100: #eaebec;
+      --slate-300: #c4c5c8;
+      --slate-500: #6b6d76;
+      --slate-700: #3e515a;
+      --slate-900: #192328;
+      --green-500: #72b431;
+      --red-500: #bc0000;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--slate-50);
+      color: var(--slate-900);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--white);
+      border-bottom: 1px solid var(--slate-100);
+      padding: var(--space-6) var(--space-8);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: var(--hss-blue);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 900;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .header-text p {
+      font-size: 13px;
+      color: var(--slate-500);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: var(--space-10) auto;
+      padding: 0 var(--space-6);
+    }
+
+    .intro {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-8);
+    }
+
+    .intro h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+
+    .intro p {
+      font-size: 15px;
+      color: var(--slate-700);
+    }
+
+    .form-section {
+      background: var(--white);
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+
+    .form-section h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: var(--space-5);
+      color: var(--hss-blue-dark);
+    }
+
+    .field {
+      margin-bottom: var(--space-5);
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--slate-900);
+      margin-bottom: var(--space-2);
+    }
+
+    label .optional {
+      font-weight: 400;
+      color: var(--slate-500);
+      font-size: 12px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      color: var(--slate-900);
+      transition: border-color 0.15s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--hss-blue);
+      box-shadow: 0 0 0 3px rgba(0, 116, 188, 0.1);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .rating-group {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .rating-group input[type="radio"] {
+      display: none;
+    }
+
+    .rating-group label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--slate-300);
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--slate-700);
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: 0;
+    }
+
+    .rating-group input[type="radio"]:checked + label {
+      background: var(--hss-blue);
+      border-color: var(--hss-blue);
+      color: var(--white);
+    }
+
+    .rating-group label:hover {
+      border-color: var(--hss-blue);
+      background: var(--hss-blue-light);
+    }
+
+    .rating-scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--slate-500);
+      margin-top: var(--space-1);
+      padding: 0 2px;
+    }
+
+    .rating-item {
+      margin-bottom: var(--space-5);
+    }
+
+    .rating-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .rating-item .rating-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate-900);
+      margin-bottom: var(--space-2);
+      display: block;
+    }
+
+    .submit-section {
+      text-align: center;
+      padding: var(--space-8) 0;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 14px 40px;
+      background: var(--hss-blue);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-submit:hover {
+      background: var(--hss-blue-dark);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: var(--space-12);
+    }
+
+    .success-message.visible {
+      display: block;
+    }
+
+    .success-message .checkmark {
+      width: 64px;
+      height: 64px;
+      background: var(--green-500);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-6);
+    }
+
+    .success-message .checkmark svg {
+      width: 32px;
+      height: 32px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+
+    .success-message h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+
+    .success-message p {
+      font-size: 15px;
+      color: var(--slate-700);
+    }
+
+    .error-message {
+      display: none;
+      background: #fee5e5;
+      border: 1px solid var(--red-500);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+      margin-bottom: var(--space-5);
+      font-size: 14px;
+      color: var(--red-500);
+    }
+
+    .error-message.visible {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 var(--space-4); margin: var(--space-6) auto; }
+      .form-section, .intro { padding: var(--space-6); }
+      .header { padding: var(--space-4) var(--space-5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-mark">HSS</div>
+    <div class="header-text">
+      <h1>Design System Feedback</h1>
+      <p>Help us improve the HSS Design System</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="intro">
+      <h2>We'd love your feedback</h2>
+      <p>This short survey helps us understand how well the HSS Design System is serving your team. Your responses will directly inform our roadmap priorities. All fields are optional unless marked otherwise.</p>
+    </div>
+
+    <form id="survey-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="hidden" name="_subject" value="HSS Design System — Team Feedback" />
+      <input type="hidden" name="_replyto" value="isgroj@hss.edu" />
+
+      <!-- Section 1: About You -->
+      <div class="form-section">
+        <h3>About You</h3>
+        <div class="field">
+          <label for="name">Name <span class="optional">(optional)</span></label>
+          <input type="text" id="name" name="name" placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="role">Role</label>
+          <select id="role" name="role">
+            <option value="">Select your role...</option>
+            <option value="Designer">Designer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Full-Stack Developer">Full-Stack Developer</option>
+            <option value="Product Manager">Product Manager</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="QA/Testing">QA/Testing</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="team">Team</label>
+          <input type="text" id="team" name="team" placeholder="e.g. Data Platform, Marketing, Clinical" />
+        </div>
+      </div>
+
+      <!-- Section 2: Overall Satisfaction -->
+      <div class="form-section">
+        <h3>Overall Satisfaction</h3>
+        <div class="field">
+          <label>How satisfied are you with the design system overall?</label>
+          <div class="rating-group">
+            <input type="radio" id="overall-1" name="overall_satisfaction" value="1" /><label for="overall-1">1</label>
+            <input type="radio" id="overall-2" name="overall_satisfaction" value="2" /><label for="overall-2">2</label>
+            <input type="radio" id="overall-3" name="overall_satisfaction" value="3" /><label for="overall-3">3</label>
+            <input type="radio" id="overall-4" name="overall_satisfaction" value="4" /><label for="overall-4">4</label>
+            <input type="radio" id="overall-5" name="overall_satisfaction" value="5" /><label for="overall-5">5</label>
+          </div>
+          <div class="rating-scale-labels"><span>Not satisfied</span><span>Very satisfied</span></div>
+        </div>
+      </div>
+
+      <!-- Section 3: Component Quality -->
+      <div class="form-section">
+        <h3>Component &amp; Token Quality</h3>
+        <p style="font-size: 13px; color: var(--slate-500); margin-bottom: var(--space-5);">Rate how well each area meets your needs (1 = Poor, 5 = Excellent)</p>
+
+        <div class="rating-item">
+          <span class="rating-label">Typography &amp; Font Scale</span>
+          <div class="rating-group">
+            <input type="radio" id="typo-1" name="typography_rating" value="1" /><label for="typo-1">1</label>
+            <input type="radio" id="typo-2" name="typography_rating" value="2" /><label for="typo-2">2</label>
+            <input type="radio" id="typo-3" name="typography_rating" value="3" /><label for="typo-3">3</label>
+            <input type="radio" id="typo-4" name="typography_rating" value="4" /><label for="typo-4">4</label>
+            <input type="radio" id="typo-5" name="typography_rating" value="5" /><label for="typo-5">5</label>
+          </div>
+        </div>
+
+        <div class="rating-item">
+          <span class="rating-label">Color Palette &amp; Tokens</span>
+          <div class="rating-group">
+            <input type="radio" id="color-1" name="color_rating" value="1" /><label for="color-1">1</label>
+            <input type="radio" id="color-2" name="color_rating" value="2" /><label for="color-2">2</label>
+            <input type="radio" id="color-3" name="color_rating" value="3" /><label for="color-3">3</label>
+            <input type="radio" id="color-4" name="color_rating" value="4" /><label for="color-4">4</label>
+            <input type="radio" id="color-5" name="color_rating" value="5" /><label for="color-5">5</label>
+          </div>
+        </div>
+
+        <div class="rating-item">
+          <span class="rating-label">Spacing &amp; Layout System</span>
+          <div class="rating-group">
+            <input type="radio" id="spacing-1" name="spacing_rating" value="1" /><label for="spacing-1">1</label>
+            <input type="radio" id="spacing-2" name="spacing_rating" value="2" /><label for="spacing-2">2</label>
+            <input type="radio" id="spacing-3" name="spacing_rating" value="3" /><label for="spacing-3">3</label>
+            <input type="radio" id="spacing-4" name="spacing_rating" value="4" /><label for="spacing-4">4</label>
+            <input type="radio" id="spacing-5" name="spacing_rating" value="5" /><label for="spacing-5">5</label>
+          </div>
+        </div>
+
+        <div class="rating-item">
+          <span class="rating-label">UI Components (buttons, inputs, cards, etc.)</span>
+          <div class="rating-group">
+            <input type="radio" id="comp-1" name="components_rating" value="1" /><label for="comp-1">1</label>
+            <input type="radio" id="comp-2" name="components_rating" value="2" /><label for="comp-2">2</label>
+            <input type="radio" id="comp-3" name="components_rating" value="3" /><label for="comp-3">3</label>
+            <input type="radio" id="comp-4" name="components_rating" value="4" /><label for="comp-4">4</label>
+            <input type="radio" id="comp-5" name="components_rating" value="5" /><label for="comp-5">5</label>
+          </div>
+        </div>
+
+        <div class="rating-item">
+          <span class="rating-label">Page Patterns &amp; Layouts</span>
+          <div class="rating-group">
+            <input type="radio" id="pattern-1" name="patterns_rating" value="1" /><label for="pattern-1">1</label>
+            <input type="radio" id="pattern-2" name="patterns_rating" value="2" /><label for="pattern-2">2</label>
+            <input type="radio" id="pattern-3" name="patterns_rating" value="3" /><label for="pattern-3">3</label>
+            <input type="radio" id="pattern-4" name="patterns_rating" value="4" /><label for="pattern-4">4</label>
+            <input type="radio" id="pattern-5" name="patterns_rating" value="5" /><label for="pattern-5">5</label>
+          </div>
+        </div>
+
+        <div class="rating-item">
+          <span class="rating-label">Data Visualization (charts, graphs)</span>
+          <div class="rating-group">
+            <input type="radio" id="dataviz-1" name="dataviz_rating" value="1" /><label for="dataviz-1">1</label>
+            <input type="radio" id="dataviz-2" name="dataviz_rating" value="2" /><label for="dataviz-2">2</label>
+            <input type="radio" id="dataviz-3" name="dataviz_rating" value="3" /><label for="dataviz-3">3</label>
+            <input type="radio" id="dataviz-4" name="dataviz_rating" value="4" /><label for="dataviz-4">4</label>
+            <input type="radio" id="dataviz-5" name="dataviz_rating" value="5" /><label for="dataviz-5">5</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Usability -->
+      <div class="form-section">
+        <h3>Usability</h3>
+        <div class="field">
+          <label>How easy is it to find what you need in the design system?</label>
+          <div class="rating-group">
+            <input type="radio" id="find-1" name="ease_of_use" value="1" /><label for="find-1">1</label>
+            <input type="radio" id="find-2" name="ease_of_use" value="2" /><label for="find-2">2</label>
+            <input type="radio" id="find-3" name="ease_of_use" value="3" /><label for="find-3">3</label>
+            <input type="radio" id="find-4" name="ease_of_use" value="4" /><label for="find-4">4</label>
+            <input type="radio" id="find-5" name="ease_of_use" value="5" /><label for="find-5">5</label>
+          </div>
+          <div class="rating-scale-labels"><span>Very difficult</span><span>Very easy</span></div>
+        </div>
+        <div class="field" style="margin-top: var(--space-5);">
+          <label>How clear and helpful is the documentation?</label>
+          <div class="rating-group">
+            <input type="radio" id="docs-1" name="documentation_rating" value="1" /><label for="docs-1">1</label>
+            <input type="radio" id="docs-2" name="documentation_rating" value="2" /><label for="docs-2">2</label>
+            <input type="radio" id="docs-3" name="documentation_rating" value="3" /><label for="docs-3">3</label>
+            <input type="radio" id="docs-4" name="documentation_rating" value="4" /><label for="docs-4">4</label>
+            <input type="radio" id="docs-5" name="documentation_rating" value="5" /><label for="docs-5">5</label>
+          </div>
+          <div class="rating-scale-labels"><span>Not clear</span><span>Very clear</span></div>
+        </div>
+      </div>
+
+      <!-- Section 5: Open Feedback -->
+      <div class="form-section">
+        <h3>Open Feedback</h3>
+        <div class="field">
+          <label for="working-well">What's working well?</label>
+          <textarea id="working-well" name="working_well" placeholder="Tell us what you like about the current design system..."></textarea>
+        </div>
+        <div class="field">
+          <label for="needs-improvement">What needs improvement?</label>
+          <textarea id="needs-improvement" name="needs_improvement" placeholder="What's frustrating or missing?"></textarea>
+        </div>
+        <div class="field">
+          <label for="feature-requests">Feature requests</label>
+          <textarea id="feature-requests" name="feature_requests" placeholder="What components, patterns, or tools would you like to see added?"></textarea>
+        </div>
+        <div class="field">
+          <label for="additional">Additional comments <span class="optional">(optional)</span></label>
+          <textarea id="additional" name="additional_comments" placeholder="Anything else you'd like to share..."></textarea>
+        </div>
+      </div>
+
+      <div class="error-message" id="error-msg">Something went wrong submitting the form. Please try again or email your feedback directly to isgroj@hss.edu.</div>
+
+      <div class="submit-section">
+        <button type="submit" class="btn-submit" id="submit-btn">Submit Feedback</button>
+      </div>
+    </form>
+
+    <div class="success-message" id="success-msg">
+      <div class="checkmark">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Thank you!</h2>
+      <p>Your feedback has been submitted. We'll use it to make the design system better for everyone.</p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('survey-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-msg');
+    const errorMsg = document.getElementById('error-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      errorMsg.classList.remove('visible');
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.classList.add('visible');
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        errorMsg.classList.add('visible');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Feedback';
+      }
+    });
+  </script>
+</body>
+</html>
