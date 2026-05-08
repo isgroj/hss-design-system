@@ -562,6 +562,8 @@ Our design elements come together to produce a unique look and feel for HSS comm
 | `hss-marketing-landing-page.html` | Reference implementation of the HSS marketing landing page — two-tier header (utility bar + main nav), hero section, services grid, statistics, locations, advertising & collateral showcase, dark footer with social icons and link columns. |
 | `hss-marketing-page-layouts.html` | Page layout reference — five complete layout templates: Locations (map + list), Find a Doctor (search + filter sidebar), Service Detail (content + sticky sidebar), About/Content (TOC + rich media), News/Blog (featured hero + card grid). |
 | `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
+| `hss-accessibility-guidelines.html` | Interactive ADA accessibility guidelines with live demos, color compliance swatches, focus states, form patterns, and implementation checklist. |
+| `hss-accessibility-guidelines.md` | Comprehensive ADA accessibility reference — WCAG 2.1 AA, color contrast, keyboard nav, semantic structure, forms, alerts, motion, healthcare-specific requirements. |
 | `hss-marketing-brand-system.md` | This file — marketing brand system reference for Claude. |
 | `hss-data-design-system.md` | Data design system reference for Claude (tokens, components, dark mode). |
 

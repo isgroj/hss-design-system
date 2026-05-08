@@ -854,9 +854,37 @@
     .app-demo-viewport { position: relative; }
     .app-demo-viewport-label { position: absolute; top: 8px; right: 8px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-tertiary); background: var(--bg-surface); padding: 2px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border-default); z-index: 1; }
     .app-mobile-frame { max-width: 375px; border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; }
+    /* Global site nav */
+    .global-nav {
+      display: flex; align-items: center; gap: 24px;
+      padding: 0 24px; height: 44px;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-default);
+      position: sticky; top: 0; z-index: 200;
+    }
+    .global-nav .gn-logo {
+      width: 28px; height: 28px; background: #0074BC; border-radius: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 0.5px;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .global-nav a.gn-link {
+      font-size: 13px; color: var(--text-secondary); text-decoration: none; font-weight: 500;
+    }
+    .global-nav a.gn-link:hover { color: var(--text-primary); }
+    .global-nav a.gn-link.active { color: var(--action-primary); font-weight: 600; }
   </style>
 </head>
 <body>
+<!-- ═══ Global Site Navigation ═══ -->
+<nav class="global-nav" aria-label="Site navigation">
+  <a href="hss-design-system-interactive-styleguide.html" class="gn-logo" aria-label="HSS - Hospital for Special Surgery">HSS</a>
+  <a href="hss-design-system-interactive-styleguide.html" class="gn-link active">Design System</a>
+  <a href="hss-accessibility-guidelines.html" class="gn-link">Accessibility</a>
+  <a href="hss-marketing-landing-page.html" class="gn-link">Marketing</a>
+  <a href="hss-dashboard-layout.html" class="gn-link">Components</a>
+</nav>
+
 <!-- ═══ Section Navigation ═══ -->
 <nav class="section-nav" id="sectionNav">
   <div class="section-nav-inner">

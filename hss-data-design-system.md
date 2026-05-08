@@ -395,6 +395,8 @@ Canonical section order (top to bottom):
 
 ## Accessibility Requirements (WCAG 2.1 AA)
 
+> **Full reference:** See `hss-accessibility-guidelines.md` for comprehensive ADA compliance guidelines covering color contrast, keyboard navigation, focus states, touch targets, semantic structure, forms, alerts, motion, and healthcare-specific requirements.
+
 ### Contrast Ratios
 - Normal text: minimum 4.5:1
 - Large text (18px+ or 14px+ bold): minimum 3:1
@@ -482,6 +484,8 @@ Always use the 7-color dataviz palette in order: #1E3A5F, #98579B, #00AEBA, #5C7
 | `hss-dashboard-layout.html` | Reference implementation of the canonical dashboard layout with header, filter bar, KPI cards, charts, data table, and footer. Supports light/dark mode. |
 | `hss-marketing-landing-page.html` | Marketing landing page with two-tier header (utility bar + main nav), hero, services, stats, locations, advertising/collateral section, and dark footer. |
 | `hss-design-system-interactive-styleguide.html` | Interactive styleguide with all tokens, components, and marketing brand system visualized. |
+| `hss-accessibility-guidelines.html` | Interactive ADA accessibility guidelines with live demos, color compliance swatches, focus states, form patterns, and implementation checklist. |
+| `hss-accessibility-guidelines.md` | Comprehensive ADA accessibility reference — WCAG 2.1 AA, color contrast, keyboard nav, semantic structure, forms, alerts, motion, healthcare-specific requirements. |
 | `claudedesign.md` | Machine-readable design system reference combining both data and marketing systems. |
 | `hss-data-design-system.md` | This file — data design system reference for Claude. |
 | `hss-marketing-brand-system.md` | Marketing brand system reference for Claude. |
