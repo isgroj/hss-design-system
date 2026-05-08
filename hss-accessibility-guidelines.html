@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HSS Accessibility Guidelines — ADA Compliance Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══ Primitives ═══ */
+    :root {
+      --color-blue-50: #e2f4fe;
+      --color-blue-100: #88d2f8;
+      --color-blue-200: #4097cd;
+      --color-blue-500: #0074bc;
+      --color-blue-550: #005a91;
+      --color-blue-600: #004d7d;
+      --color-blue-700: #00273f;
+      --color-blue-800: #264583;
+      --color-blue-900: #192e57;
+      --color-navy-800: #30233b;
+      --color-navy-900: #0d172c;
+      --neutral-white: #ffffff;
+      --neutral-slate-50: #ecf1f4;
+      --neutral-slate-100: #eaebec;
+      --neutral-slate-200: #e1e2e4;
+      --neutral-slate-300: #c4c5c8;
+      --neutral-slate-400: #a6a8ad;
+      --neutral-slate-500: #6b6d76;
+      --neutral-slate-700: #3e515a;
+      --neutral-slate-900: #192328;
+      --green-100: #f0f8e8; --green-500: #72b431; --green-600: #498c1d;
+      --red-100: #fee5e5; --red-500: #bc0000;
+      --amber-100: #fff6d0; --amber-500: #d08007;
+      --space-0: 0px; --space-1: 4px; --space-2: 8px; --space-3: 12px;
+      --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px;
+      --space-10: 40px; --space-12: 48px; --space-16: 64px;
+      --radius-none: 0px; --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+      --radius-xl: 16px; --radius-2xl: 24px; --radius-full: 9999px;
+    }
+
+    /* ═══ Semantic — Light ═══ */
+    [data-theme="light"] {
+      --bg-base: #ffffff;
+      --bg-surface: #f8fafc;
+      --bg-elevated: #ffffff;
+      --bg-brand: #2563eb;
+      --bg-brand-subtle: #eff6ff;
+      --bg-invert: #0f172a;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-tertiary: #94a3b8;
+      --text-inverse: #ffffff;
+      --text-brand: #0d172c;
+      --text-accent: #1d4ed8;
+      --text-disabled: #cbd5e1;
+      --border-default: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-brand: #0074BC;
+      --border-focus: #0d172c;
+      --action-primary: #0074BC;
+      --action-primary-hover: #005a91;
+      --action-primary-text: #ffffff;
+      --action-secondary: #f1f5f9;
+      --action-secondary-text: #272725;
+      --action-secondary-border: #0074BC;
+      --action-disabled: #e2e8f0;
+      --action-destructive: #dc2626;
+      --success-bg: #dcfce7;
+      --success-text: #16a34a;
+      --error-bg: #fee2e2;
+      --error-text: #dc2626;
+      --warning-bg: #fef3c7;
+      --warning-text: #d97706;
+      --info-bg: #eff6ff;
+      --info-text: #2563eb;
+      --header-bg: #FFFFFF;
+      --header-nav-active: #0D172C;
+      --header-nav-inactive: #64748B;
+      --header-icon: #64748B;
+      --header-avatar: #0074BC;
+      --footer-bg: #FFFFFF;
+      --footer-border: #E2E8F0;
+      --footer-icon-fill: #0074BC;
+      --footer-powered-by: #0074BC;
+      --footer-brand-text: #0D172C;
+      --footer-btn-border: #14334D;
+      --footer-btn-text: #14334D;
+    }
+
+    /* ═══ Semantic — Dark ═══ */
+    [data-theme="dark"] {
+      --bg-base: #020617;
+      --bg-surface: #0f172a;
+      --bg-elevated: #1e293b;
+      --bg-brand: #3b82f6;
+      --bg-brand-subtle: #1e3a8a;
+      --bg-invert: #ffffff;
+      --text-primary: #ffffff;
+      --text-secondary: #cbd5e1;
+      --text-tertiary: #64748b;
+      --text-inverse: #0f172a;
+      --text-brand: #60a5fa;
+      --text-accent: #93c5fd;
+      --text-disabled: #475569;
+      --border-default: #1e293b;
+      --border-strong: #475569;
+      --border-brand: #60a5fa;
+      --border-focus: #60a5fa;
+      --action-primary: #ffffff;
+      --action-primary-hover: #e2e8f0;
+      --action-primary-text: #0D172C;
+      --action-secondary: #1e293b;
+      --action-secondary-text: #ffffff;
+      --action-secondary-border: #ffffff;
+      --action-disabled: #475569;
+      --action-destructive: #ef4444;
+      --success-bg: #16a34a;
+      --success-text: #dcfce7;
+      --error-bg: #dc2626;
+      --error-text: #fee2e2;
+      --warning-bg: #d97706;
+      --warning-text: #fef3c7;
+      --info-bg: #15304b;
+      --info-text: #a8c8e8;
+      --header-bg: #0F172A;
+      --header-nav-active: #FFFFFF;
+      --header-nav-inactive: #64748B;
+      --header-icon: #94A3B8;
+      --header-avatar: #64748B;
+      --footer-bg: #0F172A;
+      --footer-border: #1E293B;
+      --footer-icon-fill: #FFFFFF;
+      --footer-powered-by: rgba(255,255,255,0.7);
+      --footer-brand-text: #FFFFFF;
+      --footer-btn-border: #FFFFFF;
+      --footer-btn-text: #FFFFFF;
+    }
+
+    /* ═══ Base Reset ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ═══ Skip Link ═══ */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 16px;
+      padding: 8px 16px;
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border: 2px solid var(--border-focus);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      z-index: 9999;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* ═══ Header ═══ */
+    .app-header {
+      height: 56px;
+      padding: 0 24px;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border-default);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: 24px; }
+    .hss-logo {
+      width: 32px; height: 32px;
+      background: #0074BC;
+      border-radius: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #FFFFFF;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+    .header-nav { display: flex; gap: 24px; list-style: none; }
+    .header-nav a {
+      font-size: 14px;
+      color: var(--header-nav-inactive);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .header-nav a.active { color: var(--header-nav-active); font-weight: 600; }
+    .header-nav a:hover { color: var(--header-nav-active); }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .theme-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--header-icon); padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+    .theme-toggle svg { width: 20px; height: 20px; display: block; }
+
+    /* ═══ Main Layout ═══ */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: calc(100vh - 56px - 56px);
+    }
+    @media (max-width: 1024px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .sidebar-nav { display: none; }
+    }
+
+    /* ═══ Sidebar ═══ */
+    .sidebar-nav {
+      padding: 24px 0;
+      border-right: 1px solid var(--border-default);
+      position: sticky;
+      top: 56px;
+      height: calc(100vh - 56px);
+      overflow-y: auto;
+      background: var(--bg-surface);
+    }
+    .sidebar-nav h3 {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-tertiary);
+      padding: 8px 20px;
+      margin-top: 16px;
+    }
+    .sidebar-nav h3:first-child { margin-top: 0; }
+    .sidebar-nav a {
+      display: block;
+      padding: 8px 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+    }
+    .sidebar-nav a:hover {
+      color: var(--text-primary);
+      background: var(--bg-brand-subtle);
+    }
+    .sidebar-nav a.active {
+      color: var(--action-primary);
+      font-weight: 600;
+      border-left-color: var(--action-primary);
+      background: var(--bg-brand-subtle);
+    }
+    .sidebar-nav a:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: -2px;
+    }
+
+    /* ═══ Content ═══ */
+    .content { padding: 48px 48px 96px; max-width: 900px; }
+    @media (max-width: 768px) { .content { padding: 24px 16px 64px; } }
+
+    .page-title {
+      font-size: 36px; font-weight: 700; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .page-subtitle {
+      font-size: 16px; color: var(--text-secondary);
+      margin-bottom: 32px; max-width: 600px;
+    }
+
+    /* ═══ Sections ═══ */
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 24px; font-weight: 600; line-height: 1.3;
+      color: var(--text-primary); margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .section-desc {
+      font-size: 14px; color: var(--text-secondary);
+      margin-bottom: 24px; max-width: 640px;
+    }
+
+    .subsection { margin-bottom: 32px; }
+    .subsection-title {
+      font-size: 18px; font-weight: 600; color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    /* ═══ Cards ═══ */
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 14px; font-weight: 600; color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ═══ Tables ═══ */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: left; padding: 10px 16px;
+      background: var(--bg-surface);
+      font-weight: 600; color: var(--text-primary);
+      border-bottom: 1px solid var(--border-default);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 16px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-default);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* ═══ Code Blocks ═══ */
+    .code-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .code-block code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--bg-surface);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      color: var(--text-accent);
+    }
+
+    /* ═══ Badges ═══ */
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 4px 12px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600;
+    }
+    .badge-pass { background: var(--success-bg); color: var(--success-text); }
+    .badge-fail { background: var(--error-bg); color: var(--error-text); }
+    .badge-warn { background: var(--warning-bg); color: var(--warning-text); }
+    .badge-info { background: var(--info-bg); color: var(--info-text); }
+
+    /* ═══ Color Swatches ═══ */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .swatch-card {
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .swatch-preview {
+      height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600;
+    }
+    .swatch-info {
+      padding: 10px 12px;
+      background: var(--bg-surface);
+    }
+    .swatch-name { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+    .swatch-hex { font-size: 11px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; }
+    .swatch-status { font-size: 11px; margin-top: 4px; }
+
+    /* ═══ Demo Components ═══ */
+    .demo-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .demo-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; color: var(--text-tertiary);
+      margin-bottom: 12px;
+    }
+
+    /* Focus demo */
+    .focus-demo { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .focus-demo .btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-xl);
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: all 0.15s;
+    }
+    .focus-demo .btn:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+    .btn-primary {
+      background: var(--action-primary);
+      color: var(--action-primary-text);
+    }
+    .btn-primary:hover { background: var(--action-primary-hover); }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid var(--action-secondary-border) !important;
+      color: var(--action-secondary-text);
+    }
+    .btn-disabled {
+      background: var(--action-disabled);
+      color: var(--text-tertiary);
+      cursor: not-allowed;
+    }
+    .focus-demo input[type="text"] {
+      padding: 10px 12px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      width: 200px;
+    }
+    .focus-demo input[type="text"]:focus-visible {
+      border-color: var(--border-focus);
+      outline: 2px solid var(--action-primary);
+      outline-offset: 2px;
+    }
+
+    /* Contrast demo */
+    .contrast-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .contrast-sample {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-default);
+    }
+    .contrast-sample .text { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+    .contrast-sample .ratio { font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+    /* Target size demo */
+    .target-demo {
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+    }
+    .target-box {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .target-outline {
+      position: absolute;
+      width: 44px; height: 44px;
+      border: 2px dashed var(--action-primary);
+      border-radius: var(--radius-md);
+      opacity: 0.5;
+    }
+    .target-inner {
+      width: 40px; height: 40px;
+      background: var(--action-primary);
+      border-radius: var(--radius-xl);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .target-inner svg { stroke: white; width: 18px; height: 18px; }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; }
+    .checklist li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-default);
+      font-size: 14px; color: var(--text-secondary);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-icon {
+      width: 20px; height: 20px; flex-shrink: 0;
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      margin-top: 1px;
+    }
+
+    /* Alert demo */
+    .alert-demo {
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .alert {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 16px; border-radius: var(--radius-md);
+    }
+    .alert svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; }
+    .alert-error { background: var(--error-bg); color: var(--error-text); }
+    .alert-success { background: var(--success-bg); color: var(--success-text); }
+    .alert-warning { background: var(--warning-bg); color: var(--warning-text); }
+    .alert-info { background: var(--info-bg); color: var(--info-text); }
+    .alert-content { font-size: 14px; line-height: 1.5; }
+    .alert-content strong { font-weight: 600; }
+
+    /* Standards badges row */
+    .standards-row {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;
+    }
+    .standard-badge {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+    }
+    .standard-badge .icon {
+      width: 28px; height: 28px;
+      background: var(--action-primary);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .standard-badge .icon svg { stroke: white; width: 16px; height: 16px; }
+    .standard-badge .label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .standard-badge .sublabel { font-size: 11px; color: var(--text-tertiary); }
+
+    /* Heading hierarchy demo */
+    .heading-demo { padding: 20px; }
+    .heading-demo > * { margin-bottom: 8px; }
+    .h-demo-1 { font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+    .h-demo-2 { font-size: 24px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+    .h-demo-3 { font-size: 20px; font-weight: 600; line-height: 1.4; }
+    .h-demo-4 { font-size: 16px; font-weight: 600; line-height: 1.5; }
+    .h-level { font-size: 11px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; margin-left: 12px; font-weight: 400; }
+
+    /* Form demo */
+    .form-demo { max-width: 400px; }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block; font-size: 14px; font-weight: 600;
+      color: var(--text-primary); margin-bottom: 6px;
+    }
+    .form-field label .required { color: var(--error-text); }
+    .form-field input, .form-field select {
+      width: 100%; padding: 10px 12px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      font-size: 14px; font-family: 'Inter', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-base);
+    }
+    .form-field input:focus-visible, .form-field select:focus-visible {
+      border-color: var(--border-focus);
+      outline: 2px solid var(--action-primary);
+      outline-offset: 2px;
+    }
+    .form-field.error input {
+      border-color: var(--action-destructive);
+    }
+    .form-field .error-msg {
+      font-size: 12px; color: var(--error-text);
+      margin-top: 6px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .form-field .error-msg svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .form-field .helper {
+      font-size: 12px; color: var(--text-tertiary); margin-top: 4px;
+    }
+
+    /* ═══ Footer ═══ */
+    .app-footer {
+      height: 56px; padding: 0 24px;
+      background: var(--footer-bg);
+      border-top: 1px solid var(--footer-border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-left { display: flex; align-items: center; gap: 10px; }
+    .footer-left .pg-icon { width: 28px; height: 28px; }
+    .footer-left .pg-fill { fill: var(--footer-icon-fill); }
+    .footer-powered {
+      font-size: 13.5px; font-weight: 500;
+      color: var(--footer-powered-by);
+    }
+    .footer-brand {
+      font-size: 20px; font-weight: 700;
+      color: var(--footer-brand-text);
+    }
+    .footer-center { font-size: 12px; color: var(--text-tertiary); }
+    .footer-btn {
+      padding: 8px 20px;
+      border: 1.5px solid var(--footer-btn-border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--footer-btn-text);
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .footer-btn:focus-visible {
+      outline: 2px solid var(--border-focus);
+      outline-offset: 2px;
+    }
+
+    /* ═══ Utilities ═══ */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+    }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+    .mt-16 { margin-top: 16px; }
+    .mb-8 { margin-bottom: 8px; }
+    .mb-12 { margin-bottom: 12px; }
+    .mb-16 { margin-bottom: 16px; }
+    .mb-24 { margin-bottom: 24px; }
+    .text-sm { font-size: 14px; color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ═══ Header ═══ -->
+  <header class="app-header" role="banner">
+    <div class="header-left">
+      <a href="#" class="hss-logo" aria-label="HSS - Hospital for Special Surgery">HSS</a>
+      <nav aria-label="Main navigation">
+        <ul class="header-nav">
+          <li><a href="#">Design System</a></li>
+          <li><a href="#" class="active">Accessibility</a></li>
+          <li><a href="#">Marketing</a></li>
+          <li><a href="#">Components</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-right">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="sidebar-nav" aria-label="Page sections">
+      <h3>Overview</h3>
+      <a href="#standards" class="active">Compliance Standards</a>
+      <a href="#color-contrast">Color & Contrast</a>
+      <h3>Interaction</h3>
+      <a href="#keyboard">Keyboard Navigation</a>
+      <a href="#focus-states">Focus States</a>
+      <a href="#touch-targets">Touch Targets</a>
+      <h3>Content</h3>
+      <a href="#typography">Typography</a>
+      <a href="#structure">Semantic Structure</a>
+      <a href="#logo">HSS Logo Compliance</a>
+      <a href="#images">Images & Media</a>
+      <h3>Components</h3>
+      <a href="#forms">Forms & Validation</a>
+      <a href="#alerts">Alerts & Feedback</a>
+      <a href="#motion">Motion & Animation</a>
+      <h3>Testing</h3>
+      <a href="#checklist">Implementation Checklist</a>
+    </aside>
+
+    <!-- ═══ Main Content ═══ -->
+    <main id="main-content" class="content" role="main">
+      <h1 class="page-title">Accessibility Guidelines</h1>
+      <p class="page-subtitle">ADA compliance reference for all HSS digital properties. Aligned with WCAG 2.1 Level AA and ADA Title III requirements for healthcare organizations.</p>
+
+      <!-- Standards -->
+      <section id="standards" class="section">
+        <h2 class="section-title">Compliance Standards</h2>
+        <p class="section-desc">All HSS digital properties must meet these accessibility standards. As a healthcare organization, we have heightened obligations under ADA Title III for patient-facing content.</p>
+
+        <div class="standards-row">
+          <div class="standard-badge">
+            <div class="icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <div>
+              <div class="label">WCAG 2.1 AA</div>
+              <div class="sublabel">All digital properties</div>
+            </div>
+          </div>
+          <div class="standard-badge">
+            <div class="icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <div>
+              <div class="label">ADA Title III</div>
+              <div class="sublabel">Patient-facing content</div>
+            </div>
+          </div>
+          <div class="standard-badge">
+            <div class="icon">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <div>
+              <div class="label">Section 508</div>
+              <div class="sublabel">Internal staff tools</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Requirement</th><th>Applies To</th><th>Level</th></tr></thead>
+            <tbody>
+              <tr><td>Perceivable content (text alternatives, captions)</td><td>All content</td><td><span class="badge badge-info">AA</span></td></tr>
+              <tr><td>Operable interface (keyboard, timing, navigation)</td><td>All interactive elements</td><td><span class="badge badge-info">AA</span></td></tr>
+              <tr><td>Understandable information (readable, predictable)</td><td>All content</td><td><span class="badge badge-info">AA</span></td></tr>
+              <tr><td>Robust markup (compatible with assistive tech)</td><td>All code</td><td><span class="badge badge-info">AA</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Color & Contrast -->
+      <section id="color-contrast" class="section">
+        <h2 class="section-title">Color & Contrast</h2>
+        <p class="section-desc">HSS brand colors have been evaluated for WCAG compliance. Use ADA-compliant variants for all text. Some brand colors are restricted to graphics and decorative use only.</p>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Minimum Contrast Ratios</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Content Type</th><th>Ratio</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>Normal text (&lt;18px regular, &lt;14px bold)</td><td><strong>4.5:1</strong></td><td>Body copy, labels, descriptions</td></tr>
+                <tr><td>Large text (&ge;18px regular or &ge;14px bold)</td><td><strong>3:1</strong></td><td>Headlines, display text</td></tr>
+                <tr><td>UI components & graphical objects</td><td><strong>3:1</strong></td><td>Borders, icons, form controls</td></tr>
+                <tr><td>Placeholder text</td><td><strong>4.5:1</strong></td><td>Input placeholders must be legible</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">HSS Brand Color Compliance</h3>
+          <div class="swatch-grid">
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#0074BC; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSS ADA Blue</div>
+                <div class="swatch-hex">#0074BC</div>
+                <div class="swatch-status"><span class="badge badge-pass">4.5:1 Pass</span></div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#264583; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSS Dark Blue</div>
+                <div class="swatch-hex">#264583</div>
+                <div class="swatch-status"><span class="badge badge-pass">4.5:1 Pass</span></div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#0D172C; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">Navy 900</div>
+                <div class="swatch-hex">#0D172C</div>
+                <div class="swatch-status"><span class="badge badge-pass">4.5:1 Pass</span></div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#68A42D; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSS ADA Green</div>
+                <div class="swatch-hex">#68A42D</div>
+                <div class="swatch-status"><span class="badge badge-warn">3:1 Only &mdash; 18pt bold min</span></div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#00A4AF; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSS ADA Teal</div>
+                <div class="swatch-hex">#00A4AF</div>
+                <div class="swatch-status"><span class="badge badge-warn">3:1 Only &mdash; 18pt bold min</span></div>
+              </div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-preview" style="background:#D4B640; color:white;">Aa</div>
+              <div class="swatch-info">
+                <div class="swatch-name">HSS Gold</div>
+                <div class="swatch-hex">#D4B640</div>
+                <div class="swatch-status"><span class="badge badge-fail">Fails on white</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Non-Compliant Colors (Decorative Only)</div>
+            <p>These colors must <strong>never</strong> be used for text at any size: HSS Cyan (<code>#00ADE6</code>), HSS Teal print variant (<code>#00AEBA</code>), HSS Cool Neutral (<code>#F0F5F7</code>), HSS Green print (<code>#72B431</code>), HSS Light Gray (<code>#A2BACA</code>), HSS Warm Neutral (<code>#F5F5F5</code>).</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Live Contrast Examples</h3>
+          <div class="contrast-demo">
+            <div class="contrast-sample" style="background: #ffffff;">
+              <div class="text" style="color: #0074BC;">HSS ADA Blue on White</div>
+              <div class="ratio" style="color: #0074BC;"><span class="badge badge-pass">4.50:1</span> Normal text safe</div>
+            </div>
+            <div class="contrast-sample" style="background: #ffffff;">
+              <div class="text" style="color: #0D172C;">Navy 900 on White</div>
+              <div class="ratio" style="color: #475569;"><span class="badge badge-pass">16.75:1</span> Excellent</div>
+            </div>
+            <div class="contrast-sample" style="background: #0074BC;">
+              <div class="text" style="color: #ffffff;">White on HSS Blue</div>
+              <div class="ratio" style="color: rgba(255,255,255,0.8);"><span class="badge badge-pass">4.50:1</span> Normal text safe</div>
+            </div>
+            <div class="contrast-sample" style="background: #ffffff;">
+              <div class="text" style="color: #D4B640;">HSS Gold on White</div>
+              <div class="ratio" style="color: #dc2626;"><span class="badge badge-fail">1.94:1</span> Not compliant</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Color Independence</h3>
+          <div class="card">
+            <p>Never rely on color alone to convey information. Always pair color with a secondary indicator.</p>
+          </div>
+          <div class="alert-demo mt-16">
+            <div class="alert alert-error" role="alert">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <div class="alert-content"><strong>Error:</strong> Color + icon + text label (all three required)</div>
+            </div>
+            <div class="alert alert-success" role="status">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div class="alert-content"><strong>Success:</strong> Color + icon + text label (all three required)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keyboard Navigation -->
+      <section id="keyboard" class="section">
+        <h2 class="section-title">Keyboard Navigation</h2>
+        <p class="section-desc">All interactive elements must be operable via keyboard alone. Tab order must follow logical reading order.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Key</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td><code>Tab</code> / <code>Shift+Tab</code></td><td>Move between focusable elements</td></tr>
+              <tr><td><code>Enter</code> / <code>Space</code></td><td>Activate buttons and links</td></tr>
+              <tr><td><code>Arrow keys</code></td><td>Navigate within component groups (tabs, radios, menus)</td></tr>
+              <tr><td><code>Escape</code></td><td>Close modals, dropdowns, popovers</td></tr>
+              <tr><td><code>Home</code> / <code>End</code></td><td>Jump to first/last item in lists</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Focus Order — Dashboard Layout</h3>
+          <div class="card">
+            <p>Skip link &rarr; Header nav &rarr; Filter bar &rarr; KPI cards &rarr; Charts &rarr; Data table &rarr; Footer</p>
+          </div>
+        </div>
+        <div class="subsection">
+          <h3 class="subsection-title">Focus Order — Marketing Page</h3>
+          <div class="card">
+            <p>Skip link &rarr; Utility bar &rarr; Main nav &rarr; Hero CTA &rarr; Content sections &rarr; Footer</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Focus States -->
+      <section id="focus-states" class="section">
+        <h2 class="section-title">Focus States</h2>
+        <p class="section-desc">Every interactive element must have a clearly visible focus indicator. Use the HSS design system focus ring: <code>2px solid var(--border-focus)</code> with <code>2px offset</code>.</p>
+
+        <div class="demo-box">
+          <div class="demo-label">Interactive Demo &mdash; Tab through these elements</div>
+          <div class="focus-demo">
+            <button class="btn btn-primary">Primary</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <input type="text" placeholder="Text input" aria-label="Demo text input" />
+            <button class="btn btn-disabled" aria-disabled="true">Disabled</button>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code><pre>/* Standard focus ring — all interactive elements */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Never remove outline without a visible replacement */
+:focus:not(:focus-visible) {
+  outline: none;
+}</pre></code>
+        </div>
+      </section>
+
+      <!-- Touch Targets -->
+      <section id="touch-targets" class="section">
+        <h2 class="section-title">Touch Targets</h2>
+        <p class="section-desc">Minimum interactive area: 44&times;44px. HSS buttons are 40px height &mdash; achieve 44px hit area with margin or padding.</p>
+
+        <div class="demo-box">
+          <div class="demo-label">44px minimum target area (dashed = target zone, solid = visual element)</div>
+          <div class="target-demo">
+            <div class="target-box">
+              <div class="target-outline"></div>
+              <div class="target-inner">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+              </div>
+            </div>
+            <div style="font-size:13px; color:var(--text-secondary);">
+              <strong>40px</strong> visual button + <strong>2px</strong> margin each side = <strong>44px</strong> touch target
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Element</th><th>Visual Size</th><th>Minimum Target</th><th>Solution</th></tr></thead>
+            <tbody>
+              <tr><td>Buttons</td><td>40px height</td><td>44&times;44px</td><td>4px margin/padding</td></tr>
+              <tr><td>Icon buttons</td><td>16-24px icon</td><td>44&times;44px</td><td>Padding to fill target</td></tr>
+              <tr><td>Checkboxes</td><td>18&times;18px</td><td>44&times;44px</td><td>26px clickable padding</td></tr>
+              <tr><td>Switch toggles</td><td>44&times;24px</td><td>44&times;44px</td><td>Vertical padding to 44px</td></tr>
+              <tr><td>Filter chips</td><td>~32px height</td><td>44&times;44px</td><td>Already met with line-height</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section id="typography" class="section">
+        <h2 class="section-title">Typography & Readability</h2>
+        <p class="section-desc">All text must remain readable at 200% zoom. Use relative units in production. Maximum line length: 80 characters.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Context</th><th>Minimum Size</th><th>HSS Token</th></tr></thead>
+            <tbody>
+              <tr><td>Body text</td><td>14px (1rem)</td><td><code>body-base</code></td></tr>
+              <tr><td>Secondary / caption</td><td>12px</td><td><code>body-sm</code></td></tr>
+              <tr><td>Smallest allowed</td><td>10px</td><td><code>body-xs</code></td></tr>
+              <tr><td>Interactive labels</td><td>14px</td><td><code>label-md</code></td></tr>
+              <tr><td>Mobile body (recommended)</td><td>16px</td><td><code>body-lg</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Readability Rules</h3>
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Do</div>
+              <p>Left-align body text. Use sentence/title case for UI headings. Keep line length under 80 characters. Maintain 1.5x line height on body text. Use relative units (rem, em).</p>
+            </div>
+            <div class="card">
+              <div class="card-title">Don't</div>
+              <p>Full-justify body text. Use ALL CAPS for body text (marketing headlines excepted per brand guidelines). Use fixed px for production font sizes. Require horizontal scroll at 320px width.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Semantic Structure -->
+      <section id="structure" class="section">
+        <h2 class="section-title">Semantic Structure</h2>
+        <p class="section-desc">Every page must include proper ARIA landmarks and a logical heading hierarchy. Never skip heading levels.</p>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Required Page Landmarks</h3>
+          <div class="code-block">
+            <code><pre>&lt;header role="banner"&gt;        &lt;!-- App/site header --&gt;
+&lt;nav role="navigation"&gt;        &lt;!-- Primary navigation --&gt;
+&lt;main role="main"&gt;             &lt;!-- Primary content area --&gt;
+&lt;aside role="complementary"&gt;   &lt;!-- Sidebar/supplementary --&gt;
+&lt;footer role="contentinfo"&gt;    &lt;!-- App/site footer --&gt;</pre></code>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Heading Hierarchy</h3>
+          <div class="demo-box">
+            <div class="heading-demo">
+              <div class="h-demo-1">Page Title <span class="h-level">&lt;h1&gt; &mdash; display-xl</span></div>
+              <div class="h-demo-2">Section Heading <span class="h-level">&lt;h2&gt; &mdash; heading-xl</span></div>
+              <div class="h-demo-3">Subsection <span class="h-level">&lt;h3&gt; &mdash; heading-lg</span></div>
+              <div class="h-demo-4">Detail Heading <span class="h-level">&lt;h4&gt; &mdash; heading-sm</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Rules</div>
+            <p>Exactly one <code>&lt;h1&gt;</code> per page. Never skip levels (no h1 &rarr; h3). Dashboard: h1 = page title, h2 = section (KPIs, Charts, Table). Marketing: h1 = hero headline, h2 = section titles.</p>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Screen Reader Utility</h3>
+          <div class="code-block">
+            <code><pre>.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}</pre></code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Logo Compliance -->
+      <section id="logo" class="section">
+        <h2 class="section-title">HSS Logo — Brand + Accessibility</h2>
+        <p class="section-desc">The HSS monogram must always be a square with no border-radius (per January 2026 Brand Onesheet). Never distort, recolor, or add rounded corners.</p>
+
+        <div class="demo-box">
+          <div class="demo-label">Correct Logo Rendering</div>
+          <div style="display:flex; gap:32px; align-items:center; flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="width:52px; height:52px; background:#0074BC; border-radius:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; font-weight:800; letter-spacing:0.5px; margin:0 auto 8px;">HSS</div>
+              <span style="font-size:11px; color:var(--text-tertiary);">52px (nav)</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:36px; height:36px; background:#0074BC; border-radius:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:800; letter-spacing:0.5px; margin:0 auto 8px;">HSS</div>
+              <span style="font-size:11px; color:var(--text-tertiary);">36px (minimum)</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:32px; height:32px; background:#0074BC; border-radius:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:800; letter-spacing:0.5px; margin:0 auto 8px;">HSS</div>
+              <span style="font-size:11px; color:var(--text-tertiary);">32px (header inline)</span>
+            </div>
+            <div style="text-align:center; margin-left:24px; padding-left:24px; border-left:1px solid var(--border-default);">
+              <div style="width:36px; height:36px; background:#0074BC; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:800; letter-spacing:0.5px; margin:0 auto 8px; opacity:0.4; position:relative;">HSS
+                <svg style="position:absolute; top:-4px; right:-4px; width:18px; height:18px;" fill="none" stroke="#dc2626" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+              </div>
+              <span style="font-size:11px; color:var(--error-text);">Never round</span>
+            </div>
+            <div style="text-align:center;">
+              <div style="width:36px; height:36px; background:#333; border-radius:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:800; letter-spacing:0.5px; margin:0 auto 8px; opacity:0.4; position:relative;">HSS
+                <svg style="position:absolute; top:-4px; right:-4px; width:18px; height:18px;" fill="none" stroke="#dc2626" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+              </div>
+              <span style="font-size:11px; color:var(--error-text);">Never recolor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rule</th><th>Specification</th><th>Source</th></tr></thead>
+            <tbody>
+              <tr><td>Shape</td><td>Square &mdash; <code>border-radius: 0</code> always</td><td>Brand Onesheet 2026</td></tr>
+              <tr><td>Color</td><td>HSS Blue <code>#0074BC</code> only (never recolor)</td><td>Brand Identity Guidelines</td></tr>
+              <tr><td>Minimum size</td><td>0.5 inches / 36 pixels in height</td><td>Brand Identity Guidelines</td></tr>
+              <tr><td>Clear space</td><td>1/4 the height of the monogram on all sides</td><td>Brand Identity Guidelines</td></tr>
+              <tr><td>Background</td><td>HSS Cool Neutral <code>#F0F5F7</code> (preferred), white, or HSS Blue w/ white outline</td><td>Brand Identity Guidelines</td></tr>
+              <tr><td>Alt text</td><td><code>alt="HSS - Hospital for Special Surgery"</code></td><td>Accessibility (WCAG 1.1.1)</td></tr>
+              <tr><td>Incorrect use</td><td>Never distort, add elements, use old versions, or use outline over photos</td><td>Brand Identity Guidelines</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block">
+          <code><pre>/* Correct logo implementation */
+.hss-logo {
+  width: 32px;       /* minimum 36px for standalone usage */
+  height: 32px;
+  background: #0074BC;
+  border-radius: 0;  /* NEVER round — always square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Accessible markup */
+&lt;a href="/" class="hss-logo" aria-label="HSS - Hospital for Special Surgery"&gt;
+  HSS
+&lt;/a&gt;</pre></code>
+        </div>
+      </section>
+
+      <!-- Images & Media -->
+      <section id="images" class="section">
+        <h2 class="section-title">Images & Media</h2>
+        <p class="section-desc">All meaningful images require alt text. Decorative images use empty alt. SVG icons follow the HSS inline pattern with <code>stroke="currentColor"</code>.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Image Type</th><th>Implementation</th></tr></thead>
+            <tbody>
+              <tr><td>Informative image</td><td><code>alt="Description of content"</code></td></tr>
+              <tr><td>Decorative image</td><td><code>alt="" role="presentation"</code></td></tr>
+              <tr><td>HSS Logo (square, no border-radius, min 36px)</td><td><code>alt="HSS - Hospital for Special Surgery"</code></td></tr>
+              <tr><td>Icon with meaning (no text)</td><td><code>role="img" aria-label="..."</code></td></tr>
+              <tr><td>Icon button</td><td><code>aria-label</code> on parent <code>&lt;button&gt;</code></td></tr>
+              <tr><td>Chart / data viz</td><td><code>role="img" aria-label="Summary of data"</code></td></tr>
+              <tr><td>Decorative icon (text adjacent)</td><td><code>aria-hidden="true" focusable="false"</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="code-block">
+          <code><pre>&lt;!-- Decorative icon (adjacent text provides meaning) --&gt;
+&lt;svg aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+
+&lt;!-- Meaningful icon (no adjacent text) --&gt;
+&lt;svg role="img" aria-label="Notifications"&gt;...&lt;/svg&gt;
+
+&lt;!-- Icon button --&gt;
+&lt;button aria-label="Close dialog"&gt;
+  &lt;svg aria-hidden="true" focusable="false"&gt;...&lt;/svg&gt;
+&lt;/button&gt;</pre></code>
+        </div>
+      </section>
+
+      <!-- Forms & Validation -->
+      <section id="forms" class="section">
+        <h2 class="section-title">Forms & Validation</h2>
+        <p class="section-desc">Every form field needs a visible label, descriptive error messages, and proper ARIA attributes. Errors must include text &mdash; never color alone.</p>
+
+        <div class="demo-box">
+          <div class="demo-label">Accessible Form Pattern</div>
+          <div class="form-demo">
+            <div class="form-field">
+              <label for="demo-name">Full Name <span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+              <input type="text" id="demo-name" aria-required="true" placeholder="Enter your full name" />
+              <div class="helper">As it appears on your insurance card</div>
+            </div>
+            <div class="form-field error">
+              <label for="demo-email">Email Address <span class="required" aria-hidden="true">*</span></label>
+              <input type="email" id="demo-email" aria-required="true" aria-invalid="true" aria-describedby="email-error" value="invalid-email" />
+              <div class="error-msg" id="email-error" role="alert">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Please enter a valid email address (e.g., name@example.com)
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="demo-dept">Department</label>
+              <select id="demo-dept">
+                <option value="">Select a department</option>
+                <option>Orthopedics</option>
+                <option>Rheumatology</option>
+                <option>Spine</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code><pre>&lt;div class="form-field"&gt;
+  &lt;label for="email"&gt;
+    Email address &lt;span aria-hidden="true"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input
+    id="email"
+    type="email"
+    aria-required="true"
+    aria-invalid="true"
+    aria-describedby="email-error"
+  /&gt;
+  &lt;p id="email-error" role="alert"&gt;
+    Please enter a valid email address.
+  &lt;/p&gt;
+&lt;/div&gt;</pre></code>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Do</div>
+            <p>Display errors inline adjacent to the field. Use <code>aria-describedby</code> to link errors. Move focus to first error on submit failure. Use <code>aria-live="polite"</code> for real-time validation.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Don't</div>
+            <p>Show errors only at page top. Use only color/border to indicate errors. Auto-dismiss error messages. Use <code>disabled</code> attribute without explaining why.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Alerts & Feedback -->
+      <section id="alerts" class="section">
+        <h2 class="section-title">Alerts & Notifications</h2>
+        <p class="section-desc">Use <code>role="alert"</code> for urgent messages and <code>aria-live="polite"</code> for non-urgent updates. All alerts combine color + icon + text.</p>
+
+        <div class="demo-box">
+          <div class="demo-label">Alert Variants (all include icon + text + color)</div>
+          <div class="alert-demo">
+            <div class="alert alert-error" role="alert">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              <div class="alert-content"><strong>Error:</strong> Unable to save changes. Please try again.</div>
+            </div>
+            <div class="alert alert-warning" role="status">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div class="alert-content"><strong>Warning:</strong> Session expires in 5 minutes. Save your work.</div>
+            </div>
+            <div class="alert alert-success" role="status">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <div class="alert-content"><strong>Success:</strong> Your report has been saved successfully.</div>
+            </div>
+            <div class="alert alert-info" role="status">
+              <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <div class="alert-content"><strong>Info:</strong> Your report is being generated. This may take a few minutes.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Alert Type</th><th>ARIA Role</th><th>Auto-Dismiss?</th></tr></thead>
+            <tbody>
+              <tr><td>Error</td><td><code>role="alert"</code></td><td>Never</td></tr>
+              <tr><td>Warning</td><td><code>role="alert"</code></td><td>Never</td></tr>
+              <tr><td>Success</td><td><code>role="status"</code></td><td>After 5s minimum</td></tr>
+              <tr><td>Info</td><td><code>role="status"</code></td><td>After 5s minimum</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Motion & Animation -->
+      <section id="motion" class="section">
+        <h2 class="section-title">Motion & Animation</h2>
+        <p class="section-desc">Respect <code>prefers-reduced-motion</code>. No essential information conveyed through animation alone. Keep UI transitions under 400ms.</p>
+
+        <div class="code-block">
+          <code><pre>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</pre></code>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">Do</div>
+            <p>Provide pause/stop for animations &gt;5s. Use <code>aria-busy="true"</code> on loading containers. Keep transitions under 400ms. Disable parallax for reduced-motion users.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Don't</div>
+            <p>Flash content more than 3 times/second. Convey meaning through animation alone. Use infinite animations without controls. Ignore prefers-reduced-motion.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checklist -->
+      <section id="checklist" class="section">
+        <h2 class="section-title">Implementation Checklist</h2>
+        <p class="section-desc">Use this checklist for every new page or component before shipping.</p>
+
+        <div class="demo-box">
+          <ul class="checklist">
+            <li><div class="check-icon"></div>All interactive elements keyboard-accessible</li>
+            <li><div class="check-icon"></div>Focus indicators visible on all interactive elements</li>
+            <li><div class="check-icon"></div>Skip link present and functional</li>
+            <li><div class="check-icon"></div>Heading hierarchy correct (h1 &rarr; h2 &rarr; h3, no skips)</li>
+            <li><div class="check-icon"></div>All images have appropriate alt text</li>
+            <li><div class="check-icon"></div>Color contrast meets minimum ratios</li>
+            <li><div class="check-icon"></div>Information not conveyed by color alone</li>
+            <li><div class="check-icon"></div>Form fields have visible labels</li>
+            <li><div class="check-icon"></div>Error messages are descriptive and linked to fields</li>
+            <li><div class="check-icon"></div>Touch targets meet 44&times;44px minimum</li>
+            <li><div class="check-icon"></div>Page landmarks properly defined</li>
+            <li><div class="check-icon"></div>Reduced motion preference respected</li>
+            <li><div class="check-icon"></div>Content readable at 200% zoom</li>
+            <li><div class="check-icon"></div>Screen reader tested (VoiceOver or NVDA)</li>
+            <li><div class="check-icon"></div>Language attribute set on <code>&lt;html&gt;</code></li>
+            <li><div class="check-icon"></div>Link text is descriptive (no &ldquo;click here&rdquo;)</li>
+          </ul>
+        </div>
+
+        <div class="subsection">
+          <h3 class="subsection-title">Testing Tools</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tool</th><th>Type</th><th>Use For</th></tr></thead>
+              <tbody>
+                <tr><td>axe DevTools</td><td>Automated</td><td>WCAG linting on every build</td></tr>
+                <tr><td>WebAIM Contrast Checker</td><td>Manual</td><td>Verify color token combinations</td></tr>
+                <tr><td>VoiceOver (macOS/iOS)</td><td>Screen reader</td><td>Primary patient-facing testing</td></tr>
+                <tr><td>NVDA (Windows)</td><td>Screen reader</td><td>Primary internal tools testing</td></tr>
+                <tr><td>Browser zoom 200%</td><td>Manual</td><td>Reflow and text resizing</td></tr>
+                <tr><td>Color blindness sim</td><td>Extension</td><td>Data visualization checks</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="footer-left">
+      <svg class="pg-icon" viewBox="0 0 28 28" aria-hidden="true">
+        <rect class="pg-fill" x="12" y="7" width="4" height="14" rx="2"/>
+        <rect class="pg-fill" x="7" y="12" width="14" height="4" rx="2"/>
+        <circle class="pg-fill" cx="7" cy="7" r="2"/><circle class="pg-fill" cx="21" cy="7" r="2"/>
+        <circle class="pg-fill" cx="7" cy="21" r="2"/><circle class="pg-fill" cx="21" cy="21" r="2"/>
+        <circle class="pg-fill" cx="14" cy="7" r="2"/><circle class="pg-fill" cx="7" cy="14" r="2"/>
+        <circle class="pg-fill" cx="21" cy="14" r="2"/><circle class="pg-fill" cx="14" cy="21" r="2"/>
+        <circle class="pg-fill" cx="14" cy="14" r="3.5"/>
+      </svg>
+      <span class="footer-powered">POWERED BY</span>
+      <span class="footer-brand">HSS Data</span>
+    </div>
+    <span class="footer-center">&copy; 2026 HSS</span>
+    <a href="#" class="footer-btn">Support &amp; Feedback</a>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+
+    // Sidebar active state on scroll
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`.sidebar-nav a[href="#${entry.target.id}"]`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
