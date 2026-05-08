@@ -598,8 +598,10 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .footer-left { display: flex; align-items: center; gap: 10px; }
-    .footer-left .pg-icon { width: 28px; height: 28px; }
-    .footer-left .pg-fill { fill: var(--footer-icon-fill); }
+    .icon-grid { width: 28px; height: 28px; flex-shrink: 0; }
+    .icon-grid-dark { display: none; }
+    [data-theme="dark"] .icon-grid-light { display: none; }
+    [data-theme="dark"] .icon-grid-dark { display: block; }
     .footer-powered {
       font-size: 13.5px; font-weight: 500;
       color: var(--footer-powered-by);
@@ -1332,15 +1334,8 @@
   <!-- ═══ Footer ═══ -->
   <footer class="app-footer" role="contentinfo">
     <div class="footer-left">
-      <svg class="pg-icon" viewBox="0 0 28 28" aria-hidden="true">
-        <rect class="pg-fill" x="12" y="7" width="4" height="14" rx="2"/>
-        <rect class="pg-fill" x="7" y="12" width="14" height="4" rx="2"/>
-        <circle class="pg-fill" cx="7" cy="7" r="2"/><circle class="pg-fill" cx="21" cy="7" r="2"/>
-        <circle class="pg-fill" cx="7" cy="21" r="2"/><circle class="pg-fill" cx="21" cy="21" r="2"/>
-        <circle class="pg-fill" cx="14" cy="7" r="2"/><circle class="pg-fill" cx="7" cy="14" r="2"/>
-        <circle class="pg-fill" cx="21" cy="14" r="2"/><circle class="pg-fill" cx="14" cy="21" r="2"/>
-        <circle class="pg-fill" cx="14" cy="14" r="3.5"/>
-      </svg>
+      <img src="public/icon-grid-blue.png" alt="" class="icon-grid icon-grid-light" aria-hidden="true" />
+      <img src="public/icon-grid-white.png" alt="" class="icon-grid icon-grid-dark" aria-hidden="true" />
       <span class="footer-powered">POWERED BY</span>
       <span class="footer-brand">HSS Data</span>
     </div>

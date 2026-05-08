@@ -628,14 +628,11 @@
       display: flex; align-items: center; gap: 10px; flex-shrink: 0;
     }
 
-    /* Pulse Grid icon — SVG */
-    .pulse-grid-icon {
-      width: 28px; height: 28px;
-      flex-shrink: 0;
-    }
-    .pulse-grid-icon .pg-fill {
-      fill: var(--footer-icon-fill);
-    }
+    /* Icon Grid — theme-aware image swap */
+    .icon-grid { width: 28px; height: 28px; flex-shrink: 0; }
+    .icon-grid-dark { display: none; }
+    [data-theme="dark"] .icon-grid-light { display: none; }
+    [data-theme="dark"] .icon-grid-dark { display: block; }
 
     .footer-powered-by {
       font-size: 13.5px; font-weight: 500;
@@ -940,24 +937,8 @@
        ================================================================ -->
   <footer class="app-footer">
     <div class="footer-left">
-      <!-- Pulse Grid icon — 3x3 node grid with cross connector -->
-      <svg class="pulse-grid-icon" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
-        <!-- Cross beams connecting edge nodes through center -->
-        <rect class="pg-fill" x="12" y="7" width="4" height="14" rx="2"/>
-        <rect class="pg-fill" x="7" y="12" width="14" height="4" rx="2"/>
-        <!-- 4 corner nodes -->
-        <circle class="pg-fill" cx="7" cy="7" r="2"/>
-        <circle class="pg-fill" cx="21" cy="7" r="2"/>
-        <circle class="pg-fill" cx="7" cy="21" r="2"/>
-        <circle class="pg-fill" cx="21" cy="21" r="2"/>
-        <!-- 4 edge nodes (on cross) -->
-        <circle class="pg-fill" cx="14" cy="7" r="2"/>
-        <circle class="pg-fill" cx="7" cy="14" r="2"/>
-        <circle class="pg-fill" cx="21" cy="14" r="2"/>
-        <circle class="pg-fill" cx="14" cy="21" r="2"/>
-        <!-- Center node (larger) -->
-        <circle class="pg-fill" cx="14" cy="14" r="3.5"/>
-      </svg>
+      <img src="public/icon-grid-blue.png" alt="" class="icon-grid icon-grid-light" />
+      <img src="public/icon-grid-white.png" alt="" class="icon-grid icon-grid-dark" />
       <span class="footer-powered-by">POWERED BY</span>
       <span class="footer-brand-text">HSS Data</span>
     </div>

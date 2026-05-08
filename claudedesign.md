@@ -233,7 +233,7 @@ Use this file as the authoritative design system reference when building UI for 
 | `--header-avatar` | #0074BC | #64748B | Avatar circle |
 | `--footer-bg` | #FFFFFF | #0F172A | Footer background |
 | `--footer-border` | #E2E8F0 | #1E293B | Footer top border |
-| `--footer-icon-fill` | #0074BC | #FFFFFF | Pulse Grid icon |
+| `--footer-icon-fill` | #0074BC | #FFFFFF | Icon Grid |
 | `--footer-powered-by` | #0074BC | rgba(255,255,255,0.7) | "POWERED BY" text |
 | `--footer-brand-text` | #0D172C | #FFFFFF | "HSS Data" text |
 | `--footer-btn-border` | #14334D | #FFFFFF | Support button border |
@@ -367,13 +367,13 @@ Reference images: `images/navigation/desktop-light/`, `images/navigation/desktop
 ### App Footer — Desktop (1440px)
 - Height: 56px, padding: 0 24px
 - Background: `--footer-bg` (light: #FFFFFF, dark: #0F172A), border-top: 1px `--footer-border` (light: #E2E8F0, dark: #1E293B)
-- Left: Pulse Grid icon 28x28 (`--footer-icon-fill`) + "POWERED BY" (13.5px, medium, `--footer-powered-by`) + "HSS Data" (20px, bold, `--footer-brand-text`), gap 10px
+- Left: Icon Grid 28x28 (`--footer-icon-fill`) + "POWERED BY" (13.5px, medium, `--footer-powered-by`) + "HSS Data" (20px, bold, `--footer-brand-text`), gap 10px
 - Center: "© 2026 HSS" (12px, `--text-tertiary`)
 - Right: "Support & Feedback" pill button — padding 8px 20px, radius 20px, border 1.5px `--footer-btn-border`, font-weight 600, 14px, color `--footer-btn-text`
 
 ### App Footer — Mobile (375px)
 - Stacked vertical, center-aligned, padding 16px, gap 12px
-- Powered By row: Pulse Grid 22x22 + "POWERED BY" 13.5px + "HSS Data" 20px bold, gap 8px
+- Powered By row: Icon Grid 22x22 + "POWERED BY" 13.5px + "HSS Data" 20px bold, gap 8px
 - Support & Feedback pill button (same as desktop)
 - "© 2026 HSS" (11px, text-tertiary)
 

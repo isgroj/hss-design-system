@@ -293,7 +293,7 @@ Every page must include these ARIA landmarks:
 | Informative images | `alt` text describing the content |
 | Decorative images | `alt=""` (empty) + `role="presentation"` |
 | HSS Logo (square, no border-radius, min 36px, clear space = 1/4 height) | `alt="HSS - Hospital for Special Surgery"` |
-| Pulse Grid icon | `alt=""` (decorative — text "Powered by HSS Data" is adjacent) |
+| Icon Grid (Powered by) | `alt=""` (decorative — text "Powered by HSS Data" is adjacent) |
 | Photography (marketing) | Describe the scene and any relevant action |
 | Icons with meaning | `aria-label` on the SVG or parent button |
 | Chart images | Detailed `alt` summarizing key data points |
