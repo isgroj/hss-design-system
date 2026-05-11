@@ -1,13 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hss-design-system</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSS Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --hss-blue: #0074BC;
+      --nav-height: 56px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: 'Inter', Arial, sans-serif; }
+
+    .hub-nav {
+      height: var(--nav-height);
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 16px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .hub-logo {
+      width: 36px; height: 36px;
+      background: var(--hss-blue);
+      border-radius: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 12px; font-weight: 900;
+      letter-spacing: 0.5px; flex-shrink: 0;
+      text-decoration: none;
+    }
+
+    .hub-tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      flex: 1;
+      -webkit-overflow-scrolling: touch;
+    }
+    .hub-tabs::-webkit-scrollbar { display: none; }
+
+    .hub-tab {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .hub-tab:hover { background: #f1f5f9; color: #334155; }
+    .hub-tab.active {
+      background: var(--hss-blue);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .hub-frame {
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: none;
+      width: 100%;
+      height: calc(100vh - var(--nav-height));
+    }
+
+    @media (max-width: 576px) {
+      .hub-nav { padding: 0 12px; gap: 10px; }
+      .hub-tab { font-size: 12px; padding: 6px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="hub-nav" aria-label="Design system sections">
+    <a href="#" class="hub-logo" onclick="return false;">HSS</a>
+    <div class="hub-tabs" role="tablist">
+      <button class="hub-tab active" role="tab" data-src="styleguide.html">Design System</button>
+      <button class="hub-tab" role="tab" data-src="marketing-landing.html">Marketing</button>
+      <button class="hub-tab" role="tab" data-src="marketing-layouts.html">Page Layouts</button>
+      <button class="hub-tab" role="tab" data-src="accessibility.html">Accessibility</button>
+      <button class="hub-tab" role="tab" data-src="dashboard.html">Dashboard</button>
+    </div>
+  </nav>
+
+  <iframe class="hub-frame" id="hub-frame" src="styleguide.html" title="Design system content"></iframe>
+
+  <script>
+    const tabs = document.querySelectorAll('.hub-tab');
+    const frame = document.getElementById('hub-frame');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        frame.src = tab.dataset.src;
+        frame.title = tab.textContent + ' content';
+      });
+    });
+  </script>
+</body>
 </html>
